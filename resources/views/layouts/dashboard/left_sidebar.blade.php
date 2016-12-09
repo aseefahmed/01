@@ -23,14 +23,23 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a href="#collapseTwo" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+                        <a href="#collapseSupplier" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
                             <i class="glyphicon glyphicon-th"></i> Suppliers
                         </a>
                     </div>
-                    <div class="accordion-body collapse" id="collapseTwo">
+                    @if(
+                            Route::currentRouteName() == "production.suppliers.index" ||
+                            Route::currentRouteName() == "production.suppliers.show" ||
+                            Route::currentRouteName() == "production.supplier-types.index" ||
+                            Route::currentRouteName() == "production.supplier-types.show"
+                        )
+                        {{--*/$supplier_type_collapse = 'in'/*--}}
+                    @endif
+                    <div class="accordion-body collapse <?php echo (isset($supplier_type_collapse) && $supplier_type_collapse == 'in')?$supplier_type_collapse:'' ?>" id="collapseSupplier">
                         <div class="panel-body">
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="javascript:void(0)">View Suppliers</a></li>
+                                <li class="{{ (Route::currentRouteName() == "production.suppliers.index" || Route::currentRouteName() == "production.suppliers.show")? "bg bg-success":"" }}"><a href="/production/suppliers">View Suppliers</a></li>
+                                <li class="{{ (Route::currentRouteName() == "production.supplier-types.index" || Route::currentRouteName() == "production.supplier-types.show")? "bg bg-success":"" }}"><a href="/production/supplier-types">Supplier Types</a></li>
                             </ul>
                         </div>
                     </div>
@@ -47,11 +56,10 @@
                         )
                         {{--*/$buyers_collapse = 'in'/*--}}
                     @endif
-                    <div class="accordion-body collapse <?php (isset($buyers_collapse) && $buyers_collapse == 'in')?$buyers_collapse:'' ?>" id="collapseBuyer">
+                    <div class="accordion-body collapse <?php echo (isset($buyers_collapse) && $buyers_collapse == 'in')?$buyers_collapse:'' ?>" id="collapseBuyer">
                         <div class="panel-body">
                             <ul class="nav nav-pills nav-stacked">
-                                <li class="{{ (Route::currentRouteName() == "production.buyers.index")? "bg bg-success":"" }}"><a href="/production/buyers">View Buyers</a></li>
-                                <li class=""><a href="/production/buyers/add">Add Buyer</a></li>
+                                <li class="{{ (Route::currentRouteName() == "production.buyers.index" || Route::currentRouteName() == "production.buyers.show")? "bg bg-success":"" }}"><a href="/production/buyers">View Buyers</a></li>
                             </ul>
 
                         </div>
@@ -84,10 +92,10 @@
                         )
                         {{--*/$styles_collapse = 'in'/*--}}
                     @endif
-                    <div class="accordion-body collapse <?php (isset($styles_collapse) && $styles_collapse == 'in')?$styles_collapse:'' ?>" id="collapseStyle">
+                    <div class="accordion-body collapse <?php echo (isset($styles_collapse) && $styles_collapse == 'in')?$styles_collapse:'' ?>" id="collapseStyle">
                         <div class="panel-body">
                             <ul class="nav nav-pills nav-stacked">
-                                <li class="{{ (Route::currentRouteName() == "production.styles.index")? "bg bg-success":"" }}"><a href="/production/styles">View Styles</a></li>
+                                <li class="{{ (Route::currentRouteName() == "production.styles.index" || Route::currentRouteName() == "production.styles.show")? "bg bg-success":"" }}"><a href="/production/styles">View Styles</a></li>
                             </ul>
 
                         </div>

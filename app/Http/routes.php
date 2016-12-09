@@ -6,6 +6,7 @@ Route::group(['middlewere' => 'web'], function(){
     Route::get('/logout', ['uses' => 'LoginController@doLogout', 'as' => 'Logout']);
     Route::post ('/process-login', ['uses' => 'LoginController@processLogin', 'as' => 'Process Login']);
     Route::get('/dashboard', ['uses' => 'DashboardController@viewDashboard', 'as' => 'Dashboard']);
+    Route::get('/styles', ['uses' => 'Test1Controller@viewDashboard', 'as' => 'Dashboard']);
 
 
 

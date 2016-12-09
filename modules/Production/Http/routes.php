@@ -7,12 +7,24 @@ Route::group(['middleware' => 'web', 'prefix' => 'production', 'namespace' => 'M
     Route::get('/buyers/fetchBuyerDetails/{id}', ['uses' => 'BuyersController@fetchBuyerDetails', 'as' => 'Buyer Details']);
     Route::get('/buyer/update/{field}/{id}/{value}', ['uses' => 'BuyersController@updateField', 'as' => 'Update Information']);
     Route::delete('/buyer/{buyer}/{action}', ['uses' => 'BuyersController@destroy', 'as' => 'Remove Buyer Details']);
-    Route::get('/styles', ['uses' => 'NewController@index', 'as' => 'Production']);
+
+    Route::resource('styles', 'StylesController');
+    Route::get('/style/fetchStylesList', ['uses' => 'StylesController@fetchStylesList', 'as' => 'Styles List']);
+    Route::get('/styles/fetchStyleDetails/{id}', ['uses' => 'StylesController@fetchStyleDetails', 'as' => 'Style Details']);
+    Route::get('/style/update/{field}/{id}/{value}', ['uses' => 'StylesController@updateField', 'as' => 'Update Information']);
+    Route::delete('/style/{style}/{action}', ['uses' => 'StylesController@destroy', 'as' => 'Remove Style Details']);
+
+    Route::resource('suppliers', 'SuppliersController');
+    Route::get('/supplier/fetchSuppliersList', ['uses' => 'SuppliersController@fetchSuppliersList', 'as' => 'Suppliers List']);
+    Route::get('/suppliers/fetchSupplierDetails/{id}', ['uses' => 'SuppliersController@fetchSupplierDetails', 'as' => 'Supplier Details']);
+    Route::get('/supplier/update/{field}/{id}/{value}', ['uses' => 'SuppliersController@updateField', 'as' => 'Update Information']);
+    Route::delete('/supplier/{supplier}/{action}', ['uses' => 'SuppliersController@destroy', 'as' => 'Remove Supplier Details']);
+
+    Route::resource('supplier-types', 'SupplierTypesController');
+    Route::get('/supplier_type/fetchSupplierTypesList', ['uses' => 'SupplierTypesController@fetchSupplierTypesList', 'as' => 'SupplierTypes List']);
+    Route::get('/supplier_types/fetchSupplierTypeDetails/{id}', ['uses' => 'SupplierTypesController@fetchSupplierTypeDetails', 'as' => 'SupplierType Details']);
+    Route::get('/supplier_type/update/{field}/{id}/{value}', ['uses' => 'SupplierTypesController@updateField', 'as' => 'Update Information']);
+    Route::delete('/supplier_type/{supplier_type}/{action}', ['uses' => 'SupplierTypesController@destroy', 'as' => 'Remove SupplierType Details']);
 
 
-    /*Route::get('/', ['uses' => 'ProductionController@index', 'as' => 'Production']);
-    .. Route::get('/buyers', ['uses' => 'BuyersController@index', 'as' => 'Buyers']);
-   .. Route::post('/buyers/add', ['uses' => 'BuyersController@addBuyer', 'as' => 'Buyers']);
-    Route::get('/buyers/all', ['uses' => 'BuyersController@getAll', 'as' => 'Buyers']);
-   ... Route::get('/buyer/show/{id}', ['uses' => 'BuyersController@show', 'as' => 'Buyer Details']);*/
 });

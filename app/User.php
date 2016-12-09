@@ -24,8 +24,4 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function buyers()
-    {
-        return $this->hasMany('Modules\Production\Entities\Buyer');
-    }
 }

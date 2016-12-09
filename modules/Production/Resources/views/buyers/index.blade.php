@@ -48,8 +48,8 @@
                                             <th></th>
                                             <th>Image</th>
                                             <th class="th-pointer" ng-click="sort('buyer_name')">Buyer Name <span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='buyer_name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
-                                            <th class="th-pointer" ng-click="sort('created_at')">Created At <span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='created_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
-                                            <th class="th-pointer" ng-click="sort('updated_at')">Updated At <span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='updated_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                            <th class="th-pointer" ng-click="sort('created_at')">Contact Person <span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='created_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                            <th class="th-pointer" ng-click="sort('updated_at')">Email Address <span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='updated_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
                                             <th>Actions</th>
                                         </tr>
                                         </thead>
@@ -61,8 +61,8 @@
                                                 <td><input class="select_row" type="checkbox"  value="## buyer.id ##"/></td>
                                                 <td ng-cloak><img src="{{ asset('img/uploads/production/buyers') }}/## buyer.image ##" width="80px"/></td>
                                                 <td ng-cloak>## buyer.buyer_name ##</td>
-                                                <td ng-cloak>## buyer.created_at | filterDate ##</td>
-                                                <td ng-cloak>## buyer.updated_at | filterDate ##</td>
+                                                <td ng-cloak>## buyer.contact_person ##</td>
+                                                <td ng-cloak>## buyer.email_address ##</td>
                                                 <td  ng-cloak align="center">
                                                     <a class="btn btn-primary" href="{{ url('production/buyers/') }}/## buyer.id ##"><i class="glyphicon glyphicon-eye-open" class="view_buyer_btn"></i></a>&nbsp;
                                                     <a ng-if="buyer.user_id == {{ Auth::user()->id }}" class="btn btn-danger" ng-click="remove_buyer(buyer.id, buyer.buyer_name, 'single_delete')" buyer_name="## buyer.name ##" buyer_id="## buyer.id ##"><i class="glyphicon glyphicon-trash"></i></a>
