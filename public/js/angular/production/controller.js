@@ -173,6 +173,186 @@ angular.module('myApp').controller('BuyerController', function($scope, $http) {
     };
 })
 
+angular.module('myApp').controller('OrderController', function($scope, $http) {
+    $scope.num_of_items_arr = [{id: 5, value: 5},{id: 10, value: 10},{id: 20, value: 20},{id: 50, value: 50},{id: 100, value: 100}];
+    $http.get('/production/order/fetchOrdersList').then(function (response) {
+        $scope.num_of_items = 10;
+        $scope.orders = response.data;
+        $scope.reverse = false;
+    });
+    $http.get('/production/buyer/fetchBuyersList').then(function (response) {
+        $scope.num_of_items = 10;
+        $scope.buyers = response.data;
+        $scope.reverse = false;
+    });
+    $http.get('/production/style/fetchStylesList').then(function (response) {
+        $scope.num_of_items = 10;
+        $scope.styles = response.data;
+        $scope.reverse = false;
+    });
+    $scope.sortKey = 'order_name';
+    $scope.sort = function (header) {
+        $scope.sortKey = header;
+        $scope.reverse = !$scope.reverse;
+    };
+    $scope.remove_order = function(id, name, action){
+        if(action == 'single_delete')
+        {
+            $scope.order_name = name;
+            $scope.order_id = id;
+            $scope.status = 'single_delete';
+            $scope.modal_msg = "Do you really want to delete the order "+$scope.order_name+".";
+            $('#remove-order-modal').modal('toggle');
+        }
+        else if(action == 'all')
+        {
+            if($scope.orders.length == 0)
+            {
+                $('#removal-warning-modal').modal('toggle');
+            }
+            else
+            {
+                $scope.order_id = 0;
+                $scope.status = 'all';
+                $scope.modal_msg = "Do you really want to delete all orders";
+                $('#remove-order-modal').modal('toggle');
+            }
+        }
+        else if(action == 'selected')
+        {
+            var arr = [];
+            $scope.status = 'selected';
+            $('.select_row:checked').each(function() {
+                console.log(this.value)
+                arr.push(this.value);
+
+            });
+            $scope.modal_msg = "Do you really want to delete selected orders";
+            if(arr.length == 0)
+            {
+                $('#removal-warning-modal').modal('toggle');
+            }
+            else
+            {
+                $scope.order_id = arr;
+                $('#remove-order-modal').modal('toggle');
+            }
+        }
+    };
+    $scope.remove_order_confirmed = function(id, page, action){
+        $scope.order_name = null;
+        $http.delete('/production/order/'+id+"/"+action).then(function(response){
+            console.log(response)
+            $('#remove-order-modal').modal('toggle');
+            $('.top-right').notify({
+                type: 'success',
+                message: { html: '<span class="glyphicon glyphicon-info-sign"></span> <strong>You have successfully deleted the information.</strong>' },
+                closable: false,
+                fadeOut: { enabled: true, delay: 2000 }
+            }).show();
+            if(page == 'show_page')
+            {
+                window.location.href = '/production/orders';
+            }
+            else
+            {
+                $http.get('/production/order/fetchOrdersList').then(function (response) {
+                    $scope.num_of_items = 10;
+                    $scope.orders = response.data;
+                    $scope.reverse = false;
+                })
+            }
+        }, function(error_response){
+            $('#remove-order-modal').modal('toggle');
+            $('.top-right').notify({
+                type: 'danger',
+                message: { html: '<span class="glyphicon glyphicon-info-sign"></span> <strong>Operation was unsuccessful. </strong>' },
+                closable: false,
+                fadeOut: { enabled: true, delay: 2000 }
+            }).show();
+        })
+    };
+    $scope.init = function(id){
+        $http.get('/production/orders/fetchOrderDetails/'+id).then(function(response){
+            console.log(response.data)
+            $scope.order = response.data;
+        })
+    };
+    $scope.edit_order = function (id, edit_item, field, field_type, is_required, min_length, max_length, pattern, error_text) {
+        $scope.editable_item = edit_item;
+        $scope.order_id = id;
+        $scope.field = field;
+        $scope.field_type = field_type;
+        $scope.is_required = is_required;
+        $scope.min_length = min_length;
+        $scope.max_length = max_length;
+        $scope.pattern = pattern;
+        $scope.error_text = error_text;
+        $scope.type = null;
+        $('#edit-order-modal').modal('toggle');
+    }
+    $scope.edit_order_confirmed = function (id) {
+        $('#edit-order-modal').modal('toggle');
+        if($scope.type == null)
+        {
+            $scope.type = '--';
+        }
+        $http.get('/production/order/update/'+$scope.field+'/'+id+'/'+$scope.type).then(function(response){
+            $('.top-right').notify({
+                type: 'success',
+                message: { html: '<span class="glyphicon glyphicon-info-sign"></span> <strong>You have successfully updated the information.</strong>' },
+                closable: false,
+                fadeOut: { enabled: true, delay: 2000 }
+            }).show();
+            $scope.order = response.data;
+            $http.get('/production/orders/fetchOrderDetails/'+id).then(function(response){
+                $scope.order = response.data;
+            })
+        }, function(response){
+            $('.top-right').notify({
+                type: 'danger',
+                message: { html: '<span class="glyphicon glyphicon-info-sign"></span> <strong>The operation was unsuccessful.</strong>' },
+                closable: false,
+                fadeOut: { enabled: true, delay: 2000 }
+            }).show();
+        })
+    }
+    $scope.add_order = function(){
+        var data = $.param({
+            buyer: $scope.buyer_id
+        });
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        };
+        $http.post('/production/orders', data, config).success(function (result, status) {
+            $('#add-order-modal').modal('toggle');
+            $('.top-right').notify({
+                type: 'success',
+                message: { html: '<span class="glyphicon glyphicon-info-sign"></span> <strong>You have successfully add a order.</strong>' },
+                closable: false,
+                fadeOut: { enabled: true, delay: 2000 }
+            }).show();
+            $scope.order_name = null;
+            $http.get('/production/order/fetchOrdersList').then(function (response) {
+                $scope.num_of_items = 10;
+                $scope.orders = response.data;
+                $scope.reverse = false;
+            })
+        }).error(function (result, status) {
+            $('#add-order-modal').modal('toggle');
+            $('.top-right').notify({
+                type: 'danger',
+                message: { html: '<span class="glyphicon glyphicon-info-sign"></span> <strong>The operation was unsuccessful.</strong>' },
+                closable: false,
+                fadeOut: { enabled: true, delay: 2000 }
+            }).show();
+            $scope.order_name = null;
+        });
+    };
+})
+
 angular.module('myApp').controller('StyleController', function($scope, $http) {
     $scope.num_of_items_arr = [{id: 5, value: 5},{id: 10, value: 10},{id: 20, value: 20},{id: 50, value: 50},{id: 100, value: 100}];
     $http.get('/production/style/fetchStylesList').then(function (response) {

@@ -8,15 +8,20 @@
             @if(strpos(url()->current(), 'production') > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a href="#collapseOne" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+                        <a href="#collapseOrder" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
                             <i class="glyphicon glyphicon-folder-close"></i> Orders
                         </a>
                     </div>
-                    <div class="accordion-body collapse" id="collapseOne">
+                    @if(
+                            Route::currentRouteName() == "production.orders.index" ||
+                            Route::currentRouteName() == "production.orders.show"
+                        )
+                        {{--*/$order_collapse = 'in'/*--}}
+                    @endif
+                    <div class="accordion-body collapse <?php echo (isset($order_collapse) && $order_collapse == 'in')?$order_collapse:'' ?>" id="collapseOrder">
                         <div class="panel-body">
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="javascript:void(0)">View Orders</a></li>
-                                <li><a href="javascript:void(0)">Requisitions</a></li>
+                                <li class="{{ (Route::currentRouteName() == "production.orders.index" || Route::currentRouteName() == "production.orders.show")? "bg bg-success":"" }}"><a href="/production/orders">View Orders</a></li>
                             </ul>
                         </div>
                     </div>
