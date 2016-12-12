@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="row col-sm-12">
-        <h3 class="heading">{{ Route::currentRouteName() }}</h3>
+        <h3 class="heading">@yield('page_title')</h3>
     </div>
     <div class="row" ng-controller="OrderController" ng-init="init({{$order_id}})" ng-cloak>
         <div class="col-sm-12 col-md-12">
@@ -34,24 +34,92 @@
                                             <td rowspan="2" width="25%"><img src="{{ asset('img/uploads/production/orders') }}/## order[0].image ##" width="100%" height="100%"></td>
                                         </tr>
                                         <tr>
-                                            <th width='25%'>Postal Address: </th>
-                                            <td><span class="col-sm-10 wordwrap">## order[0].postal_address| uppercase ## </span><a ng-click="edit_order({{ $order_id  }}, 'Postal Address', 'postal_address', 'text', false, '', 70, '', 'This field not be more than 70 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                            <th width='25%'>Order Date: </th>
+                                            <td><span class="col-sm-10 wordwrap">## order[0].order_date ## </span><a ng-click="edit_order({{ $order_id  }}, 'Order Date', 'order_date', 'text', true, '', 70, '', 'Date should be in YYYY-MM-DD format.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
                                         </tr>
                                         <tr>
-                                            <th width='25%'>Contact Person: </th>
-                                            <td colspan="2"><span class="col-sm-10">## order[0].contact_person | uppercase ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'text', false, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                            <th width='25%'>Delivery Date: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].delivery_date | uppercase ## </span><a ng-click="edit_order({{ $order_id  }}, 'Delivery Date', 'delivery_date', 'text', true, '', 70, '', 'Date should be in YYYY-MM-DD format.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
                                         </tr>
                                         <tr>
-                                            <th width='25%'>Email Address: </th>
-                                            <td colspan="2"><span class="col-sm-10"><a href="mailto:## order[0].email_address ##">## order[0].email_address| uppercase ## </a></span><a ng-click="edit_order({{ $order_id  }}, 'Email Address', 'email_address', 'text', false, '', '', '', 'Email address must be valid.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                            <th width='25%'>GG: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].gg ## </span><a ng-click="edit_order({{ $order_id  }}, 'GG', 'gg', 'text', true, '', 70, '', 'This field must be a number')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
                                         </tr>
                                         <tr>
-                                            <th width='25%'>Contact Number: </th>
-                                            <td colspan="2"><span class="col-sm-10">## order[0].contact_number | uppercase ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Number', 'contact_number', 'text', false, '', 20, '', 'This field not be more than 20 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                            <th width='25%'>Qty: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].qty ## </span><a ng-click="edit_order({{ $order_id  }}, 'Qty', 'qty', 'text', true, '', 70, '', 'This field must be a number.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
                                         </tr>
                                         <tr>
-                                            <th width='25%'>Website: </th>
-                                            <td colspan="2"><span class="col-sm-10"><a href="//## order[0].website ##" target="_blank">## order[0].website| uppercase ## </a></span><a ng-click="edit_order({{ $order_id  }}, 'Website', 'website')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                            <th width='25%'>FOB: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].fob ## </span><a ng-click="edit_order({{ $order_id  }}, 'FOB', 'fob', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Weight Per Dzn: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].weight_per_dzn ## </span><a ng-click="edit_order({{ $order_id  }}, 'Weight Per Dzn', 'weight_per_dzn', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Qty Per Dzn: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].qty_per_dzn ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Total Yarn Weight: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].total_yarn_weight ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Total Yarn Cost: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].total_yarn_cost ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Accessories Rate: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].acc_rate ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Total Accessories Cost: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].total_acc_cost  ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Button Rate: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].btn_cost ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Total Button Cost: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].total_btn_cost ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'true', false, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Zipper Rate: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].zipper_cost ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Total Zipper Cost: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].total_zipper_cost## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Print Cost: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].print_cost ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Total Print Cost: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].total_print_cost ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Total FOB: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].total_fob ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Total Cost: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].total_cost  ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Balance Amount: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].balance_amount  ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Cost of Making: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0]. cost_of_making  ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>L/C Confirmed?: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].lc_confirmed  ## </span><a ng-click="edit_order({{ $order_id  }}, 'Contact Person', 'contact_person', 'text', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
                                         </tr>
                                         <tr>
                                             <th width='25%'>Created By: </th>

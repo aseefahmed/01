@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="row col-sm-12">
-        <h3 class="heading">{{ Route::currentRouteName() }}</h3>
+        <h3 class="heading">@yield('page_title')</h3>
     </div>
     <div class="row" ng-controller="BuyerController" ng-init="init({{$buyer_id}})" ng-cloak>
         <div class="col-sm-12 col-md-12">

@@ -3,6 +3,7 @@
 use \Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\DB;
 use Modules\Production\Entities\Order;
 use Pingpong\Modules\Routing\Controller;
 
@@ -15,7 +16,8 @@ class OrdersController extends Controller {
 
     public function fetchOrdersList()
     {
-        return Order::all();
+        $orders = DB::table('orders')->join('buyers', 'orders.buyer_id', '=', 'buyers.id')->join('styles', 'orders.style_id', '=', 'styles.id')->select('orders.*', 'buyers.buyer_name', 'styles.image as style_image')->get();
+        return $orders;
     }
 
     public function show($id){
@@ -25,6 +27,7 @@ class OrdersController extends Controller {
 
     public function fetchOrderDetails($id){
         $data['order'] =  Order::where('id', $id)->get();
+        $data['order']['user'] = $data['order'][0]->user;
         $data['order']['buyer_details'] = $data['order'][0]->buyer_details;
         return $data['order'];
     }
@@ -57,7 +60,32 @@ class OrdersController extends Controller {
     public function store(Request $request){
         $order_id = Order::max('id')+1;
         $order = new Order();
-        $order->buyer = $request->buyer;
+        $order->user_id = Auth::user()->id;
+        $order->buyer_id = $request->buyer_id;
+        $order->style_id = $request->style_id;
+        $order->order_date = $request->order_date;
+        $order->delivery_date = $request->delivery_date;
+        $order->gg = $request->order_gg;
+        $order->qty = $request->order_qty;
+        $order->fob = $request->order_fob;
+        $order->weight_per_dzn = $request->weight_per_dzn;
+        $order->total_yarn_weight = $request->total_yarn_weight;
+        $order->qty_per_dzn = $request->qty_per_dzn;
+        $order->total_yarn_weight = $request->total_yarn_weight;
+        $order->total_yarn_cost = $request->total_yarn_cost;
+        $order->acc_rate  = $request->accessories_rate;
+        $order->total_acc_cost  = $request->total_accessories_cost ;
+        $order->btn_cost  = $request->button_rate;
+        $order->total_btn_cost  = $request->total_button_cost;
+        $order->zipper_cost  = $request->zipper_rate;
+        $order->total_zipper_cost  = $request->total_zipper_cost;
+        $order->print_cost = $request->print_rate;
+        $order->total_print_cost = $request->total_print_cost;
+        $order->total_fob = $request->total_fob;
+        $order->total_cost = $request->total_cost;
+        $order->balance_amount = $request->order_balance_amount;
+        $order->cost_of_making = $request->cost_of_making;
+        $order->compositions = serialize($request->compositions);
         $order->save();
     }
 	
