@@ -33,9 +33,14 @@ class Order extends Model {
         'compositions',
     ];
 
-    public function buyer_details()
+    public function buyer()
     {
         return $this->belongsTo('Modules\Production\Entities\Buyer');
+    }
+
+    public function style()
+    {
+        return $this->belongsTo('Modules\Production\Entities\Style');
     }
 
     public function user()

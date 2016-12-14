@@ -28,7 +28,8 @@ class OrdersController extends Controller {
     public function fetchOrderDetails($id){
         $data['order'] =  Order::where('id', $id)->get();
         $data['order']['user'] = $data['order'][0]->user;
-        $data['order']['buyer_details'] = $data['order'][0]->buyer_details;
+        $data['order']['buyer'] = $data['order'][0]->buyer;
+        $data['order']['style'] = $data['order'][0]->style;
         return $data['order'];
     }
 

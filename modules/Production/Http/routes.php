@@ -32,4 +32,14 @@ Route::group(['middleware' => 'web', 'prefix' => 'production', 'namespace' => 'M
     Route::get('/order/update/{field}/{id}/{value}', ['uses' => 'OrdersController@updateField', 'as' => 'Update Information']);
     Route::delete('/order/{order}/{action}', ['uses' => 'OrdersController@destroy', 'as' => 'Remove Order Details']);
 
+    Route::resource('orders', 'OrdersController');
+    Route::get('/order/fetchOrdersList', ['uses' => 'OrdersController@fetchOrdersList', 'as' => 'Orders List']);
+    Route::get('/orders/fetchOrderDetails/{id}', ['uses' => 'OrdersController@fetchOrderDetails', 'as' => 'Order Details']);
+    Route::get('/order/update/{field}/{id}/{value}', ['uses' => 'OrdersController@updateField', 'as' => 'Update Information']);
+    Route::delete('/order/{order}/{action}', ['uses' => 'OrdersController@destroy', 'as' => 'Remove Order Details']);
+
+    Route::get('/reports/{type}', ['uses' => 'ReportsController@generateOrdersReport', 'as' => 'Generate Orders Report']);
+
+    Route::get('/requisitions/{type}', ['uses' => 'RequisitionsController@index', 'as' => 'Order Requisitions']);
+
 });

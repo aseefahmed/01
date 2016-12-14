@@ -106,6 +106,47 @@
                         </div>
                     </div>
                 </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="#collapseReport" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+                            <i class="glyphicon glyphicon-book"></i> Reports
+                        </a>
+                    </div>
+                    @if(
+                            Route::currentRouteName() == "production.reports.index" ||
+                            Route::currentRouteName() == "production.reports.show"
+                        )
+                        {{--*/$report_collapse = 'in'/*--}}
+                    @endif
+                    <div class="accordion-body collapse <?php echo (isset($report_collapse) && $report_collapse == 'in')?$report_collapse:'' ?>" id="collapseReport">
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li class="{{ (Route::currentRouteName() == "production.reports.index" || Route::currentRouteName() == "production.reports.show")? "bg bg-success":"" }}"><a href="/production/reports">View Reports</a></li>
+                                <li class="{{ (Route::currentRouteName() == "production.reports" || Route::currentRouteName() == "production.reports")? "bg bg-success":"" }}"><a href="/production/reports/orders">Orders</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="#collapseRequisitions" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+                            <i class="glyphicon glyphicon-check"></i> Requisitions
+                        </a>
+                    </div>
+                    @if(
+                            Route::currentRouteName() == "Order Requisitions" ||
+                            Route::currentRouteName() == "Order Requisitions"
+                        )
+                        {{--*/$requisitions_collapse = 'in'/*--}}
+                    @endif
+                    <div class="accordion-body collapse <?php echo (isset($requisitions_collapse) && $requisitions_collapse == 'in')?$requisitions_collapse:'' ?>" id="collapseRequisitions">
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li class="{{ (Route::currentRouteName() == "Order Requisitions" || Route::currentRouteName() == "Order Requisitions")? "bg bg-success":"" }}"><a href="/production/requisitions/orders">Orders</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             @endif
 
         </div>
