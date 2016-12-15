@@ -487,6 +487,7 @@ angular.module('myApp').controller('OrderController', function($scope, $http) {
         })
     };
     $scope.init = function(id){
+        $scope.yarn_type = '';
         $http.get('/production/orders/fetchOrderDetails/'+id).then(function(response){
             console.log(response.data)
             $scope.order_id = id;

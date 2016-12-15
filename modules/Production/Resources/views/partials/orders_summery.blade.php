@@ -21,14 +21,19 @@
                                 <form method="post" enctype="multipart/form-data" name="myForm" novalidate>
                                     <div class="panel-body">
                                         <code>Yarn Type</code>
-                                        <input class="form-control col-sm-2" placeholder="Yarn Type" type="text" ng-model="yarn_type">
+                                        <select class="form-control" ng-model="yarn_type">
+                                            <option value="">select an option</option>
+                                            <option ng-repeat="item in order['composition']" ng-value="item[0]">
+                                                ## item[0] ##
+                                            </option>
+                                        </select>
                                     </div>
                                     <div class="panel-body">
-                                        <code>Yarn Amount</code>
-                                        <input class="form-control col-sm-2" placeholder="Yarn Amount" type="text" ng-model="yarn_amount">
+                                        <code>Yarn Amount</code>## yarn_type ##
+                                        <input class="form-control col-sm-2" ng-disabled="yarn_type==''" placeholder="Yarn Amount" type="text" ng-model="yarn_amount">
                                     </div>
                                     <div class="panel-body">
-                                        <code>Accessories</code>## no_of_requisition_items ##
+                                        <code>Accessories</code>
                                         <input class="form-control col-sm-2" placeholder="Accessories Amount" type="text" ng-model="accessories_amount">
                                     </div>
                                     <div class="panel-body">
