@@ -134,15 +134,14 @@
                         </a>
                     </div>
                     @if(
-                            Route::currentRouteName() == "Order Requisitions" ||
-                            Route::currentRouteName() == "Order Requisitions"
+                            Route::currentRouteName() == "Generate Requisitions"
                         )
                         {{--*/$requisitions_collapse = 'in'/*--}}
                     @endif
                     <div class="accordion-body collapse <?php echo (isset($requisitions_collapse) && $requisitions_collapse == 'in')?$requisitions_collapse:'' ?>" id="collapseRequisitions">
                         <div class="panel-body">
                             <ul class="nav nav-pills nav-stacked">
-                                <li class="{{ (Route::currentRouteName() == "Order Requisitions" || Route::currentRouteName() == "Order Requisitions")? "bg bg-success":"" }}"><a href="/production/requisitions/generate">Generate Requisition</a></li>
+                                <li class="{{ (Route::currentRouteName() == "Generate Requisitions")? "bg bg-danger":"" }}"><a href="/production/requisitions/generate">Generate Requisition</a></li>
                             </ul>
                         </div>
                     </div>
