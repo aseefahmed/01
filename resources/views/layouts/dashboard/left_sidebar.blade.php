@@ -141,7 +141,9 @@
                     <div class="accordion-body collapse <?php echo (isset($requisitions_collapse) && $requisitions_collapse == 'in')?$requisitions_collapse:'' ?>" id="collapseRequisitions">
                         <div class="panel-body">
                             <ul class="nav nav-pills nav-stacked">
-                                <li class="{{ (Route::currentRouteName() == "Generate Requisitions")? "bg bg-sucess":"" }}"><a href="/production/requisitions/generate">Generate Requisition</a></li>
+                                <li class="{{ (Route::currentRouteName() == "Generate Requisitions")? "bg bg-success":"" }}"><a href="/production/requisitions/generate">Generate Requisition</a></li>
+                                <li class="{{ (Route::currentRouteName() == "Sent Requisitions")? "bg bg-success":"" }}"><a href="/production/requisitions/sent">Sent Requisition</a></li>
+                                <li class="{{ (Route::currentRouteName() == "Recieved Requisitions")? "bg bg-success":"" }}"><a href="/production/requisitions/recieved">Recieved Requisition</a></li>
                             </ul>
                         </div>
                     </div>

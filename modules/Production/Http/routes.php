@@ -47,4 +47,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'production', 'namespace' => 'M
     Route::get('/requisitions/getRequisitionItems', ['uses' => 'RequisitionsController@getRequisitionItems', 'as' => 'Generate Requisitions']);
     Route::post('/requisitions/generateRequisition', ['uses' => 'RequisitionsController@generateRequisitionItems', 'as' => 'Generate Requisitions']);
     Route::delete('/requisitions/{id}/{action}', ['uses' => 'RequisitionsController@destroy', 'as' => 'Remove Order Details']);
+    Route::get('/requisitions/sent', ['uses' => 'RequisitionsController@viewRequisitionsList', 'as' => 'Generate Requisitions']);
+    Route::get('/requisitions/{action}/get', ['uses' => 'RequisitionsController@getRequisitionsList', 'as' => 'Generate Requisitions']);
+
 });

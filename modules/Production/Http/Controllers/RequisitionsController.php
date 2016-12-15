@@ -9,10 +9,6 @@ use Pingpong\Modules\Routing\Controller;
 
 class RequisitionsController extends Controller {
 
-    public function index($id)
-    {
-        return view('production::requisitions.'.$id);
-    }
 
     public function generateRequisition()
     {
@@ -32,7 +28,7 @@ class RequisitionsController extends Controller {
         $requisition->created_by = Auth::user()->id;
         $requisition->forwarded_to = $request->forwarded_to;
         $requisition->name = $request->requisition_title;
-        $requisition->flag = 0;
+        $requisition->flag = 1;
         $requisition->save();
 
         $requisition_id = Requisition::max('id');
@@ -43,7 +39,6 @@ class RequisitionsController extends Controller {
     }
 
     public function destroy(Request $request, $id, $action=null){
-    echo $id;
         if($action == 'all')
         {
             RequisitionItem::where('user_id', Auth::user()->id)->delete();
@@ -54,11 +49,20 @@ class RequisitionsController extends Controller {
         }
         else if($action == 'selected')
         {
-            echo "------";echo $id;
             $items = explode(',', $id);
             RequisitionItem::destroy($items);
         }
+    }
 
+    public function viewRequisitionsList()
+    {
+        return view('production::requisitions.sent');
+    }
+
+    public function getRequisitionsList($action)
+    {
+        $data['requisition'] = Requisition::where('created_by', Auth::user()->id)->where('flag',1)->get();
+        return $data;
     }
 
 
