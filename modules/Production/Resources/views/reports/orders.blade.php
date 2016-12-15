@@ -84,6 +84,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
+                @if(Route)
                 @include('production::partials.orders_stats')
             </div>
 
@@ -92,14 +93,14 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h3 class="modal-title">Generate Order Report</h3>
+                            <h3 class="modal-title">Generate Order Requisition</h3>
                         </div>
                         <div class="modal-body">
                             <form method="post" enctype="multipart/form-data" name="myForm" novalidate>
                                 <div class="formSep">
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <code>Style</code><span style="color:red">*</span>
+                                            <code>Order Id</code><span style="color:red">*</span>
                                             <div class="row">
                                                 &nbsp;&nbsp;
                                             </div>

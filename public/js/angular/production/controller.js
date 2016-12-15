@@ -173,11 +173,56 @@ angular.module('myApp').controller('BuyerController', function($scope, $http) {
     };
 })
 
+angular.module('myApp').controller('RequisitionController', function($scope, $http){
+    $http.get('/production/requisitions/getRequisitionItems').then(function (response) {
+        console.log('done'+response.data)
+        $scope.lists = response.data.items;
+        console.log(response.data)
+    });
+})
 angular.module('myApp').controller('OrderController', function($scope, $http) {
+    $scope.no_of_requisition_items = 10;
     $scope.total_yarn_weight = 0;
     $scope.total_yarn_cost = 0;
     compositions = new Array()
     n=0;
+    $scope.add_to_requisitions = function(){
+        var data = $.param({
+            order_id: $scope.order_id,
+            yarn_type: $scope.yarn_type,
+            yarn_amount: $scope.yarn_amount,
+            accessories_amount: $scope.accessories_amount,
+            button_amount: $scope.button_amount,
+            zipper_amount: $scope.zipper_amount,
+            print_amount: $scope.print_amount,
+            zipper_amount: $scope.zipper_amount,
+        });
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        };
+        $http.post('/production/order/addToRequisition', data, config).success(function (result, status) {
+            console.log(result)
+            $('#add-order-modal').modal('toggle');
+            $('.top-right').notify({
+                type: 'success',
+                message: { html: '<span class="glyphicon glyphicon-info-sign"></span> <strong>The operation successfull.</strong>' },
+                closable: false,
+                fadeOut: { enabled: true, delay: 2000 }
+            }).show();
+            $scope.no_of_requisition_items = 103;
+        }).error(function (result, status) {
+            $('#add-order-modal').modal('toggle');
+            $('.top-right').notify({
+                type: 'danger',
+                message: { html: '<span class="glyphicon glyphicon-info-sign"></span> <strong>The operation was unsuccessful.</strong>' },
+                closable: false,
+                fadeOut: { enabled: true, delay: 2000 }
+            }).show();
+            $scope.order_name = null;
+        });
+    };
     $scope.update_order_info = function(){
         $scope.qty_per_dzn = Math.round($scope.order_qty/12*100, 2)/100;
         $scope.total_fob = $scope.order_qty * $scope.order_fob;
@@ -199,7 +244,7 @@ angular.module('myApp').controller('OrderController', function($scope, $http) {
     $scope.add_composition = function(){
         compositions[n] = [$scope.composition_name, $scope.composition_percentage, $scope.composition_yarn_rate, $scope.composition_wastage];
         composition_str = JSON.stringify(compositions);
-        $scope.compositions = composition_str;
+        $scope.compositions = compositions;
         console.log($scope.compositions)
         n++;
 
@@ -317,7 +362,9 @@ angular.module('myApp').controller('OrderController', function($scope, $http) {
     $scope.init = function(id){
         $http.get('/production/orders/fetchOrderDetails/'+id).then(function(response){
             console.log(response.data)
+            $scope.order_id = id;
             $scope.order = response.data;
+            console.log($scope.ord)
         })
     };
     $scope.edit_order = function (id, edit_item, field, field_type, is_required, min_length, max_length, pattern, error_text) {

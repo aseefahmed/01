@@ -1,5 +1,5 @@
 @include('layouts/dashboard/head')
-<body class="full_width">
+<body class="full_width" ng-app="myApp">
 <div class='notifications top-right'></div>
 <div class="style_switcher">
     <div class="sepH_c">
@@ -62,7 +62,7 @@
         @include('layouts/dashboard/header_nav')
     </header>
     <div id="contentwrapper">
-        <div class="main_content" ng-app="myApp">
+        <div class="main_content">
             @yield('content')
         </div>
     </div>

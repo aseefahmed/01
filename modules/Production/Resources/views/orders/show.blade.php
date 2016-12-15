@@ -66,6 +66,10 @@
                                             <td colspan="2"><span class="col-sm-10">## order[0].total_yarn_weight ## </span><a ng-click="edit_order({{ $order_id  }}, 'Total Yarn Weight', 'total_yarn_weight', 'false', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
                                         </tr>
                                         <tr>
+                                            <th width='25%'>Compositions: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order['composition'] ## </span><a ng-click="edit_order({{ $order_id  }}, 'Total Yarn Cost', 'total_yarn_cost', 'text', false, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
                                             <th width='25%'>Total Yarn Cost: </th>
                                             <td colspan="2"><span class="col-sm-10">## order[0].total_yarn_cost ## </span><a ng-click="edit_order({{ $order_id  }}, 'Total Yarn Cost', 'total_yarn_cost', 'text', false, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
                                         </tr>
@@ -142,7 +146,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                @include('production::partials.orders_stats')
+                @include('production::partials.orders_summery')
             </div>
 
             <div class="modal fade" id="remove-order-modal">

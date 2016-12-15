@@ -5,7 +5,7 @@
     <div class="row col-sm-12">
         <h3 class="heading">@yield('page_title')</h3>
     </div>
-    <div class="row" ng-controller="OrderRequisitionsController" ng-cloak>
+    <div class="row" ng-controller="RequisitionController" ng-cloak>
         <div class="col-sm-12 col-md-12">
             <div class="col-sm-8">
                 <div class="w-box" id="w_sort01">
@@ -26,43 +26,28 @@
                     <div class="w-box-content cnt_a">
                         <div id="main-content">
                             <div class="row">
-                                <div class="col-sm-4 text-left">
-                                    <input type="text" class="form-control" placeholder="Search" ng-model="search_filter">
-                                </div>
-                                <div class="col-sm-8 text-right">
-                                    Show : <select style="width: 25%;" ng-model="num_of_items" name="num_of_items" ng-options="num.id as num.value for num in num_of_items_arr ">
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-sm-12">
-                                    <div class="col-sm-12 text-center">
-                                        <dir-pagination-controls
-                                                direction-links="true" auto-hide="false"
-                                                boundary-links="true" >
-                                        </dir-pagination-controls>
-                                    </div>
                                     <table class="table table-responsive table-bordered table-striped">
                                         <thead>
                                         <tr>
                                             <th></th>
-                                            <th>Image</th>
-                                            <th class="th-pointer" ng-click="sort('style_name')">Style Name <span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='style_name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
-                                            <th class="th-pointer" ng-click="sort('created_at')">Contact Person <span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='created_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
-                                            <th class="th-pointer" ng-click="sort('updated_at')">Email Address <span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='updated_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
-                                            <th>Actions</th>
+                                            <th>#</th>
+                                            <th>Reference</th>
+                                            <th>Item</th>
+                                            <th>Amount</th>
+                                            <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr ng-if="styles.length == 0 || filtered.length == 0">
+                                        <tr ng-if="lists.length == 0 || lists.length == 0">
                                             <td colspan="6">No data found.</td>
                                         </tr>
-                                        <tr dir-paginate="style in filtered = (styles| orderBy : sortKey : reverse | filter : search_filter  | itemsPerPage : num_of_items) " ng-cloak>
-                                            <td><input class="select_row" type="checkbox"  value="## style.id ##"/></td>
-                                            <td ng-cloak><img src="{{ asset('img/uploads/production/styles') }}/## style.image ##" width="80px"/></td>
-                                            <td ng-cloak>## style.style_name ##</td>
-                                            <td ng-cloak>## style.contact_person ##</td>
-                                            <td ng-cloak>## style.email_address ##</td>
+                                        <tr ng-repeat="list in lists" ng-cloak>
+                                            <td><input type="checkbox" class="select_row"> </td>
+                                            <td>1</td>
+                                            <td ng-cloak>## list.requisition_type ## No. ## list.reference ##</td>
+                                            <td ng-cloak>## list.item_name ##</td>
+                                            <td ng-cloak>## list.items_val ##</td>
                                             <td  ng-cloak align="center">
                                                 <a class="btn btn-primary" href="{{ url('production/styles/') }}/## style.id ##"><i class="glyphicon glyphicon-eye-open" class="view_style_btn"></i></a>&nbsp;
                                                 <a ng-if="style.user_id == {{ Auth::user()->id }}" class="btn btn-danger" ng-click="remove_style(style.id, style.style_name, 'single_delete')" style_name="## style.name ##" style_id="## style.id ##"><i class="glyphicon glyphicon-trash"></i></a>
@@ -71,12 +56,6 @@
 
                                         </tbody>
                                     </table>
-                                    <div class="col-sm-12 text-center">
-                                        <dir-pagination-controls
-                                                direction-links="true" auto-hide="false"
-                                                boundary-links="true" >
-                                        </dir-pagination-controls>
-                                    </div>
                                 </div>
                             </div>
                         </div>

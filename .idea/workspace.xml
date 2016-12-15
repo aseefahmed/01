@@ -2,24 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3ec8c37-810a-4298-b6bf-e262d8ab0ba3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Production/Http/Controllers/ReportsController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Production/Http/Controllers/RequisitionsController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Production/Resources/views/reports/index.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Production/Resources/views/reports/orders.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Production/Resources/views/reports/show.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Production/Resources/views/requisitions/index.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Production/Resources/views/requisitions/orders.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Production/Resources/views/requisitions/show.blade.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/Production/Resources/views/supplier-types/index.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/Production/Resources/views/supplier-types/show.blade.php" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Assets/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Config/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Console/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Database/Migrations/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Database/Seeders/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Entities/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Http/Controllers/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Http/Middleware/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Http/Requests/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Providers/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Repositories/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Resources/lang/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Resources/views/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Tests/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/2016_12_14_060334_alter_table_req_items_324.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/2016_12_14_065013_alter_table_req_items_3242.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Config/config.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Database/Seeders/ModelDatabaseSeeder.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Http/Controllers/ModelController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Http/routes.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Providers/ModelServiceProvider.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Resources/views/index.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/Resources/views/layouts/master.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/composer.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/module.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Model/start.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Production/Entities/RequisitionItem.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Production/Entities/RequisitionType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Production/Resources/views/partials/orders_summery.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Production/Resources/views/requisitions/generate.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/01.iml" afterPath="$PROJECT_DIR$/.idea/01.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/Production/Entities/Order.php" afterPath="$PROJECT_DIR$/modules/Production/Entities/Order.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/Production/Http/Controllers/OrdersController.php" afterPath="$PROJECT_DIR$/modules/Production/Http/Controllers/OrdersController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/Production/Http/Controllers/RequisitionsController.php" afterPath="$PROJECT_DIR$/modules/Production/Http/Controllers/RequisitionsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/Production/Http/routes.php" afterPath="$PROJECT_DIR$/modules/Production/Http/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/Production/Resources/views/orders/show.blade.php" afterPath="$PROJECT_DIR$/modules/Production/Resources/views/orders/show.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/blue.css" afterPath="$PROJECT_DIR$/public/css/blue.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/Production/Resources/views/reports/orders.blade.php" afterPath="$PROJECT_DIR$/modules/Production/Resources/views/reports/orders.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/Production/Resources/views/requisitions/orders.blade.php" afterPath="$PROJECT_DIR$/modules/Production/Resources/views/requisitions/orders.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/angular/production/controller.js" afterPath="$PROJECT_DIR$/public/js/angular/production/controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/angular/production/test.js" afterPath="$PROJECT_DIR$/public/js/angular/production/test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/dashboard/header_nav.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard/header_nav.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/dashboard/left_sidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard/left_sidebar.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/dashboard/main.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard/main.blade.php" />
     </list>
     <ignored path="01.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,41 +67,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="left_sidebar.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="left_sidebar.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard/left_sidebar.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="130" column="20" selection-start-line="130" selection-start-column="20" selection-end-line="134" selection-end-column="26" />
+            <state relative-caret-position="2346">
+              <caret line="138" column="25" lean-forward="false" selection-start-line="138" selection-start-column="25" selection-end-line="138" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/styles/index.blade.php">
+      <file leaf-file-name="orders_summery.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/partials/orders_summery.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="41" column="44" selection-start-line="0" selection-start-column="0" selection-end-line="164" selection-end-column="11" />
+            <state relative-caret-position="493">
+              <caret line="29" column="60" lean-forward="false" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bootstrap.min.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/bootstrap/css/bootstrap.min.css">
+      <file leaf-file-name="show.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/orders/show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/reports/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="62" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
+            <state relative-caret-position="102">
+              <caret line="6" column="10" lean-forward="false" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -83,18 +100,18 @@
       <file leaf-file-name="RequisitionsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/Production/Http/Controllers/RequisitionsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="323">
+              <caret line="24" column="21" lean-forward="false" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/requisitions/show.blade.php">
+      <file leaf-file-name="OrdersController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Production/Http/Controllers/OrdersController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="2261">
+              <caret line="140" column="44" lean-forward="false" selection-start-line="140" selection-start-column="44" selection-end-line="140" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -103,28 +120,53 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/Production/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="42" column="91" selection-start-line="42" selection-start-column="91" selection-end-line="42" selection-end-column="109" />
+            <state relative-caret-position="782">
+              <caret line="46" column="49" lean-forward="false" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReportsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Production/Http/Controllers/ReportsController.php">
+      <file leaf-file-name="generate.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/requisitions/generate.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1095">
-              <caret line="77" column="55" selection-start-line="77" selection-start-column="55" selection-end-line="77" selection-end-column="55" />
+            <state relative-caret-position="323">
+              <caret line="43" column="45" lean-forward="true" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
+              <folding>
+                <element signature="e#3423#3429#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/buyers/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1020">
+              <caret line="60" column="76" lean-forward="false" selection-start-line="60" selection-start-column="66" selection-end-line="60" selection-end-column="76" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="orders.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/reports/orders.blade.php">
+      <file leaf-file-name="controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/angular/production/controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1575">
-              <caret line="105" column="60" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
+            <state relative-caret-position="0">
+              <caret line="173" column="2" lean-forward="false" selection-start-line="173" selection-start-column="2" selection-end-line="173" selection-end-column="2" />
+              <folding>
+                <element signature="e#78#7132#0" expanded="false" />
+                <element signature="e#8153#8285#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header_nav.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard/header_nav.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="214" lean-forward="false" selection-start-line="21" selection-start-column="214" selection-end-line="21" selection-end-column="214" />
               <folding />
             </state>
           </provider>
@@ -132,21 +174,49 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>=&quot;row&quot; ng-controller=&quot;RequisitionController&quot; ng-cloak&gt;</find>
+      <find>w-box-hea</find>
+      <find>o</find>
+      <find>add_orde</find>
+      <find>add_comp</find>
+      <find>id</find>
+      <find>requisition_items</find>
+      <find>reference</find>
+      <find>order_id</find>
+      <find>accessories_amount</find>
+      <find>add_co</find>
+      <find>25</find>
+      <find>ng-ap</find>
+      <find>ng-a</find>
+      <find>myap</find>
+      <find>CountController</find>
+      <find>orderdet</find>
+      <find>no_of_requisition_items</find>
+      <find>accessories_amount</find>
+      <find>init</find>
+      <find>controller</find>
+      <find>add_to</find>
+      <find>requisitions</find>
+      <find>http.get</find>
+      <find>orderre</find>
+      <find>orderde</find>
+      <find>enerate</find>
+      <find>ordercon</find>
+      <find>OrderRe</find>
+      <find>show</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>order_requisition</replace>
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/modules/Production/Http/Controllers/FirstController.php" />
-        <option value="$PROJECT_DIR$/modules/Production/Resources/views/buyers/add_buyer.blade.php" />
-        <option value="$PROJECT_DIR$/modules/Production/Resources/views/buyers/edit.blade.php" />
-        <option value="$PROJECT_DIR$/modules/Production/Resources/views/buyers/index.blade.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2016_12_07_030950_alter_table_style_0202.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2016_12_07_031331_alter_table_styles_0923.php" />
-        <option value="$PROJECT_DIR$/modules/Production/Http/Controllers/StylesController.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2016_12_07_033842_alter_table_suppliers_9334.php" />
-        <option value="$PROJECT_DIR$/modules/Production/Entities/Style.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_12_08_131532_alter_table_supplier_types22.php" />
         <option value="$PROJECT_DIR$/modules/Production/Resources/views/supplier-types/index.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_12_08_135107_alter_table_supplier_types2222.php" />
@@ -160,7 +230,6 @@
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/modules/Production/Entities/Supplier.php" />
         <option value="$PROJECT_DIR$/modules/Production/Http/Controllers/SuppliersController.php" />
-        <option value="$PROJECT_DIR$/public/js/angular/production/test.js" />
         <option value="$PROJECT_DIR$/modules/Production/Resources/views/suppliers/index.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_12_10_031804_alter_table_orders_1243.php" />
         <option value="/run/media/student/Windows8_OS/XAMP/htdocs/myadmin/resources/views/layouts/js-scripts.blade.php" />
@@ -168,27 +237,37 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/dashboard/scripts.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_12_11_160013_alter_table_orders23.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_12_11_160306_alter_table_orders213.php" />
-        <option value="$PROJECT_DIR$/public/js/angular/production/controller.js" />
         <option value="$PROJECT_DIR$/modules/Production/Resources/views/orders/index.blade.php" />
         <option value="$PROJECT_DIR$/modules/Production/Resources/views/styles/show.blade.php" />
         <option value="$PROJECT_DIR$/modules/Production/Resources/views/supplier_types/show.blade.php" />
         <option value="$PROJECT_DIR$/modules/Production/Resources/views/buyers/show.blade.php" />
         <option value="$PROJECT_DIR$/modules/Production/Resources/views/suppliers/show.blade.php" />
         <option value="$PROJECT_DIR$/modules/Production/Entities/Order.php" />
-        <option value="$PROJECT_DIR$/modules/Production/Http/Controllers/OrdersController.php" />
-        <option value="$PROJECT_DIR$/modules/Production/Resources/views/orders/show.blade.php" />
         <option value="$PROJECT_DIR$/storage/framework/views/a22fb0b5462d4a21da6f2c849bd47b2ce092d99f.php" />
         <option value="$PROJECT_DIR$/modules/Production/Resources/views/reports/index.blade.php" />
         <option value="$PROJECT_DIR$/modules/Production/Resources/views/reports/show.blade.php" />
         <option value="$PROJECT_DIR$/public/css/blue.css" />
-        <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/public/bootstrap/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/modules/Production/Resources/views/styles/index.blade.php" />
         <option value="$PROJECT_DIR$/modules/Production/Http/Controllers/ReportsController.php" />
         <option value="$PROJECT_DIR$/modules/Production/Resources/views/reports/orders.blade.php" />
+        <option value="$PROJECT_DIR$/public/js/angular/production/test.js" />
+        <option value="$PROJECT_DIR$/modules/Production/Resources/views/requisitions/orders.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_12_14_060334_alter_table_req_items_324.php" />
+        <option value="$PROJECT_DIR$/public/css/style.css" />
+        <option value="$PROJECT_DIR$/modules/Production/Entities/RequisitionType.php" />
+        <option value="$PROJECT_DIR$/modules/Production/Entities/RequisitionItem.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_12_14_065013_alter_table_req_items_3242.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/dashboard/main.blade.php" />
+        <option value="$PROJECT_DIR$/modules/Production/Resources/views/partials/orders_summery.blade.php" />
+        <option value="$PROJECT_DIR$/modules/Production/Resources/views/orders/show.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/dashboard/header_nav.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/dashboard/left_sidebar.blade.php" />
         <option value="$PROJECT_DIR$/modules/Production/Http/routes.php" />
         <option value="$PROJECT_DIR$/modules/Production/Http/Controllers/RequisitionsController.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/dashboard/left_sidebar.blade.php" />
+        <option value="$PROJECT_DIR$/modules/Production/Http/Controllers/OrdersController.php" />
+        <option value="$PROJECT_DIR$/public/js/angular/production/controller.js" />
+        <option value="$PROJECT_DIR$/modules/Production/Resources/views/requisitions/generate.blade.php" />
       </list>
     </option>
   </component>
@@ -210,19 +289,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="y" value="28" />
-    <option name="width" value="1366" />
-    <option name="height" value="707" />
-  </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
-    <OptionsSetting value="true" id="Add" />
-    <OptionsSetting value="true" id="Remove" />
-    <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
-    <OptionsSetting value="true" id="Status" />
-    <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -241,12 +311,6 @@
     <panes>
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="01" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="01" />
@@ -545,36 +609,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="styles" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="01" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="01" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Production" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="requisitions" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -605,7 +639,37 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="reports" />
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Production" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="buyers" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -692,25 +756,90 @@
               <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Production" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Entities" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="01" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrations" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/nrbbuysell-live" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\01\modules\Production\Resources\views\requisitions" />
+      <recent name="C:\wamp\www\01\modules\Production\Entities" />
+      <recent name="C:\wamp\www\01\modules\Production\Resources\views\partials" />
       <recent name="$PROJECT_DIR$/modules/Production/Resources/views" />
       <recent name="$PROJECT_DIR$/modules/Production/Http/Controllers" />
-      <recent name="$PROJECT_DIR$/modules/Production/Entities" />
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
@@ -728,6 +857,10 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
+    <configuration default="true" type="PhpSpecConfigurationType" factoryName="PHPSpec">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -738,7 +871,7 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
+      <command value="run" />
       <scripts />
       <node-interpreter value="project" />
       <envs />
@@ -783,23 +916,25 @@
       <workItem from="1481561798045" duration="5164000" />
       <workItem from="1481600929454" duration="3029000" />
       <workItem from="1481622618726" duration="807000" />
+      <workItem from="1481692263549" duration="15096000" />
+      <workItem from="1481708323065" duration="299000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68082000" />
+    <option name="totallyTimeSpent" value="83477000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="28" width="1366" height="707" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25293255" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25256222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30405405" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -813,6 +948,9 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -830,115 +968,17 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_11_20_084434_alter_table_1332.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_12_01_030530_alter_table_buyer_0902.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_12_08_135107_alter_table_supplier_types2222.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Production/Http/Controllers/SupplierTypesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="60" column="22" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/buyers/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="32" column="174" selection-start-line="32" selection-start-column="171" selection-end-line="32" selection-end-column="174" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/supplier_types/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="122" column="35" selection-start-line="122" selection-start-column="35" selection-end-line="122" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_12_09_033618_alter_table_suppliers44.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_12_09_034254_alter_table_suppliers44117.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_12_09_035608_alter_table_suppliers244117.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/angular/production/test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="156" column="37" selection-start-line="0" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Production/Entities/Buyer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="12" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/Production/Entities/SupplierType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/common.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="59">
-          <caret line="120" column="22" selection-start-line="120" selection-start-column="22" selection-end-line="120" selection-end-column="22" />
+          <caret line="120" column="22" lean-forward="false" selection-start-line="120" selection-start-column="22" selection-end-line="120" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -947,21 +987,21 @@
     <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/suppliers/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="104" column="50" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
+          <caret line="104" column="50" lean-forward="false" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard/scripts.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-114">
-          <caret line="93" column="36" selection-start-line="93" selection-start-column="31" selection-end-line="93" selection-end-column="36" />
+          <caret line="93" column="36" lean-forward="false" selection-start-line="93" selection-start-column="31" selection-end-line="93" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_12_10_031804_alter_table_orders_1243.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
-          <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
+          <caret line="16" column="48" lean-forward="false" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -969,210 +1009,304 @@
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_12_11_160306_alter_table_orders213.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard/head.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="31" />
+          <caret line="15" column="36" lean-forward="false" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/styles/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="53" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
+          <caret line="5" column="53" lean-forward="false" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/supplier_types/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="53" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
+          <caret line="5" column="53" lean-forward="false" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/Production/Entities/Style.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="11" selection-end-column="5" />
+          <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="11" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/Production/Http/Controllers/BuyersController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
-          <caret line="69" column="71" selection-start-line="69" selection-start-column="61" selection-end-line="69" selection-end-column="71" />
-          <folding />
+          <caret line="69" column="71" lean-forward="false" selection-start-line="69" selection-start-column="61" selection-end-line="69" selection-end-column="71" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/Production/Http/Controllers/SuppliersController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="28" column="80" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="80" />
+          <caret line="28" column="80" lean-forward="false" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="80" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/Production/Entities/Supplier.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/orders/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="141" column="133" selection-start-line="141" selection-start-column="133" selection-end-line="141" selection-end-column="140" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/angular/production/controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="330" column="18" selection-start-line="330" selection-start-column="18" selection-end-line="330" selection-end-column="18" />
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/buyers/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="5" column="53" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
+          <caret line="5" column="53" lean-forward="false" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/suppliers/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="5" selection-end-column="64" />
+          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="5" selection-end-column="64" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/Production/Entities/Order.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
-          <caret line="42" column="66" selection-start-line="42" selection-start-column="66" selection-end-line="42" selection-end-column="66" />
+          <caret line="42" column="66" lean-forward="false" selection-start-line="42" selection-start-column="66" selection-end-line="42" selection-end-column="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Production/Http/Controllers/OrdersController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-          <folding>
-            <element signature="e#54#83#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/orders/show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="76" column="72" selection-start-line="76" selection-start-column="72" selection-end-line="76" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/framework/views/a22fb0b5462d4a21da6f2c849bd47b2ce092d99f.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="72" column="65" selection-start-line="72" selection-start-column="65" selection-end-line="72" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/framework/views/a22fb0b5462d4a21da6f2c849bd47b2ce092d99f.php" />
     <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/reports/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+          <caret line="1" column="38" lean-forward="false" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/blue.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="45" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
+          <caret line="21" column="21" lean-forward="false" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/bootstrap/css/bootstrap.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-          <folding />
+        <state relative-caret-position="119">
+          <caret line="7" column="37" lean-forward="false" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/styles/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="44" selection-start-line="0" selection-start-column="0" selection-end-line="164" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Production/Http/Controllers/ReportsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1095">
-          <caret line="77" column="55" selection-start-line="77" selection-start-column="55" selection-end-line="77" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/reports/orders.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="105" column="60" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/reports/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="62" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Production/Http/Controllers/RequisitionsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="697">
+          <caret line="41" column="44" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="164" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/requisitions/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///run/media/student/Windows8_OS/XAMP/htdocs/002/modules/Production/Resources/views/new-requisitions.blade.php" />
+    <entry file="file://$PROJECT_DIR$/modules/Production/Http/Controllers/ReportsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="77" column="55" lean-forward="false" selection-start-line="77" selection-start-column="55" selection-end-line="77" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/reports/orders.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="86" column="25" lean-forward="false" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/partials/orders_stats.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/angular/production/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/requisitions/orders.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="53" lean-forward="false" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_12_14_060334_alter_table_req_items_324.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" column="12" lean-forward="false" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="419" column="38" lean-forward="false" selection-start-line="419" selection-start-column="38" selection-end-line="419" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/reports/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="175" column="126" lean-forward="false" selection-start-line="175" selection-start-column="126" selection-end-line="175" selection-end-column="148" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/orders/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1767">
+          <caret line="141" column="133" lean-forward="false" selection-start-line="141" selection-start-column="133" selection-end-line="141" selection-end-column="140" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Production/Entities/Agent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Production/Entities/RequisitionItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_12_14_065013_alter_table_req_items_3242.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Production/Entities/RequisitionType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard/head.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-182">
+          <caret line="9" column="11" lean-forward="false" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard/main.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="24" lean-forward="false" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/partials/orders_summery.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="60" lean-forward="false" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard/header_nav.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="214" lean-forward="false" selection-start-line="21" selection-start-column="214" selection-end-line="21" selection-end-column="214" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard/left_sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2346">
+          <caret line="138" column="25" lean-forward="false" selection-start-line="138" selection-start-column="25" selection-end-line="138" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/Production/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="91" selection-start-line="42" selection-start-column="91" selection-end-line="42" selection-end-column="109" />
+        <state relative-caret-position="782">
+          <caret line="46" column="49" lean-forward="false" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///run/media/student/Windows8_OS/XAMP/htdocs/002/modules/Production/Resources/views/new-requisitions.blade.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard/left_sidebar.blade.php">
+    <entry file="file://$PROJECT_DIR$/modules/Production/Http/Controllers/OrdersController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="130" column="20" selection-start-line="130" selection-start-column="20" selection-end-line="134" selection-end-column="26" />
+        <state relative-caret-position="2261">
+          <caret line="140" column="44" lean-forward="false" selection-start-line="140" selection-start-column="44" selection-end-line="140" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Production/Http/Controllers/RequisitionsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="24" column="21" lean-forward="false" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/orders/show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="10" lean-forward="false" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/angular/production/controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="173" column="2" lean-forward="false" selection-start-line="173" selection-start-column="2" selection-end-line="173" selection-end-column="2" />
+          <folding>
+            <element signature="e#78#7132#0" expanded="false" />
+            <element signature="e#8153#8285#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/buyers/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="60" column="76" lean-forward="false" selection-start-line="60" selection-start-column="66" selection-end-line="60" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/requisitions/generate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="43" column="45" lean-forward="true" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
+          <folding>
+            <element signature="e#3423#3429#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
