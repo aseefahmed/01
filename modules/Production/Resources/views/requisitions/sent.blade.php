@@ -1,11 +1,11 @@
 @extends('layouts/dashboard/main')
-@section('page_title', 'Buyers')
+@section('page_title', 'Sent Requisitions')
 
 @section('content')
     <div class="row col-sm-12">
         <h3 class="heading">@yield('page_title')</h3>
     </div>
-    <div class="row" ng-controller="BuyerController" ng-cloak>
+    <div class="row" ng-controller="AllRequisitionController" ng-init="initialize('sent')" ng-cloak>
         <div class="col-sm-12 col-md-12">
             <div class="col-sm-8">
                 <div class="w-box" id="w_sort01">
@@ -16,9 +16,8 @@
                                     <i class="glyphicon glyphicon-cog"></i> Action <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a data-toggle="modal" data-backdrop="static" href="#add-buyer-modal"><span class="glyphicon glyphicon-plus-sign"></span> Add</a></li>
-                                    <li><a href="#" ng-click="remove_buyer(0, 'index_page', 'selected')"><span class="glyphicon glyphicon-trash"></span> Delete Seleted</a></li>
-                                    <li><a href="#" ng-click="remove_buyer(0, 'index_page', 'all')"><span class="glyphicon glyphicon-repeat"></span> Delete All</a></li>
+                                    <li><a href="#" ng-click="remove_requisition(0, 'index_page', 'selected')"><span class="glyphicon glyphicon-trash"></span> Delete Seleted</a></li>
+                                    <li><a href="#" ng-click="remove_requisition(0, 'index_page', 'all')"><span class="glyphicon glyphicon-repeat"></span> Delete All</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -46,26 +45,29 @@
                                         <thead>
                                         <tr>
                                             <th></th>
-                                            <th>Image</th>
-                                            <th class="th-pointer" ng-click="sort('buyer_name')">Buyer Name <span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='buyer_name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
-                                            <th class="th-pointer" ng-click="sort('created_at')">Contact Person <span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='created_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
-                                            <th class="th-pointer" ng-click="sort('updated_at')">Email Address <span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='updated_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                            <th class="th-pointer" ng-click="sort('name')">Title<span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                            <th class="th-pointer" ng-click="sort('requested_amount')">Requested Amount <span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='requested_amount'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                            <th class="th-pointer" ng-click="sort('first_name')">Requested By <span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='first_name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                            <th class="th-pointer" ng-click="sort('created_at')">Requested At<span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='created_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                            <th class="th-pointer" ng-click="sort('flag')">Status <span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='flag'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
                                             <th>Actions</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr ng-if="buyers.length == 0 || filtered.length == 0">
+                                        <tr ng-if="requisitions.length == 0 || filtered.length == 0">
                                             <td colspan="6">No data found.</td>
                                         </tr>
-                                            <tr dir-paginate="buyer in filtered = (buyers| orderBy : sortKey : reverse | filter : search_filter  | itemsPerPage : num_of_items) " ng-cloak>
-                                                <td><input class="select_row" type="checkbox"  value="## buyer.id ##"/></td>
-                                                <td ng-cloak><img src="{{ asset('img/uploads/production/buyers') }}/## buyer.image ##" width="80px"/></td>
-                                                <td ng-cloak>## buyer.buyer_name ##</td>
-                                                <td ng-cloak>## buyer.contact_person ##</td>
-                                                <td ng-cloak>## buyer.email_address ##</td>
+                                            <tr dir-paginate="requisition in filtered = (requisitions| orderBy : sortKey : reverse | filter : search_filter  | itemsPerPage : num_of_items) " ng-cloak>
+                                                <td><input class="select_row" type="checkbox"  value="## requisition.id ##"/></td>
+                                                <td ng-cloak>## requisition.name ##</td>
+                                                <td ng-cloak>## requisition.requested_amount ##</td>
+                                                <td ng-cloak>## requisition.first_name ## ## requisition.last_name ##</td>
+                                                <td ng-cloak>## requisition.created_at | filterDate ##</td>
+                                                <td ng-if="requisition.flag == 1" ng-cloak>Pending</td>
+                                                <td ng-if="requisition.flag == 2" ng-cloak>Approved</td>
                                                 <td  ng-cloak align="center">
-                                                    <a class="btn btn-primary" href="{{ url('production/buyers/') }}/## buyer.id ##"><i class="glyphicon glyphicon-eye-open" class="view_buyer_btn"></i></a>&nbsp;
-                                                    <a ng-if="buyer.user_id == {{ Auth::user()->id }}" class="btn btn-danger" ng-click="remove_buyer(buyer.id, buyer.buyer_name, 'single_delete')" buyer_name="## buyer.name ##" buyer_id="## buyer.id ##"><i class="glyphicon glyphicon-trash"></i></a>
+                                                    <a class="btn btn-primary" href="{{ url('production/requisitions/id') }}/## requisition.id ##"><i class="glyphicon glyphicon-eye-open" class="view_requisition_btn"></i></a>&nbsp;
+                                                    <a ng-if="requisition.created_by == {{ Auth::user()->id }}" class="btn btn-danger" ng-click="remove_requisition(requisition.id, requisition.requisition_name, 'single_delete')" requisition_name="## requisition.name ##" requisition_id="## requisition.id ##"><i class="glyphicon glyphicon-trash"></i></a>
                                                 </td>
                                             </tr>
 
@@ -87,24 +89,24 @@
                 @include('production::partials.orders_stats')
             </div>
 
-            <div class="modal fade" id="add-buyer-modal">
+            <div class="modal fade" id="add-requisition-modal">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h3 class="modal-title">Add Buyer</h3>
+                            <h3 class="modal-title">Add requisition</h3>
                         </div>
                         <div class="modal-body">
                             <form method="post" enctype="multipart/form-data" name="myForm" novalidate>
                                 <div class="formSep">
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <code>Buyer</code><span style="color:red">*</span>
+                                            <code>requisition</code><span style="color:red">*</span>
                                             <div class="row">
                                                 &nbsp;&nbsp;
                                             </div>
-                                            <input class="form-control" placeholder="Buyer" name="buyer_name" type="text" ng-model="buyer_name" ng-required="true" ng-maxlength="50">
-                                            <span class="help-block " ng-show="myForm.buyer_name.$dirty && myForm.buyer_name.$invalid">This is a mendatory field (Maximum: 50 Characters).</span>
+                                            <input class="form-control" placeholder="requisition" name="requisition_name" type="text" ng-model="requisition_name" ng-required="true" ng-maxlength="50">
+                                            <span class="help-block " ng-show="myForm.requisition_name.$dirty && myForm.requisition_name.$invalid">This is a mendatory field (Maximum: 50 Characters).</span>
                                         </div>
                                     </div>
                                 </div>
@@ -139,7 +141,8 @@
                                             <div class="row">
                                                 &nbsp;&nbsp;
                                             </div>
-                                            <input class="form-control" placeholder="Email Address" name="email" type="text" ng-model="email_address"/>
+                                            <input class="form-control" placeholder="Email Address" name="email" type="text" ng-model="email_address" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"/>
+                                            <span class="help-block " ng-show="myForm.email.$dirty && myForm.email.$invalid">Email address must be valid.</span>
                                         </div>
                                         <div class="col-sm-6">
                                             <code>Contact Number</code>
@@ -172,7 +175,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</a>
-                                    <button type="submit" ng-disabled="myForm.$invalid" name="commit" class="btn btn-success" ng-click="add_buyer()"><span class="glyphicon glyphicon-ok-sign"></span> Add Buyer </button>
+                                    <button type="submit" ng-disabled="myForm.$invalid" name="commit" class="btn btn-success" ng-click="add_requisition()"><span class="glyphicon glyphicon-ok-sign"></span> Add requisition </button>
                                 </div>
                             </form>
                         </div>
@@ -180,18 +183,18 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="remove-buyer-modal">
+            <div class="modal fade" id="remove-requisition-modal">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h3 class="modal-title">Remove Buyer</h3>
+                            <h3 class="modal-title">Remove requisition</h3>
                         </div>
                         <div class="modal-body">
                             ## modal_msg ##
                             <div class="modal-footer">
                                 <a class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</a>
-                                <button type="submit" name="commit" class="btn btn-success" ng-click="remove_buyer_confirmed(buyer_id, 'index_page', status)" buyer_id=""><span class="glyphicon glyphicon-ok-sign"></span> Yes </button>
+                                <button type="submit" name="commit" class="btn btn-success" ng-click="remove_requisition_confirmed(requisition_id, 'index_page', status)" requisition_id=""><span class="glyphicon glyphicon-ok-sign"></span> Yes </button>
                             </div>
                         </div>
                     </div>
@@ -203,10 +206,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h3 class="modal-title">Remove Buyer</h3>
+                            <h3 class="modal-title">Remove requisition</h3>
                         </div>
                         <div class="modal-body">
-                            Please Select at least one buyer.
+                            Please Select at least one requisition.
                             <div class="modal-footer">
                                 <a class="btn btn-success" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span> OK</a>
                             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -83,4 +84,15 @@ class UserController extends Controller
     {
         //
     }
+
+    public function getUsersList($condition=null)
+    {
+        if($condition == null)
+        {
+            $data['users'] = User::all();
+        }
+
+        return $data;
+    }
+
 }

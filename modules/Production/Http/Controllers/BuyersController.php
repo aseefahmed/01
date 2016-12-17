@@ -44,7 +44,6 @@ class BuyersController extends Controller {
             $items = explode(',', $id);
             Buyer::destroy($items);
         }
-
     }
 
     public function updateField($field, $id, $value)

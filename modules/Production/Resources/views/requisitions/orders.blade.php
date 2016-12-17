@@ -1,11 +1,11 @@
 @extends('layouts/dashboard/main')
-@section('page_title', 'Orders Report')
+@section('page_title', 'Orders Requisitions')
 
 @section('content')
     <div class="row col-sm-12">
         <h3 class="heading">@yield('page_title')</h3>
     </div>
-    <div class="row" ng-controller="StyleController" ng-cloak>
+    <div class="row" ng-controller="OrderRequisitionsController" ng-cloak>
         <div class="col-sm-12 col-md-12">
             <div class="col-sm-8">
                 <div class="w-box" id="w_sort01">

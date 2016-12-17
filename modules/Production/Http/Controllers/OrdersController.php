@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\DB;
 use Modules\Production\Entities\Order;
+use Modules\Production\Entities\RequisitionItem;
+use Modules\Production\Entities\RequisitionType;
 use Pingpong\Modules\Routing\Controller;
 
 class OrdersController extends Controller {
@@ -30,6 +32,7 @@ class OrdersController extends Controller {
         $data['order']['user'] = $data['order'][0]->user;
         $data['order']['buyer'] = $data['order'][0]->buyer;
         $data['order']['style'] = $data['order'][0]->style;
+        $data['order']['composition'] = unserialize($data['order'][0]->compositions);
         return $data['order'];
     }
 
@@ -89,5 +92,58 @@ class OrdersController extends Controller {
         $order->compositions = serialize($request->compositions);
         $order->save();
     }
-	
+
+    public function addToRequisition(Request $request){
+
+        if($request->yarn_amount != '') {
+            DB::table('requisition_items')->insert([
+                'item_name' => 'Composition: ' . $request->yarn_type . ', Amount:' . $request->yarn_type,
+                'items_val' => $request->yarn_amount,
+                'requisition_type' => 'Order',
+                'user_id' => Auth::user()->id,
+                'reference' => $request->order_id,
+            ]);
+        }
+        if($request->accessories_amount != ''){
+            DB::table('requisition_items')->insert([
+                'item_name' => 'Accessories',
+                'items_val' => $request->accessories_amount,
+                'requisition_type' => 'Order',
+                'user_id' => Auth::user()->id,
+                'reference' => $request->order_id,
+            ]);
+        }
+
+        if($request->button_amount != ''){
+            DB::table('requisition_items')->insert([
+                'item_name' => 'Button',
+                'items_val' => $request->button_amount,
+                'requisition_type' => 'Order',
+                'user_id' => Auth::user()->id,
+                'reference' => $request->order_id,
+            ]);
+        }
+
+        if($request->print_amount != ''){
+            DB::table('requisition_items')->insert([
+                'item_name' => 'Print',
+                'items_val' => $request->print_amount,
+                'requisition_type' => 'Order',
+                'user_id' => Auth::user()->id,
+                'reference' => $request->order_id,
+            ]);
+        }
+
+        if($request->zipper_amount != ''){
+            DB::table('requisition_items')->insert([
+                'item_name' => 'Zipper',
+                'items_val' => $request->zipper_amount,
+                'requisition_type' => 'Order',
+                'user_id' => Auth::user()->id,
+                'reference' => $request->order_id,
+            ]);
+        }
+
+    }
+
 }

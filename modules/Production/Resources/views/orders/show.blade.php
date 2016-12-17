@@ -66,6 +66,25 @@
                                             <td colspan="2"><span class="col-sm-10">## order[0].total_yarn_weight ## </span><a ng-click="edit_order({{ $order_id  }}, 'Total Yarn Weight', 'total_yarn_weight', 'false', true, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
                                         </tr>
                                         <tr>
+                                            <th width='25%'>Compositions: </th>
+                                            <td colspan="2"><span class="col-sm-10">
+                                                    <table class="table table-responsive">
+                                                        <tr>
+                                                            <th>Yarn</th>
+                                                            <th>Percentage</th>
+                                                            <th>Yarn Rate</th>
+                                                            <th>Wastage(%)</th>
+                                                        </tr>
+                                                        <tr ng-repeat="item in order['composition']">
+                                                            <td>## item[0] ##</td>
+                                                            <td>## item[1] ##</td>
+                                                            <td>## item[2] ##</td>
+                                                            <td>## item[3] ##</td>
+                                                        </tr>
+                                                    </table>
+                                                </span><a ng-click="edit_order({{ $order_id  }}, 'Total Yarn Cost', 'total_yarn_cost', 'text', false, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
                                             <th width='25%'>Total Yarn Cost: </th>
                                             <td colspan="2"><span class="col-sm-10">## order[0].total_yarn_cost ## </span><a ng-click="edit_order({{ $order_id  }}, 'Total Yarn Cost', 'total_yarn_cost', 'text', false, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
                                         </tr>
@@ -117,9 +136,10 @@
                                             <th width='25%'>Cost of Making: </th>
                                             <td colspan="2"><span class="col-sm-10">## order[0]. cost_of_making  ## </span><a ng-click="edit_order({{ $order_id  }}, 'Cost of Making', 'cost_of_making', 'text', false, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
                                         </tr>
-                                        <tr>
+                                        <tr >
                                             <th width='25%'>L/C Confirmed?: </th>
-                                            <td colspan="2"><span class="col-sm-10">## order[0].lc_confirmed  ## </span><a ng-click="edit_order({{ $order_id  }}, 'L/C Confirmed?', 'lc_confirmed', 'text', false, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                            <td colspan="2" ng-if="order[0].lc_confirmed == 0"><span class="col-sm-10">Not Yet </span><a ng-click="edit_order({{ $order_id  }}, 'L/C Confirmed?', 'lc_confirmed', 'text', false, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                            <td colspan="2" ng-if="order[0].lc_confirmed > 0"><span class="col-sm-10">Yes </span><a ng-click="edit_order({{ $order_id  }}, 'L/C Confirmed?', 'lc_confirmed', 'text', false, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
                                         </tr>
                                         <tr>
                                             <th width='25%'>Created By: </th>
@@ -142,7 +162,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                @include('production::partials.orders_stats')
+                @include('production::partials.orders_summery')
             </div>
 
             <div class="modal fade" id="remove-order-modal">

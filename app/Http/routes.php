@@ -8,8 +8,7 @@ Route::group(['middlewere' => 'web'], function(){
     Route::get('/dashboard', ['uses' => 'DashboardController@viewDashboard', 'as' => 'Dashboard']);
     Route::get('/styles', ['uses' => 'Test1Controller@viewDashboard', 'as' => 'Dashboard']);
 
-
-
+    Route::get('/user/getUsersList{cond?}', ['uses' => 'UserController@getUsersList', 'as' => 'Users List']);
 
     Route::get('/cockpit', ['uses' => 'DashboardController@viewCockpit', 'as' => 'Freelance Cockpit']);
 });

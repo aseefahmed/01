@@ -19,6 +19,7 @@
             <ul class="nav navbar-nav user_menu pull-right">
                 <li class="hidden-phone hidden-tablet">
                     <div class="nb_boxes clearfix">
+                        <a data-toggle="modal" data-backdrop="static" href="#myMail" data-placement="bottom" data-container="body" class="label bs_ttip" title="New messages" ng-controller="OrderController" ng-cloak>## no_of_requisition_items ## <i class="splashy-mail_light"></i></a>
                         <a data-toggle="modal" data-backdrop="static" href="#myMail" data-placement="bottom" data-container="body" class="label bs_ttip" title="New messages">25 <i class="splashy-mail_light"></i></a>
                         <a data-toggle="modal" data-backdrop="static" href="#myTasks" data-placement="bottom" data-container="body" class="label bs_ttip" title="New tasks">10 <i class="splashy-calendar_week"></i></a>
                     </div>
