@@ -31,15 +31,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'production', 'namespace' => 'M
     Route::get('/orders/fetchOrderDetails/{id}', ['uses' => 'OrdersController@fetchOrderDetails', 'as' => 'Order Details']);
     Route::get('/order/update/{field}/{id}/{value}', ['uses' => 'OrdersController@updateField', 'as' => 'Update Information']);
     Route::delete('/order/{order}/{action}', ['uses' => 'OrdersController@destroy', 'as' => 'Remove Order Details']);
-
-    Route::resource('orders', 'OrdersController');
-    Route::get('/order/fetchOrdersList', ['uses' => 'OrdersController@fetchOrdersList', 'as' => 'Orders List']);
-    Route::get('/orders/fetchOrderDetails/{id}', ['uses' => 'OrdersController@fetchOrderDetails', 'as' => 'Order Details']);
-    Route::get('/order/update/{field}/{id}/{value}', ['uses' => 'OrdersController@updateField', 'as' => 'Update Information']);
-    Route::delete('/order/{order}/{action}', ['uses' => 'OrdersController@destroy', 'as' => 'Remove Order Details']);
     Route::post('/order/addToRequisition', ['uses' => 'OrdersController@addToRequisition', 'as' => 'Remove Order Details']);
-
-
 
     Route::get('/reports/{type}', ['uses' => 'ReportsController@generateOrdersReport', 'as' => 'Generate Orders Report']);
 
@@ -47,7 +39,11 @@ Route::group(['middleware' => 'web', 'prefix' => 'production', 'namespace' => 'M
     Route::get('/requisitions/getRequisitionItems', ['uses' => 'RequisitionsController@getRequisitionItems', 'as' => 'Generate Requisitions']);
     Route::post('/requisitions/generateRequisition', ['uses' => 'RequisitionsController@generateRequisitionItems', 'as' => 'Generate Requisitions']);
     Route::delete('/requisitions/{id}/{action}', ['uses' => 'RequisitionsController@destroy', 'as' => 'Remove Order Details']);
-    Route::get('/requisitions/sent', ['uses' => 'RequisitionsController@viewRequisitionsList', 'as' => 'Generate Requisitions']);
-    Route::get('/requisitions/{action}/get', ['uses' => 'RequisitionsController@getRequisitionsList', 'as' => 'Generate Requisitions']);
+    Route::delete('/requisition_main/{id}/{action}', ['uses' => 'RequisitionsController@destroyAllRequistion', 'as' => 'Remove Order Details']);
+    Route::get('/requisitions/{sent}', ['uses' => 'RequisitionsController@viewRequisitionsList', 'as' => 'Sent Requisitions']);
+    Route::get('/requisitions/id/{id}', ['uses' => 'RequisitionsController@loadRequisitionDetails', 'as' => 'Requisition Details']);
+    Route::get('/requisitions/getDetails/{id}', ['uses' => 'RequisitionsController@getRequisitionDetails', 'as' => 'Requisition Details']);
+    Route::get('/requisitions/{action}/get', ['uses' => 'RequisitionsController@getRequisitionsList', 'as' => 'Sent Requisitions']);
+    Route::post('/requisition/approve', ['uses' => 'RequisitionsController@approveRequisition', 'as' => 'Sent Requisitions']);
 
 });

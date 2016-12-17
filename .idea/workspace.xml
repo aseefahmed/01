@@ -2,7 +2,89 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3ec8c37-810a-4298-b6bf-e262d8ab0ba3" name="Default" comment="">
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
+<<<<<<< HEAD
+      <change type="DELETED" beforePath="$PROJECT_DIR$/epel-release-latest-6.noarch.rpm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox-48.0.2.tar.bz2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/Throbber-small.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/application.ini" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/browser/blocklist.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/browser/chrome.manifest" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/browser/chrome/icons/default/default16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/browser/chrome/icons/default/default32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/browser/chrome/icons/default/default48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/browser/components/components.manifest" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/browser/components/libbrowsercomps.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/browser/crashreporter-override.ini" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/browser/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}.xpi" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/browser/features/e10srollout@mozilla.org.xpi" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/browser/features/firefox@getpocket.com.xpi" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/browser/features/loop@mozilla.org.xpi" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/browser/icons/mozicon128.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/browser/omni.ja" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/crashreporter" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/crashreporter.ini" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/defaults/pref/channel-prefs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/dependentlibs.list" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/dictionaries/en-US.aff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/dictionaries/en-US.dic" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/firefox" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/firefox-bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/gmp-clearkey/0.1/clearkey.info" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/gmp-clearkey/0.1/libclearkey.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/gtk2/libmozgtk.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/icons/updater.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/icudt56l.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libfreeblpriv3.chk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libfreeblpriv3.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/liblgpllibs.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libmozavcodec.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libmozavutil.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libmozgtk.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libmozsqlite3.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libnspr4.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libnss3.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libnssckbi.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libnssdbm3.chk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libnssdbm3.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libnssutil3.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libplc4.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libplds4.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libsmime3.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libsoftokn3.chk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libsoftokn3.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libssl3.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/libxul.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/omni.ja" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/platform.ini" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/plugin-container" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/precomplete" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/removed-files" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/run-mozilla.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/update-settings.ini" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/updater" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/firefox/updater.ini" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/Production/Resources/views/supplier-types/index.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/Production/Resources/views/supplier-types/show.blade.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mysql-community-release-el7-5.noarch.rpm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/q" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/remi-release-6.rpm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/remi-release-7.rpm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/remi-release-7.rpm.1" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/Production/Resources/views/requisitions/sent.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/Production/Http/Controllers/RequisitionsController.php" afterPath="$PROJECT_DIR$/modules/Production/Http/Controllers/RequisitionsController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/Production/Http/routes.php" afterPath="$PROJECT_DIR$/modules/Production/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/angular/production/controller.js" afterPath="$PROJECT_DIR$/public/js/angular/production/controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/angular/production/test.js" afterPath="$PROJECT_DIR$/public/js/angular/production/test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/dashboard/left_sidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard/left_sidebar.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/dashboard/test.php" afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard/test.php" />
+>>>>>>> 6e777aa13c757c9004a13da47557e525e7171234
+>>>>>>> a80ca0b02f6eba9254b2f08dcd459abe07ab2cfb
     </list>
     <ignored path="01.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,8 +108,18 @@
       <file leaf-file-name="left_sidebar.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard/left_sidebar.blade.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="2125">
               <caret line="125" column="33" lean-forward="false" selection-start-line="125" selection-start-column="33" selection-end-line="125" selection-end-column="33" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="15">
+              <caret line="130" column="20" selection-start-line="130" selection-start-column="20" selection-end-line="134" selection-end-column="26" />
+=======
+            <state relative-caret-position="17">
+              <caret line="125" column="33" lean-forward="true" selection-start-line="125" selection-start-column="33" selection-end-line="125" selection-end-column="33" />
+>>>>>>> 6e777aa13c757c9004a13da47557e525e7171234
+>>>>>>> a80ca0b02f6eba9254b2f08dcd459abe07ab2cfb
               <folding />
             </state>
           </provider>
@@ -278,6 +370,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
+=======
+      <pane id="Scratches" />
+>>>>>>> a80ca0b02f6eba9254b2f08dcd459abe07ab2cfb
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -813,7 +909,14 @@
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
+=======
       <pane id="Scratches" />
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+>>>>>>> 6e777aa13c757c9004a13da47557e525e7171234
+>>>>>>> a80ca0b02f6eba9254b2f08dcd459abe07ab2cfb
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -915,16 +1018,38 @@
       <workItem from="1481561798045" duration="5164000" />
       <workItem from="1481600929454" duration="3029000" />
       <workItem from="1481622618726" duration="807000" />
+<<<<<<< HEAD
+      <workItem from="1481725535219" duration="1798000" />
+=======
       <workItem from="1481692263549" duration="15096000" />
       <workItem from="1481708323065" duration="299000" />
       <workItem from="1481776750846" duration="9717000" />
+<<<<<<< HEAD
       <workItem from="1481789111394" duration="12983000" />
       <workItem from="1481950236048" duration="620000" />
+=======
+      <workItem from="1481789111394" duration="12608000" />
+>>>>>>> 6e777aa13c757c9004a13da47557e525e7171234
+>>>>>>> a80ca0b02f6eba9254b2f08dcd459abe07ab2cfb
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="106797000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="69880000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="28" width="1366" height="707" extended-state="0" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25293255" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+    <option name="totallyTimeSpent" value="105802000" />
+>>>>>>> a80ca0b02f6eba9254b2f08dcd459abe07ab2cfb
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -932,6 +1057,7 @@
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25256222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> 6e777aa13c757c9004a13da47557e525e7171234
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30405405" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1276,10 +1402,23 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file:///run/media/student/Windows8_OS/XAMP/htdocs/002/modules/Production/Resources/views/new-requisitions.blade.php" />
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard/left_sidebar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="130" column="20" selection-start-line="130" selection-start-column="20" selection-end-line="134" selection-end-column="26" />
+=======
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard/left_sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="2125">
           <caret line="125" column="33" lean-forward="false" selection-start-line="125" selection-start-column="33" selection-end-line="125" selection-end-column="33" />
+=======
+        <state relative-caret-position="17">
+          <caret line="125" column="33" lean-forward="true" selection-start-line="125" selection-start-column="33" selection-end-line="125" selection-end-column="33" />
+>>>>>>> 6e777aa13c757c9004a13da47557e525e7171234
+>>>>>>> a80ca0b02f6eba9254b2f08dcd459abe07ab2cfb
           <folding />
         </state>
       </provider>
@@ -1292,6 +1431,12 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/public/bootstrap/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+=======
     <entry file="file://$PROJECT_DIR$/modules/Production/Http/Controllers/OrdersController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1037">
@@ -1306,6 +1451,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
           <caret line="50" column="99" lean-forward="false" selection-start-line="50" selection-start-column="80" selection-end-line="50" selection-end-column="99" />
+>>>>>>> 6e777aa13c757c9004a13da47557e525e7171234
           <folding />
         </state>
       </provider>
@@ -1344,6 +1490,21 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/modules/Production/Http/Controllers/ReportsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="77" column="55" selection-start-line="77" selection-start-column="55" selection-end-line="77" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Production/Resources/views/reports/orders.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1575">
+          <caret line="105" column="60" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
+          <folding />
+=======
     <entry file="file://$PROJECT_DIR$/public/js/angular/production/controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="373">
@@ -1359,6 +1520,7 @@
             <element signature="e#33002#40552#0" expanded="false" />
             <element signature="e#40640#47986#0" expanded="false" />
           </folding>
+>>>>>>> 6e777aa13c757c9004a13da47557e525e7171234
         </state>
       </provider>
     </entry>

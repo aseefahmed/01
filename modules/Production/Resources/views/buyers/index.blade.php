@@ -139,8 +139,7 @@
                                             <div class="row">
                                                 &nbsp;&nbsp;
                                             </div>
-                                            <input class="form-control" placeholder="Email Address" name="email" type="text" ng-model="email_address" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"/>
-                                            <span class="help-block " ng-show="myForm.email.$dirty && myForm.email.$invalid">Email address must be valid.</span>
+                                            <input class="form-control" placeholder="Email Address" name="email" type="text" ng-model="email_address"/>
                                         </div>
                                         <div class="col-sm-6">
                                             <code>Contact Number</code>

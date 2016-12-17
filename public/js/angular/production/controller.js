@@ -325,6 +325,7 @@ angular.module('myApp').controller('OrderController', function($scope, $http) {
             zipper_amount: $scope.zipper_amount,
             print_amount: $scope.print_amount,
             zipper_amount: $scope.zipper_amount,
+            security_tag_amount: $scope.security_tag_amount,
         });
         var config = {
             headers : {
@@ -358,7 +359,8 @@ angular.module('myApp').controller('OrderController', function($scope, $http) {
         $scope.total_button_cost = Math.round(($scope.qty_per_dzn * $scope.button_rate)*100)/100;
         $scope.total_zipper_cost = Math.round(($scope.qty_per_dzn * $scope.zipper_rate)*100)/100;
         $scope.total_print_cost = Math.round(($scope.qty_per_dzn * $scope.print_rate)*100)/100;
-        $scope.total_cost =  Math.round(($scope.total_accessories_cost + $scope.total_button_cost + $scope.total_zipper_cost + $scope.total_print_cost)*100)/100;
+        $scope.total_security_tag_cost = Math.round(($scope.qty_per_dzn * $scope.security_tag)*100)/100;
+        $scope.total_cost =  Math.round(($scope.total_yarn_cost + $scope.total_accessories_cost + $scope.total_button_cost + $scope.total_zipper_cost + $scope.total_print_cost + $scope.total_security_tag_cost)*100)/100;
         $scope.order_balance_amount = Math.round(($scope.total_fob - $scope.total_cost)*100)/100;
         $scope.cost_of_making = Math.round(($scope.order_balance_amount/$scope.qty_per_dzn)*100)/100;
     };
@@ -493,7 +495,6 @@ angular.module('myApp').controller('OrderController', function($scope, $http) {
             console.log(response.data)
             $scope.order_id = id;
             $scope.order = response.data;
-            console.log('=='+JSON.parse("["+$scope.order.composition+"]"))
 
         })
     };
@@ -557,6 +558,8 @@ angular.module('myApp').controller('OrderController', function($scope, $http) {
             total_zipper_cost: $scope.total_zipper_cost,
             print_rate: $scope.print_rate,
             total_print_cost: $scope.total_print_cost,
+            security_tag_cost: $scope.security_tag,
+            total_security_tag_cost: $scope.total_security_tag_cost,
             total_fob: $scope.total_fob,
             total_cost: $scope.total_cost,
             order_balance_amount: $scope.order_balance_amount,
@@ -1130,13 +1133,63 @@ angular.module('myApp').controller('SupplierTypeController', function($scope, $h
 
 
 angular.module('myApp').controller('AllRequisitionController', function($scope, $http) {
+    $scope.total_approved_amount = 0;
+    $scope.approved_amount = 0;
+    $scope.act_on_requisition = function(id, amount, flag) {
+        data = $.param({
+            requisition_id: id,
+            amount: amount,
+            flag: flag
+        });
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        };
+        $http.post('/production/requisition/approve', data, config).success(function (result, status) {
+            console.log(result)
+            $('.top-right').notify({
+                type: 'success',
+                message: { html: '<span class="glyphicon glyphicon-info-sign"></span> <strong>The operation was successfull.</strong>' },
+                closable: false,
+                fadeOut: { enabled: true, delay: 2000 }
+            }).show();
+            $scope.hide_button = 1;
+        }).error(function (result, status) {
+            $('.top-right').notify({
+                type: 'danger',
+                message: { html: '<span class="glyphicon glyphicon-info-sign"></span> <strong>The operation was unsuccessful.</strong>' },
+                closable: false,
+                fadeOut: { enabled: true, delay: 2000 }
+            }).show();
+        });
+    }
+    i = 0;
+    items = new Array;
+    $scope.add_amount = function(requisition_item_id, amount){
+        items[requisition_item_id] = amount;
+        $scope.items_arr = items;
+        console.log($scope.items_arr)
+        $scope.total_approved_amount = Number($scope.total_approved_amount) + Number(amount);
+    };
+    $scope.initialize = function (page) {
+        $http.get('/production/requisitions/'+page+'/get').then(function (response) {
+            $scope.num_of_items = 10;
+            $scope.requisitions = response.data.requisition;
+            $scope.requisition_items = response.data.requisition_items;
+            console.log('ttt')
+            console.log(response.data)
+            $scope.reverse = false;
+        });
+    }
+    $scope.getRequisitionDetails = function(id){
+        $http.get('/production/requisitions/getDetails/'+id).then(function (response) {
+            $scope.requisitions = response.data.requisition;
+        });
+    };
     $scope.num_of_items_arr = [{id: 5, value: 5},{id: 10, value: 10},{id: 20, value: 20},{id: 50, value: 50},{id: 100, value: 100}];
-    $http.get('/production/requisitions/sent/get').then(function (response) {
-        $scope.num_of_items = 10;
-        $scope.requisitions = response.data.requisition;
-        console.log(response.data)
-        $scope.reverse = false;
-    });
+
+
     $scope.sortKey = 'requisition_name';
     $scope.sort = function (header) {
         $scope.sortKey = header;
@@ -1187,7 +1240,7 @@ angular.module('myApp').controller('AllRequisitionController', function($scope, 
     };
     $scope.remove_requisition_confirmed = function(id, page, action){
         $scope.requisition_name = null;
-        $http.delete('/production/requisition/'+id+"/"+action).then(function(response){
+        $http.delete('/production/requisition_main/'+id+"/"+action).then(function(response){
             console.log(response)
             $('#remove-requisition-modal').modal('toggle');
             $('.top-right').notify({
@@ -1202,7 +1255,7 @@ angular.module('myApp').controller('AllRequisitionController', function($scope, 
             }
             else
             {
-                $http.get('/production/requisition/fetchAllRequisitionsList').then(function (response) {
+                $http.get('/production/requisitions/sent/get').then(function (response) {
                     $scope.num_of_items = 10;
                     $scope.requisitions = response.data;
                     $scope.reverse = false;

@@ -134,7 +134,9 @@
                         </a>
                     </div>
                     @if(
-                            Route::currentRouteName() == "Generate Requisitions"
+                            Route::currentRouteName() == "Generate Requisitions" ||
+                            Route::currentRouteName() == "Sent Requisitions" ||
+                            Route::currentRouteName() == "Requisition Details"
                         )
                         {{--*/$requisitions_collapse = 'in'/*--}}
                     @endif
@@ -142,8 +144,8 @@
                         <div class="panel-body">
                             <ul class="nav nav-pills nav-stacked">
                                 <li class="{{ (Route::currentRouteName() == "Generate Requisitions")? "bg bg-success":"" }}"><a href="/production/requisitions/generate">Generate Requisition</a></li>
-                                <li class="{{ (Route::currentRouteName() == "Sent Requisitions")? "bg bg-success":"" }}"><a href="/production/requisitions/sent">Sent Requisition</a></li>
-                                <li class="{{ (Route::currentRouteName() == "Recieved Requisitions")? "bg bg-success":"" }}"><a href="/production/requisitions/recieved">Recieved Requisition</a></li>
+                                <li class="{{ (strpos(url()->current(),'sent') > 0)? "bg bg-success":"" }}"><a href="/production/requisitions/sent">Sent Requisition</a></li>
+                                <li class="{{ (strpos(url()->current(),'recieved') > 0)? "bg bg-success":"" }}"><a href="/production/requisitions/recieved">Recieved Requisition</a></li>
                             </ul>
                         </div>
                     </div>

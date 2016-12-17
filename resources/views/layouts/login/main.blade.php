@@ -13,8 +13,8 @@
 </head>
 <body style="padding: 7%">
 @yield('content')
-<script src="{{ asset('lib/jquery/jquery-1.9.1.min.js') }}"></script>
-<script src="{{ asset('lib/bootstrap//bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
 
 <script type="text/javascript">
     $(function ()

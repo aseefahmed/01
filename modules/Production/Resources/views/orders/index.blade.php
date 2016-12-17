@@ -7,7 +7,7 @@
     </div>
     <div class="row" ng-controller="OrderController" ng-cloak>
         <div class="col-sm-12 col-md-12">
-            <div class="col-sm-8">
+            <div class="col-sm-9">
                 <div class="w-box" id="w_sort01">
                     <div class="w-box-header">
                         <div class="pull-left">
@@ -48,6 +48,7 @@
                                             <th></th>
                                             <th>Image</th>
                                             <th class="th-pointer" ng-click="sort('buyer_id')">Buyer<span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='buyer_id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                            <th class="th-pointer" ng-click="sort('buyer_id')">Style<span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='buyer_id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
                                             <th class="th-pointer" ng-click="sort('order_ddate')">Order Date <span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='order_ddate'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
                                             <th class="th-pointer" ng-click="sort('qty')">Qty<span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='qty'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
                                             <th class="th-pointer" ng-click="sort('total_fob')">Total FOB<span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='total_fob'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
@@ -63,6 +64,7 @@
                                                 <td><input class="select_row" type="checkbox"  value="## order.id ##"/></td>
                                                 <td ng-cloak><img src="{{ asset('img/uploads/production/styles') }}/## order.style_image ##" width="80px"/></td>
                                                 <td ng-cloak>## order.buyer_name ##</td>
+                                                <td ng-cloak>## order.style_name ##</td>
                                                 <td ng-cloak>## order.order_date##</td>
                                                 <td ng-cloak>## order.qty ##</td>
                                                 <td ng-cloak>## order.total_fob ##</td>
@@ -87,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 @include('production::partials.orders_stats')
             </div>
 
@@ -147,11 +149,11 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <label>FOB</label>
-                                            <input class="form-control" placeholder="FOB" type="text" ng-model="order_fob" ng-required="true" ng-pattern="/^\d+$/" ng-change="update_order_info()"  />
+                                            <input class="form-control" placeholder="FOB" type="text" ng-model="order_fob" ng-required="true"  ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-change="update_order_info()"  />
                                         </div>
                                         <div class="col-sm-3">
                                             <label>Weight Per Dzn</label>
-                                            <input class="form-control" placeholder="Weight Per Dzn" type="text" ng-required="true" ng-pattern="/^\d+$/" ng-model="weight_per_dzn" ng-change="update_order_info()"  />
+                                            <input class="form-control" placeholder="Weight Per Dzn" type="text" ng-required="true" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-model="weight_per_dzn" ng-change="update_order_info()"  />
                                         </div>
                                     </div>
                                 </div>
@@ -167,15 +169,15 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <label>Percentage</label>
-                                            <input class="form-control" ng-model="composition_percentage" type="text" placeholder="Percentage">
+                                            <input class="form-control" ng-model="composition_percentage" type="text" placeholder="Percentage" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" >
                                         </div>
                                         <div class="col-sm-2">
                                             <label>Yarn Rate</label>
-                                            <input class="form-control" ng-model="composition_yarn_rate" type="text" placeholder="Cost">
+                                            <input class="form-control" ng-model="composition_yarn_rate" type="text" placeholder="Cost" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" >
                                         </div>
                                         <div class="col-sm-2">
                                             <label>Wastage(%)</label>
-                                            <input class="form-control" ng-model="composition_wastage" type="text" placeholder="Wastage">
+                                            <input class="form-control" ng-model="composition_wastage" type="text" placeholder="Wastage" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" >
                                         </div>
                                         <div class="col-sm-2">
                                             <a class="btn btn-success" ng-click="add_composition()"><i class="glyphicon glyphicon-plus-sign"></i></a>
@@ -207,7 +209,7 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <label>Accessories Rate</label>
-                                            <input class="form-control" placeholder="Accessories Rate" type="text" ng-model="accessories_rate" ng-required="true" ng-pattern="/^\d+$/" ng-change="update_order_info()" />
+                                            <input class="form-control" placeholder="Accessories Rate" type="text" ng-model="accessories_rate" ng-required="true" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-change="update_order_info()" />
                                         </div>
                                         <div class="col-sm-3">
                                             <label>Total Acc. Cost</label>
@@ -215,7 +217,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <label>Button Rate</label>
-                                            <input class="form-control" placeholder="Button Rate" type="text" ng-model="button_rate" ng-required="true" ng-pattern="/^\d+$/" ng-change="update_order_info()" />
+                                            <input class="form-control" placeholder="Button Rate" type="text" ng-model="button_rate" ng-required="true" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-change="update_order_info()" />
                                         </div>
                                         <div class="col-sm-3">
                                             <label>Total Button Cost</label>
@@ -227,7 +229,7 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <label>Zipper Rate</label>
-                                            <input class="form-control" placeholder="Zipper Rate" type="text" ng-model="zipper_rate" ng-required="true" ng-pattern="/^\d+$/" ng-change="update_order_info()" />
+                                            <input class="form-control" placeholder="Zipper Rate" type="text" ng-model="zipper_rate" ng-required="true"  ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-change="update_order_info()" />
                                         </div>
                                         <div class="col-sm-3">
                                             <label>Total Zipper Cost</label>
@@ -235,11 +237,23 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <label>Print Rate</label>
-                                            <input class="form-control" placeholder="Print Rate" type="text" ng-model="print_rate" ng-required="true" ng-pattern="/^\d+$/" ng-change="update_order_info()" />
+                                            <input class="form-control" placeholder="Print Rate" type="text" ng-model="print_rate" ng-required="true"  ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-change="update_order_info()" />
                                         </div>
                                         <div class="col-sm-3">
                                             <label>Total Print Cost</label>
                                             <input class="form-control" readonly="readonly" placeholder="Total Prt. Cost" type="text" ng-model="total_print_cost" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="formSep">
+                                    <div class="row">
+                                        <div class="col-sm-6 ">
+                                            <label>Security Tag Cost</label>
+                                            <input class="form-control" placeholder="Security Tag Cost" type="text" ng-model="security_tag" ng-required="true"  ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" ng-change="update_order_info()" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label>Total Security Tag Cost</label>
+                                            <input class="form-control" readonly="readonly" placeholder="Total Security Tag Cost" type="text" ng-model="total_security_tag_cost" />
                                         </div>
                                     </div>
                                 </div>

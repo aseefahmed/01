@@ -7,7 +7,7 @@
     </div>
     <div class="row" ng-controller="OrderController" ng-init="init({{$order_id}})" ng-cloak>
         <div class="col-sm-12 col-md-12">
-            <div class="col-sm-8">
+            <div class="col-sm-9">
                 <div class="w-box" id="w_sort01">
                     <div class="w-box-header">
                         <div class="pull-left">
@@ -30,12 +30,16 @@
                                         <thead>
                                         <tr>
                                             <th width='25%'>Buyer: </th>
-                                            <td><span class="col-sm-10">## order[0].buyer.buyer_name ##</span><a ng-click="edit_order({{ $order_id  }}, 'Order', 'order_name', 'text', true, '', 50, '', 'This is a mendatory field (Maximum: 50 Characters).')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                            <td><span class="col-sm-10">## order[0].buyer.buyer_name ##</span><a ng-click="edit_order({{ $order_id  }}, 'Buyer', 'buyer_id', 'text', true, '', 50, '', 'This is a mendatory field (Maximum: 50 Characters).')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
                                             <td rowspan="2" width="25%"><img src="{{ asset('img/uploads/production/styles') }}/## order[0].style.image ##" width="100%" height="100%"></td>
                                         </tr>
                                         <tr>
+                                            <th width='25%'>Style: </th>
+                                            <td><span class="col-sm-10 wordwrap">## order[0].style.style_name ## </span><a ng-click="edit_order({{ $order_id  }}, 'Style', 'style_id', 'text', true, '', 70, '', 'Date should be in YYYY-MM-DD format.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
                                             <th width='25%'>Order Date: </th>
-                                            <td><span class="col-sm-10 wordwrap">## order[0].order_date ## </span><a ng-click="edit_order({{ $order_id  }}, 'Order Date', 'order_date', 'text', true, '', 70, '', 'Date should be in YYYY-MM-DD format.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].order_date | uppercase ## </span><a ng-click="edit_order({{ $order_id  }}, 'Delivery Date', 'delivery_date', 'text', true, '', 70, '', 'Date should be in YYYY-MM-DD format.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
                                         </tr>
                                         <tr>
                                             <th width='25%'>Delivery Date: </th>
@@ -121,6 +125,14 @@
                                             <td colspan="2"><span class="col-sm-10">## order[0].total_print_cost ## </span><a ng-click="edit_order({{ $order_id  }}, 'Total Print Cost', 'total_print_cost', 'text', false, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
                                         </tr>
                                         <tr>
+                                            <th width='25%'>Security Tag Cost: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].security_tag_cost ## </span><a ng-click="edit_order({{ $order_id  }}, 'Security Tag Cost', 'security_tag_cost', 'text', false, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th width='25%'>Total Security Tag Cost: </th>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].total_security_tag_cost ## </span><a ng-click="edit_order({{ $order_id  }}, 'Total Security Tag Cost', 'total_security_tag_cost', 'text', false, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                        </tr>
+                                        <tr>
                                             <th width='25%'>Total FOB: </th>
                                             <td colspan="2"><span class="col-sm-10">## order[0].total_fob ## </span><a ng-click="edit_order({{ $order_id  }}, 'Total FOB', 'total_fob', 'text', false, '', 70, '', 'This field not be more than 55 characters long.')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
                                         </tr>
@@ -161,7 +173,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 @include('production::partials.orders_summery')
             </div>
 

@@ -48,6 +48,10 @@
                                         <code>Print</code>
                                         <input class="form-control col-sm-2" placeholder="Print Amount" type="text" ng-model="print_amount">
                                     </div>
+                                    <div class="panel-body">
+                                        <code>Security Tag Cost</code>
+                                        <input class="form-control col-sm-2" placeholder="Security Tag Amount" type="text" ng-model="security_tag_amount">
+                                    </div>
                                     <div class="panel-body text-center">
                                         <button ng-click="add_to_requisitions()" type="submit" class="btn btn-warning">Add to Requisitions</button>
                                     </div>

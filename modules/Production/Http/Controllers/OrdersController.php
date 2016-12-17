@@ -18,7 +18,7 @@ class OrdersController extends Controller {
 
     public function fetchOrdersList()
     {
-        $orders = DB::table('orders')->join('buyers', 'orders.buyer_id', '=', 'buyers.id')->join('styles', 'orders.style_id', '=', 'styles.id')->select('orders.*', 'buyers.buyer_name', 'styles.image as style_image')->get();
+        $orders = DB::table('orders')->join('buyers', 'orders.buyer_id', '=', 'buyers.id')->join('styles', 'orders.style_id', '=', 'styles.id')->select('orders.*', 'buyers.buyer_name', 'styles.image as style_image', 'styles.style_name')->get();
         return $orders;
     }
 
@@ -85,6 +85,8 @@ class OrdersController extends Controller {
         $order->total_zipper_cost  = $request->total_zipper_cost;
         $order->print_cost = $request->print_rate;
         $order->total_print_cost = $request->total_print_cost;
+        $order->security_tag_cost = $request->security_tag_cost;
+        $order->total_security_tag_cost = $request->total_security_tag_cost;
         $order->total_fob = $request->total_fob;
         $order->total_cost = $request->total_cost;
         $order->balance_amount = $request->order_balance_amount;
@@ -144,8 +146,16 @@ class OrdersController extends Controller {
             ]);
         }
 
-        $data['count'] = RequisitionItem::where('user_id', Auth::user()->id)->count();
-        return $data;
+        if($request->security_tag_amount != ''){
+            DB::table('requisition_items')->insert([
+                'item_name' => 'Security Tag',
+                'items_val' => $request->security_tag_amount,
+                'requisition_type' => 'Order',
+                'user_id' => Auth::user()->id,
+                'reference' => $request->order_id,
+            ]);
+        }
+
     }
 
 }
