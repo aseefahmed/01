@@ -55,7 +55,7 @@
                                                         <td>## $index+1 ##</td>
                                                         <td ng-cloak>## list.requisition_type ## No ## list.reference ## </td>
                                                         <td ng-cloak>## list.item_name ##</td>
-                                                        <td ng-cloak>## list.items_val ##</td>
+                                                        <td ng-cloak>## list.items_val | currency ##</td>
                                                         <td  ng-cloak align="center">
                                                             <a ng-if="list.user_id == {{ Auth::user()->id }}" class="btn btn-danger" ng-click="remove_item(list.id, list.item_name, 'single_delete')" style_name="## style.name ##" style_id="## style.id ##"><i class="glyphicon glyphicon-trash"></i></a>
                                                         </td>

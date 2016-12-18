@@ -26,8 +26,8 @@
                                             <th class="th-pointer" ng-click="sort('requisition_type')">Reference<span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='requisition_type'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
                                             <th class="th-pointer" ng-click="sort('qty')">Qty<span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='qty'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
                                             <th class="text-right th-pointer" ng-click="sort('items_val')">Requested Amount<span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='items_val'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
-                                            <th class="text-right th-pointer" ng-if="requisitions[0].forwarded_to == {{Auth::user()->id}}" ng-hide="hide_button == 1 || requisitions[0].flag == 2 || requisitions[0].flag == 9" ng-click="sort('items_val')">Approved<span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='items_val'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
-                                            <th class="text-right th-pointer" ng-if="requisitions[0].created_by == {{Auth::user()->id}}" ng-click="sort('items_val')">Approved<span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='items_val'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                            <th class="text-right th-pointer" ng-if="requisitions[0].forwarded_to == {{Auth::user()->id}}" ng-hide="hide_button == 1 || requisitions[0].flag == 2 || requisitions[0].flag == 9" ng-click="sort('items_val')">Approve<span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='items_val'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                                            <th class="text-right th-pointer" ng-if="requisitions[0].created_by == {{Auth::user()->id}}" ng-click="sort('items_val')">Approved Amount<span class="glyphicon glyphicon-sort-icon"  ng-show="sortKey=='items_val'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -43,17 +43,17 @@
                                                 <td ng-cloak class="text-right col-sm-2 " ng-if="requisitions[0].forwarded_to == {{Auth::user()->id}}"  ng-hide="hide_button == 1 || requisitions[0].flag == 2 || requisitions[0].flag == 9" ><input type="text" class="form-control" ng-model="approved_amount" ng-blur="add_amount(requisition.requisition_item_id, approved_amount, requisition.item_name, requisition.reference, $index)"></td>
                                                 <td ng-cloak class="text-right col-sm-2 " ng-if="requisitions[0].created_by == {{Auth::user()->id}}">
                                                     <span ng-if="requisition.item_flag == 1" class="act act-warning">Pending</span>
-                                                    <span ng-if="requisition.item_flag == 9 || (requisition.item_flag == 2 && requisition.approved_amount == 0)" class="act act-danger">Rejected</span>
-                                                    <span ng-if="requisition.approved_amount > 0" class="act act-success">## requisition.item_approved_amount | currency ##</span>
+                                                    <span ng-if="requisition.item_flag == 9 || (requisition.item_flag == 2 && requisition.item_approved_amount == 0)" class="act act-danger">Rejected</span>
+                                                    <span ng-if="requisition.item_flag == 2 && requisition.item_approved_amount > 0" class="act act-success">## requisition.item_approved_amount | currency ##</span>
                                                 </td>
                                             </tr>
                                         </tbody>
                                         <thead>
                                         <tr>
                                             <th colspan="4" class="text-right">Total </th>
-                                            <th class="text-right">## requisitions[0].requested_amount ## </th>
-                                            <th ng-if="requisitions[0].forwarded_to == {{Auth::user()->id}}"  ng-hide="hide_button == 1 || requisitions[0].flag == 2 || requisitions[0].flag == 9" class="text-right">## total_approved_amount ##</th>
-                                            <th ng-if="requisitions[0].created_by == {{Auth::user()->id}}" class="text-right">## total_approved_amount ##</th>
+                                            <th class="text-right">## requisitions[0].requested_amount | currency ## </th>
+                                            <th ng-if="requisitions[0].forwarded_to == {{Auth::user()->id}}"  ng-hide="hide_button == 1 || requisitions[0].flag == 2 || requisitions[0].flag == 9" class="text-right">## total_approved_amount | currency ##</th>
+                                            <th ng-if="requisitions[0].created_by == {{Auth::user()->id}}" class="text-right">## total_approved_amount() | currency ##</th>
                                         </tr>
                                         </thead>
                                     </table>

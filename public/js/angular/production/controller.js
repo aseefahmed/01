@@ -1137,6 +1137,14 @@ angular.module('myApp').controller('SupplierTypeController', function($scope, $h
 angular.module('myApp').controller('AllRequisitionController', function($scope, $http) {
     $scope.total_approved_amount = 0;
     $scope.approved_amount = 0;
+    $scope.total_approved_amount = function(){
+        count = $scope.requisitions.length;
+        total = 0;
+        for(i=0;i<count;i++){
+            total += $scope.requisitions[i]['item_approved_amount'];
+        }
+        return total;
+    };
     $scope.act_on_requisition = function(id, amount, flag) {
         amount_arr = JSON.stringify($scope.items_arr);
         console.log('---')

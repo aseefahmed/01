@@ -60,7 +60,7 @@
                                             <tr dir-paginate="requisition in filtered = (requisitions| orderBy : sortKey : reverse | filter : search_filter  | itemsPerPage : num_of_items) " ng-cloak>
                                                 <td><input class="select_row" type="checkbox"  value="## requisition.id ##"/></td>
                                                 <td ng-cloak>## requisition.name ##</td>
-                                                <td ng-cloak>## requisition.requested_amount ##</td>
+                                                <td ng-cloak>## requisition.requested_amount | currency ##</td>
                                                 <td ng-cloak>## requisition.first_name ## ## requisition.last_name ##</td>
                                                 <td ng-cloak>## requisition.created_at | filterDate ##</td>
                                                 <td ng-if="requisition.flag == 1" ng-cloak class="bg bg-warning">Pending</td>
