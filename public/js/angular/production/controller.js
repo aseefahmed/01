@@ -1136,9 +1136,13 @@ angular.module('myApp').controller('AllRequisitionController', function($scope, 
     $scope.total_approved_amount = 0;
     $scope.approved_amount = 0;
     $scope.act_on_requisition = function(id, amount, flag) {
+        amount_arr = JSON.stringify($scope.items_arr);
+        console.log('---')
+        console.log($scope.items_arr);
         data = $.param({
             requisition_id: id,
             amount: amount,
+            arr_item: $scope.items_arr,
             flag: flag
         });
         var config = {
@@ -1165,9 +1169,13 @@ angular.module('myApp').controller('AllRequisitionController', function($scope, 
         });
     }
     i = 0;
-    items = new Array;
-    $scope.add_amount = function(requisition_item_id, amount){
-        items[requisition_item_id] = amount;
+    items = new Array();
+    $scope.add_amount = function(requisition_item_id, amount, item_type, order_id, index){
+
+        items[index] = new Array();
+        items[index]['amount'] = amount;
+        items[index]['order_id'] = order_id;
+        items[index]['item_type'] = item_type;
         $scope.items_arr = items;
         console.log($scope.items_arr)
         $scope.total_approved_amount = Number($scope.total_approved_amount) + Number(amount);

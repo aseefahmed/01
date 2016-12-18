@@ -80,7 +80,7 @@ class RequisitionsController extends Controller {
     {
         if($action == 'sent')
         {
-            $data['requisition'] = Requisition::join('users', 'users.id', '=', 'requisitions.created_by')->where('created_by', Auth::user()->id)->where('flag',1)->select('requisitions.*', 'users.first_name', 'users.last_name')->get();
+            $data['requisition'] = Requisition::join('users', 'users.id', '=', 'requisitions.created_by')->where('created_by', Auth::user()->id)->select('requisitions.*', 'users.first_name', 'users.last_name')->get();
         }
         elseif ($action == 'recieved')
         {
@@ -97,12 +97,17 @@ class RequisitionsController extends Controller {
 
     public function getRequisitionDetails($id)
     {
-        $data['requisition'] = DB::table('requisitions')->leftJoin('requisition_items','requisitions.id', '=', 'requisition_items.requisition_id')->where('requisitions.id', $id)->select('requisitions.*', 'requisition_items.items_val', 'requisition_items.item_name', 'requisition_items.flag as item_flag', 'requisition_items.id as requisition_item_id')->get();
+        $data['requisition'] = DB::table('requisitions')->leftJoin('requisition_items','requisitions.id', '=', 'requisition_items.requisition_id')->where('requisitions.id', $id)->select('requisitions.*', 'requisition_items.items_val', 'requisition_items.item_name', 'requisition_items.flag as item_flag', 'requisition_items.id as requisition_item_id', 'requisition_items.reference')->get();
         return $data;
     }
 
     public function approveRequisition(Request $request)
     {
+        return $request->all();
+        /*foreach($request->items_amount as $amount)
+        {
+            RequisitionItem::where('requisition_id', $request->requisition_id)->update([''])
+        }*/
         if($request->flag == 9)
         {
             RequisitionItem::where('requisition_id', $request->requisition_id)->update(['flag' => 9]);

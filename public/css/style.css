@@ -19,7 +19,7 @@
 		.external_link {background: url(../img/external_link.png) no-repeat right center;padding-right:12px}
 	
 	/* main headings*/
-		.heading {border-bottom: 1px solid #dcdcdc;margin-bottom: 18px;padding-bottom: 5px}
+		.heading {border-bottom: 1px solid #dcdcdc;margin-bottom: 18px;padding-bottom: 5px;margin-left: 15px;}
 		.heading h1,.heading h2,.heading h3,h1.heading,h2.heading,h3.heading,.modal-header h3,.modal-header h4 {font-family: 'PT Sans', sans-serif;font-weight:400}
 		.heading .btn {vertical-align:bottom;margin-left:10px}
     
@@ -150,7 +150,7 @@
 	/* main content */
 		#maincontainer {min-height:100%}
         #contentwrapper{float: left;width: 100%}
-		.main_content{padding:64px 30px 30px;background:#fff;border-left:1px solid transparent;margin-left:240px}
+		.main_content{padding:64px 0px 30px;background:#fff;border-left:1px solid transparent;margin-left:209px}
 		.main_content li{line-height:22px}
 	
 	/* typeahead */
@@ -168,7 +168,9 @@
 		.input-group-sm .tt-hint {Height:30px;padding-left:10px}
 	
 	/* sidebar */
-		.sidebar{margin-left:-100%;width:240px;float:left;position:relative;overflow-x:hidden;overflow-y:auto;border-right:1px solid #ccc}
+		.sidebar{margin-left:-100%;
+			/*width:240px; */
+			float:left;position:relative;overflow-x:hidden;overflow-y:auto;border-right:1px solid #ccc}
 		.sidebar_sep{background:#efefef;clear:both;float:none;height:5px;border-color:#ccc;border-style:solid;border-width:1px 0;margin:14px 0}
 		.sidebar_switch{text-indent:-10000px;width:16px;position:fixed;left:220px;top:45px;height:14px;cursor:pointer;z-index:100;display:block;opacity:.5}
 		.on_switch {background: url(../img/sidebar_switch.png) no-repeat 0 -19px}

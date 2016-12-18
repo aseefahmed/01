@@ -69,7 +69,6 @@
 
 </div>
 
-<a href="javascript:void(0)" class="sidebar_switch on_switch bs_ttip" data-placement="auto right" data-viewport="body" title="Hide Sidebar">Sidebar switch</a>
 <div class="sidebar">
     @include('layouts/dashboard/left_sidebar')
 </div>

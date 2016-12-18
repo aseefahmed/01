@@ -7,7 +7,7 @@
     </div>
     <div class="row" ng-controller="AllRequisitionController" ng-init="initialize('sent')" ng-cloak>
         <div class="col-sm-12 col-md-12">
-            <div class="col-sm-8">
+            <div class="col-sm-9">
                 <div class="w-box" id="w_sort01">
                     <div class="w-box-header">
                         <div class="pull-left">
@@ -63,8 +63,9 @@
                                                 <td ng-cloak>## requisition.requested_amount ##</td>
                                                 <td ng-cloak>## requisition.first_name ## ## requisition.last_name ##</td>
                                                 <td ng-cloak>## requisition.created_at | filterDate ##</td>
-                                                <td ng-if="requisition.flag == 1" ng-cloak>Pending</td>
-                                                <td ng-if="requisition.flag == 2" ng-cloak>Approved</td>
+                                                <td ng-if="requisition.flag == 1" ng-cloak class="bg bg-warning">Pending</td>
+                                                <td ng-if="requisition.flag == 2" ng-cloak class="bg bg-success">Approved</td>
+                                                <td ng-if="requisition.flag == 9" ng-cloak class="bg bg-danger">Rejected</td>
                                                 <td  ng-cloak align="center">
                                                     <a class="btn btn-primary" href="{{ url('production/requisitions/id') }}/## requisition.id ##"><i class="glyphicon glyphicon-eye-open" class="view_requisition_btn"></i></a>&nbsp;
                                                     <a ng-if="requisition.created_by == {{ Auth::user()->id }}" class="btn btn-danger" ng-click="remove_requisition(requisition.id, requisition.requisition_name, 'single_delete')" requisition_name="## requisition.name ##" requisition_id="## requisition.id ##"><i class="glyphicon glyphicon-trash"></i></a>
@@ -85,7 +86,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 @include('production::partials.orders_stats')
             </div>
 
