@@ -4,6 +4,7 @@ use \Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\DB;
+use Modules\Production\Entities\Order;
 use Modules\Production\Entities\Requisition;
 use Modules\Production\Entities\RequisitionItem;
 use Pingpong\Modules\Routing\Controller;
@@ -34,7 +35,7 @@ class RequisitionsController extends Controller {
 
         $requisition_id = Requisition::max('id');
         foreach($request->requisition_items as $item)
-        {
+        { echo $item;
             RequisitionItem::where('id',$item)->update(['flag' => 1, 'requisition_id' => $requisition_id]);
         }
     }
@@ -97,17 +98,14 @@ class RequisitionsController extends Controller {
 
     public function getRequisitionDetails($id)
     {
-        $data['requisition'] = DB::table('requisitions')->leftJoin('requisition_items','requisitions.id', '=', 'requisition_items.requisition_id')->where('requisitions.id', $id)->select('requisitions.*', 'requisition_items.items_val', 'requisition_items.item_name', 'requisition_items.flag as item_flag', 'requisition_items.id as requisition_item_id', 'requisition_items.reference')->get();
+        $data['requisition'] = DB::table('requisitions')->leftJoin('requisition_items','requisitions.id', '=', 'requisition_items.requisition_id')->where('requisitions.id', $id)->select('requisitions.*', 'requisition_items.items_val', 'requisition_items.item_name', 'requisition_items.flag as item_flag', 'requisition_items.id as requisition_item_id', 'requisition_items.reference', 'requisition_items.approved_amount as item_approved_amount')->get();
         return $data;
     }
 
     public function approveRequisition(Request $request)
     {
-        return $request->all();
-        /*foreach($request->items_amount as $amount)
-        {
-            RequisitionItem::where('requisition_id', $request->requisition_id)->update([''])
-        }*/
+
+
         if($request->flag == 9)
         {
             RequisitionItem::where('requisition_id', $request->requisition_id)->update(['flag' => 9]);
@@ -115,6 +113,19 @@ class RequisitionsController extends Controller {
         }
         elseif($request->flag == 2)
         {
+            foreach($request->arr_item as $item)
+            {
+                $item = explode('#', $item);
+                RequisitionItem::where('id', $item[0])->update(['flag' => 2, 'approved_amount' => $item[1]]);
+                if($item[2] == 'Button'){$field = 'approved_btn_amount';}
+                elseif($item[2] == 'Print'){$field = 'approved_print_amount';}
+                elseif($item[2] == 'Zipper'){$field = 'approved_zipper_amount';}
+                elseif($item[2] == 'Security Tag'){$field = 'approved_security_tag_cost';}
+                elseif($item[2] == 'Accessories'){$field = 'approved_acc_amount';}
+                else{$field = 'approved_yarn_amount';}
+
+                Order::where('id', $item[3])->increment($field, $item[1]);
+            }
             Requisition::where('id', $request->requisition_id)->update(['approved_amount' => $request->amount, 'flag' => $request->flag]);
         }
 

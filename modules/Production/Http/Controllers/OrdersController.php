@@ -4,6 +4,7 @@ use \Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\DB;
+use Modules\Production\Entities\Activity;
 use Modules\Production\Entities\Order;
 use Modules\Production\Entities\RequisitionItem;
 use Modules\Production\Entities\RequisitionType;
@@ -28,30 +29,45 @@ class OrdersController extends Controller {
     }
 
     public function fetchOrderDetails($id){
-        $data['order'] =  Order::where('id', $id)->get();
+        $data['order'] =  Order::where('id', $id)->select('orders.*')->get();
         $data['order']['user'] = $data['order'][0]->user;
         $data['order']['buyer'] = $data['order'][0]->buyer;
         $data['order']['style'] = $data['order'][0]->style;
         $data['order']['composition'] = unserialize($data['order'][0]->compositions);
+        $data['order']['total_requisition_pending'] = RequisitionItem::where('reference', $id)->where('requisition_id','>',0)->where('flag',1)->count();
+        $data['order']['total_requisition_approved'] = RequisitionItem::where('reference', $id)->where('requisition_id','>',0)->where('flag',2)->count();
+        $data['order']['total_requisition_rejected'] = RequisitionItem::where('reference', $id)->where('requisition_id','>',0)->where('flag',9)->count();
+        $data['order']['days_left_to_delivery'] = RequisitionItem::where('reference', $id)->where('flag',2)->count();
         return $data['order'];
     }
 
     public function destroy(Request $request, $id, $action=null){
+        $activity = new Activity();
 
         if($action == 'all')
         {
             Order::truncate();
+            $activity->description = 'All order has been deleted.';
         }
         elseif($action == 'single_delete')
         {
             Order::find($id)->delete();
+            $activity->description = 'Order ID:'. $id . ' has been deleted.';
+
         }
         else if($action == 'selected')
         {
             $items = explode(',', $id);
             Order::destroy($items);
+            $activity->description = 'A number of orders have been deleted.';
         }
 
+
+        $activity->user_id = Auth::user()->id;
+        $activity->reference_table = 'orders';
+        $activity->reference = $id;
+        $activity->ip_address = $_SERVER["REMOTE_ADDR"];
+        $activity->save();
     }
 
     public function updateField($field, $id, $value)
@@ -59,6 +75,14 @@ class OrdersController extends Controller {
         Order::where('id', $id)->update([
             $field => $value
         ]);
+
+        $activity = new Activity();
+        $activity->user_id = Auth::user()->id;
+        $activity->reference_table = 'orders';
+        $activity->reference = $id;
+        $activity->description = 'An order information has been updated. '. $field . ' has been set to '. $value . ' for order ID:'. $id;
+        $activity->ip_address = $_SERVER["REMOTE_ADDR"];
+        $activity->save();
     }
 
     public function store(Request $request){
@@ -93,13 +117,21 @@ class OrdersController extends Controller {
         $order->cost_of_making = $request->cost_of_making;
         $order->compositions = serialize($request->compositions);
         $order->save();
+
+        $activity = new Activity();
+        $activity->user_id = Auth::user()->id;
+        $activity->reference_table = 'orders';
+        $activity->reference = Order::max('id');
+        $activity->description = 'An order has been created.';
+        $activity->ip_address = $_SERVER["REMOTE_ADDR"];
+        $activity->save();
     }
 
     public function addToRequisition(Request $request){
 
         if($request->yarn_amount != '') {
             DB::table('requisition_items')->insert([
-                'item_name' => 'Composition: ' . $request->yarn_type . ', Amount:' . $request->yarn_type,
+                'item_name' => 'Composition: ' . $request->yarn_type,
                 'items_val' => $request->yarn_amount,
                 'requisition_type' => 'Order',
                 'user_id' => Auth::user()->id,
@@ -155,6 +187,7 @@ class OrdersController extends Controller {
                 'reference' => $request->order_id,
             ]);
         }
+
 
     }
 

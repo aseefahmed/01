@@ -55,7 +55,7 @@
                                         </thead>
                                         <tbody>
                                         <tr ng-if="requisitions.length == 0 || filtered.length == 0">
-                                            <td colspan="6">No data found.</td>
+                                            <td colspan="7">No data found.</td>
                                         </tr>
                                             <tr dir-paginate="requisition in filtered = (requisitions| orderBy : sortKey : reverse | filter : search_filter  | itemsPerPage : num_of_items) " ng-cloak>
                                                 <td><input class="select_row" type="checkbox"  value="## requisition.id ##"/></td>

@@ -35,13 +35,17 @@
                                                 <td colspan="6">No data found.</td>
                                             </tr>
                                             <tr dir-paginate="requisition in filtered = (requisitions| orderBy : sortKey : reverse | filter : search_filter  | itemsPerPage : num_of_items) " ng-cloak>
-                                                <td ng-cloak>## $index+1 ##</td>
+                                                <td ng-cloak>## $index+1 ## </td>
                                                 <td ng-cloak>## requisition.item_name ##</td>
                                                 <td ng-cloak>## requisition.requisition_type ## ## requisition.reference ##</td>
                                                 <td ng-cloak>## requisition.qty ## </td>
-                                                <td ng-cloak class="text-right ">## requisition.items_val ##</td>
+                                                <td ng-cloak class="text-right ">## requisition.items_val | currency   ##</td>
                                                 <td ng-cloak class="text-right col-sm-2 " ng-if="requisitions[0].forwarded_to == {{Auth::user()->id}}"  ng-hide="hide_button == 1 || requisitions[0].flag == 2 || requisitions[0].flag == 9" ><input type="text" class="form-control" ng-model="approved_amount" ng-blur="add_amount(requisition.requisition_item_id, approved_amount, requisition.item_name, requisition.reference, $index)"></td>
-                                                <td ng-cloak class="text-right col-sm-2 " ng-if="requisitions[0].created_by == {{Auth::user()->id}}">## requisition.item_approved_amount ##</td>
+                                                <td ng-cloak class="text-right col-sm-2 " ng-if="requisitions[0].created_by == {{Auth::user()->id}}">
+                                                    <span ng-if="requisition.item_flag == 1" class="act act-warning">Pending</span>
+                                                    <span ng-if="requisition.item_flag == 9 || (requisition.item_flag == 2 && requisition.approved_amount == 0)" class="act act-danger">Rejected</span>
+                                                    <span ng-if="requisition.approved_amount > 0" class="act act-success">## requisition.item_approved_amount | currency ##</span>
+                                                </td>
                                             </tr>
                                         </tbody>
                                         <thead>

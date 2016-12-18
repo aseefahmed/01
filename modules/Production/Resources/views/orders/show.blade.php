@@ -7,7 +7,7 @@
     </div>
     <div class="row" ng-controller="OrderController" ng-init="init({{$order_id}})" ng-cloak>
         <div class="col-sm-12 col-md-12">
-            <div class="col-sm-9">
+            <div class="col-sm-8">
                 <div class="w-box" id="w_sort01">
                     <div class="w-box-header">
                         <div class="pull-left">
@@ -47,7 +47,7 @@
                                         </tr>
                                         <tr>
                                             <th width='25%'>GG: </th>
-                                            <td colspan="2"><span class="col-sm-10">## order[0].gg ## </span><a ng-click="edit_order({{ $order_id  }}, 'GG', 'gg', 'text', false, '', 70, '', 'This field must be a number')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
+                                            <td colspan="2"><span class="col-sm-10">## order[0].total_requisition_approved ## </span><a ng-click="edit_order({{ $order_id  }}, 'GG', 'gg', 'text', false, '', 70, '', 'This field must be a number')" class="th-pointer col-sm-2 glyphicon glyphicon-pencil text-right"></a></td>
                                         </tr>
                                         <tr>
                                             <th width='25%'>Qty: </th>
@@ -173,7 +173,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 @include('production::partials.orders_summery')
             </div>
 

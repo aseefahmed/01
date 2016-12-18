@@ -492,7 +492,9 @@ angular.module('myApp').controller('OrderController', function($scope, $http) {
     $scope.init = function(id){
         $scope.yarn_type = '';
         $http.get('/production/orders/fetchOrderDetails/'+id).then(function(response){
-            console.log(response.data)
+            $scope.delivery_date = new Date(response.data[0].delivery_date);
+            $scope.today = new Date();
+            $scope.days_left_to_delivery = ($scope.delivery_date - $scope.today)/1000/60/60/24;
             $scope.order_id = id;
             $scope.order = response.data;
 
@@ -1138,7 +1140,7 @@ angular.module('myApp').controller('AllRequisitionController', function($scope, 
     $scope.act_on_requisition = function(id, amount, flag) {
         amount_arr = JSON.stringify($scope.items_arr);
         console.log('---')
-        console.log($scope.items_arr);
+        console.log(amount_arr);
         data = $.param({
             requisition_id: id,
             amount: amount,
@@ -1172,10 +1174,7 @@ angular.module('myApp').controller('AllRequisitionController', function($scope, 
     items = new Array();
     $scope.add_amount = function(requisition_item_id, amount, item_type, order_id, index){
 
-        items[index] = new Array();
-        items[index]['amount'] = amount;
-        items[index]['order_id'] = order_id;
-        items[index]['item_type'] = item_type;
+        items[index] = requisition_item_id+"#"+amount+"#"+item_type+"#"+order_id;
         $scope.items_arr = items;
         console.log($scope.items_arr)
         $scope.total_approved_amount = Number($scope.total_approved_amount) + Number(amount);
