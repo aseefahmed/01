@@ -42,6 +42,7 @@
         <div class="col-sm-2">
             <select style="width:100%"  class="inline-search" ng-model="report.operator" ng-change="advanced_search_order()">
                 <option value="">Operator</option><option value="=">=</option><option value="&gt;">&gt;</option><option value="&gt;=">&gt;=</option><option value="&lt;">&lt;</option><option value="&lt;=">&lt;=</option><option value="!=">!=</option><option value="LIKE">LIKE</option><option value="NOT LIKE">NOT LIKE</option></select>
+            
         </div>
         <div class="col-sm-5">
             <input type="text" class="form-control" placeholder="Search" ng-model="report.search_value" ng-change="advanced_search_order()">
