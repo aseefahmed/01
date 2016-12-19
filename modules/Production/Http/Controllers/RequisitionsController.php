@@ -116,7 +116,12 @@ class RequisitionsController extends Controller {
             foreach($request->arr_item as $item)
             {
                 $item = explode('#', $item);
-                RequisitionItem::where('id', $item[0])->update(['flag' => 2, 'approved_amount' => $item[1]]);
+                if($item[1] > 0)
+                    $flag = 2;
+                else
+                    $flag = 9;
+
+                RequisitionItem::where('id', $item[0])->update(['flag' => $flag, 'approved_amount' => $item[1]]);
                 if($item[2] == 'Button'){$field = 'approved_btn_amount';}
                 elseif($item[2] == 'Print'){$field = 'approved_print_amount';}
                 elseif($item[2] == 'Zipper'){$field = 'approved_zipper_amount';}

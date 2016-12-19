@@ -33,7 +33,8 @@ Route::group(['middleware' => 'web', 'prefix' => 'production', 'namespace' => 'M
     Route::delete('/order/{order}/{action}', ['uses' => 'OrdersController@destroy', 'as' => 'Remove Order Details']);
     Route::post('/order/addToRequisition', ['uses' => 'OrdersController@addToRequisition', 'as' => 'Remove Order Details']);
 
-    Route::get('/reports/{type}', ['uses' => 'ReportsController@generateOrdersReport', 'as' => 'Generate Orders Report']);
+    Route::get('/reports/{type}', ['uses' => 'ReportsController@generateReport', 'as' => 'Generate Orders Report']);
+    Route::post('/reports/{type}/search', ['uses' => 'ReportsController@searcReport', 'as' => 'Search Orders Report']);
 
     Route::get('/requisitions/generate', ['uses' => 'RequisitionsController@generateRequisition', 'as' => 'Generate Requisitions']);
     Route::get('/requisitions/getRequisitionItems', ['uses' => 'RequisitionsController@getRequisitionItems', 'as' => 'Generate Requisitions']);

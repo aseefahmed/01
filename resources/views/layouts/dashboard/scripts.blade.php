@@ -8,6 +8,7 @@
 <script src="{{ asset('lib/slimScroll/jquery.slimscroll.js') }}"></script>
 <!-- Select2 -->
 <script src="{{ asset('lib/select2/select2.js') }}"></script>
+
 <!-- Bootstrap Notification -->
 <script src="{{ asset('lib/bootstrap-notify/js/bootstrap-notify.js') }}"></script>
 <!-- Angular JS -->
@@ -205,5 +206,42 @@
                 }).show();
             });
         });*/
+    });
+    $.fn.select2.amd.require([
+        'select2/selection/multiple',
+        'select2/selection/search',
+        'select2/dropdown',
+        'select2/dropdown/attachBody',
+        'select2/dropdown/closeOnSelect',
+        'select2/compat/containerCss',
+        'select2/utils'
+    ], function (MultipleSelection, Search, Dropdown, AttachBody, CloseOnSelect, ContainerCss, Utils) {
+        var SelectionAdapter = Utils.Decorate(
+                MultipleSelection,
+                Search
+        );
+
+        var DropdownAdapter = Utils.Decorate(
+                Utils.Decorate(
+                        Dropdown,
+                        CloseOnSelect
+                ),
+                AttachBody
+        );
+
+        $('.inline-search').select2({
+            dropdownAdapter: DropdownAdapter,
+            selectionAdapter: SelectionAdapter
+        });
+
+        $('.dropdown-search').select2({
+            selectionAdapter: MultipleSelection
+        });
+
+        $('.autocomplete').select2({
+            dropdownAdapter: DropdownAdapter,
+            selectionAdapter: Utils.Decorate(SelectionAdapter, ContainerCss),
+            containerCssClass: 'select2-autocomplete'
+        });
     });
 </script>

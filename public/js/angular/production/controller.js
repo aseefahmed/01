@@ -310,9 +310,10 @@ angular.module('myApp').controller('RequisitionController', function($scope, $ht
 })
 
 angular.module('myApp').controller('OrderController', function($scope, $http) {
+    $scope.order = {};
     $scope.no_of_requisition_items = 10;
-    $scope.total_yarn_weight = 0;
-    $scope.total_yarn_cost = 0;
+    $scope.order.total_yarn_weight = 0;
+    $scope.order.total_yarn_cost = 0;
     compositions = new Array()
     n=0;
     $scope.add_to_requisitions = function(){
@@ -353,22 +354,22 @@ angular.module('myApp').controller('OrderController', function($scope, $http) {
         });
     };
     $scope.update_order_info = function(){
-        $scope.qty_per_dzn = Math.round($scope.order_qty/12*100, 2)/100;
-        $scope.total_fob = $scope.order_qty * $scope.order_fob;
-        $scope.total_accessories_cost = Math.round(($scope.qty_per_dzn * $scope.accessories_rate)*100)/100;
-        $scope.total_button_cost = Math.round(($scope.qty_per_dzn * $scope.button_rate)*100)/100;
-        $scope.total_zipper_cost = Math.round(($scope.qty_per_dzn * $scope.zipper_rate)*100)/100;
-        $scope.total_print_cost = Math.round(($scope.qty_per_dzn * $scope.print_rate)*100)/100;
-        $scope.total_security_tag_cost = Math.round(($scope.qty_per_dzn * $scope.security_tag)*100)/100;
-        $scope.total_cost =  Math.round(($scope.total_yarn_cost + $scope.total_accessories_cost + $scope.total_button_cost + $scope.total_zipper_cost + $scope.total_print_cost + $scope.total_security_tag_cost)*100)/100;
-        $scope.order_balance_amount = Math.round(($scope.total_fob - $scope.total_cost)*100)/100;
-        $scope.cost_of_making = Math.round(($scope.order_balance_amount/$scope.qty_per_dzn)*100)/100;
+        $scope.order.qty_per_dzn = Math.round($scope.order.order_qty/12*100, 2)/100;
+        $scope.order.total_fob = $scope.order.order_qty * $scope.order.order_fob;
+        $scope.order.total_accessories_cost = Math.round(($scope.order.qty_per_dzn * $scope.order.accessories_rate)*100)/100;
+        $scope.order.total_button_cost = Math.round(($scope.order.qty_per_dzn * $scope.order.button_rate)*100)/100;
+        $scope.order.total_zipper_cost = Math.round(($scope.order.qty_per_dzn * $scope.order.zipper_rate)*100)/100;
+        $scope.order.total_print_cost = Math.round(($scope.order.qty_per_dzn * $scope.order.print_rate)*100)/100;
+        $scope.order.total_security_tag_cost = Math.round(($scope.order.qty_per_dzn * $scope.order.security_tag)*100)/100;
+        $scope.order.total_cost =  Math.round(($scope.order.total_yarn_cost + $scope.order.total_accessories_cost + $scope.order.total_button_cost + $scope.order.total_zipper_cost + $scope.order.total_print_cost + $scope.order.total_security_tag_cost)*100)/100;
+        $scope.order.order_balance_amount = Math.round(($scope.order.total_fob - $scope.order.total_cost)*100)/100;
+        $scope.order.cost_of_making = Math.round(($scope.order.order_balance_amount/$scope.order.qty_per_dzn)*100)/100;
     };
     $scope.composition_refresh = function(){
-        $scope.total_yarn_weight = 0;
-        $scope.total_yarn_cost = 0;
-        $scope.total_yarn_weight = 0;
-        $scope.total_yarn_cost = 0;
+        $scope.order.total_yarn_weight = 0;
+        $scope.order.total_yarn_cost = 0;
+        $scope.order.total_yarn_weight = 0;
+        $scope.order.total_yarn_cost = 0;
         document.getElementById('composition-div-group').innerHTML = "";
     };
     $scope.add_composition = function(){
@@ -378,10 +379,10 @@ angular.module('myApp').controller('OrderController', function($scope, $http) {
         console.log($scope.compositions)
         n++;
 
-        $scope.total_yarn_weight =  Number($scope.total_yarn_weight) + Number($scope.qty_per_dzn*$scope.weight_per_dzn*$scope.composition_percentage/100*(1+Number($scope.composition_wastage/100)));
-        $scope.total_yarn_cost = Number($scope.total_yarn_cost) + Number(Number($scope.qty_per_dzn*$scope.weight_per_dzn*$scope.composition_percentage/100*(1+Number($scope.composition_wastage/100)))*$scope.composition_yarn_rate);
-        $scope.total_yarn_weight = Math.round($scope.total_yarn_weight *100)/100;
-        $scope.total_yarn_cost = Math.round($scope.total_yarn_cost *100)/100;
+        $scope.order.total_yarn_weight =  Number($scope.order.total_yarn_weight) + Number($scope.order.qty_per_dzn*$scope.order.weight_per_dzn*$scope.composition_percentage/100*(1+Number($scope.composition_wastage/100)));
+        $scope.order.total_yarn_cost = Number($scope.order.total_yarn_cost) + Number(Number($scope.order.qty_per_dzn*$scope.order.weight_per_dzn*$scope.composition_percentage/100*(1+Number($scope.composition_wastage/100)))*$scope.composition_yarn_rate);
+        $scope.order.total_yarn_weight = Math.round($scope.order.total_yarn_weight *100)/100;
+        $scope.order.total_yarn_cost = Math.round($scope.order.total_yarn_cost *100)/100;
         table = document.getElementById('composition-div-group');
         row = table.insertRow(0);
         row.insertCell(0).innerHTML = $scope.composition_name;
@@ -456,6 +457,24 @@ angular.module('myApp').controller('OrderController', function($scope, $http) {
             }
         }
     };
+    $scope.advanced_search_order = function()
+    {
+        var data = $.param({
+            field: $scope.report.field,
+            operator: $scope.report.operator,
+            search_value: $scope.report.search_value
+        });
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        };
+        $http.post('/production/reports/orders/search', data, config).success(function (result, status) {
+
+            $scope.orders = result;
+            console.log(result)
+        });
+    }
     $scope.remove_order_confirmed = function(id, page, action){
         $scope.order_name = null;
         $http.delete('/production/order/'+id+"/"+action).then(function(response){
@@ -497,6 +516,9 @@ angular.module('myApp').controller('OrderController', function($scope, $http) {
             $scope.days_left_to_delivery = ($scope.delivery_date - $scope.today)/1000/60/60/24;
             $scope.order_id = id;
             $scope.order = response.data;
+            $scope.approved_amount_of_requisition = Number(response.data[0].approved_yarn_amount) +Number(response.data[0].approved_acc_amount) +Number(response.data[0].approved_btn_amount) +Number(response.data[0].approved_zipper_amount) +Number(response.data[0].approved_print_amount) +Number(response.data[0].approved_security_tag_cost)
+                console.log('dd')
+            console.log(response.data[0].approved_acc_amount)
 
         })
     };
@@ -539,33 +561,33 @@ angular.module('myApp').controller('OrderController', function($scope, $http) {
             }).show();
         })
     }
-    $scope.add_order = function(){
+    $scope.add_order = function(form){
         var data = $.param({
-            buyer_id: $scope.buyer_id,
-            style_id: $scope.style_id,
-            order_date: $scope.order_date,
-            delivery_date: $scope.delivery_date,
-            order_gg: $scope.order_gg,
-            order_qty: $scope.order_qty,
-            order_fob: $scope.order_fob,
-            weight_per_dzn: $scope.weight_per_dzn,
-            qty_per_dzn: $scope.qty_per_dzn,
-            total_yarn_weight: $scope.total_yarn_weight,
-            total_yarn_cost: $scope.total_yarn_cost,
-            accessories_rate: $scope.accessories_rate,
-            total_accessories_cost: $scope.total_accessories_cost,
-            button_rate: $scope.button_rate,
-            total_button_cost: $scope.total_button_cost,
-            zipper_rate: $scope.zipper_rate,
-            total_zipper_cost: $scope.total_zipper_cost,
-            print_rate: $scope.print_rate,
-            total_print_cost: $scope.total_print_cost,
-            security_tag_cost: $scope.security_tag,
-            total_security_tag_cost: $scope.total_security_tag_cost,
-            total_fob: $scope.total_fob,
-            total_cost: $scope.total_cost,
-            order_balance_amount: $scope.order_balance_amount,
-            cost_of_making: $scope.cost_of_making,
+            buyer_id: $scope.order.buyer_id,
+            style_id: $scope.order.style_id,
+            order_date: $scope.order.order_date,
+            delivery_date: $scope.order.delivery_date,
+            order_gg: $scope.order.order_gg,
+            order_qty: $scope.order.order_qty,
+            order_fob: $scope.order.order_fob,
+            weight_per_dzn: $scope.order.weight_per_dzn,
+            qty_per_dzn: $scope.order.qty_per_dzn,
+            total_yarn_weight: $scope.order.total_yarn_weight,
+            total_yarn_cost: $scope.order.total_yarn_cost,
+            accessories_rate: $scope.order.accessories_rate,
+            total_accessories_cost: $scope.order.total_accessories_cost,
+            button_rate: $scope.order.button_rate,
+            total_button_cost: $scope.order.total_button_cost,
+            zipper_rate: $scope.order.zipper_rate,
+            total_zipper_cost: $scope.order.total_zipper_cost,
+            print_rate: $scope.order.print_rate,
+            total_print_cost: $scope.order.total_print_cost,
+            security_tag_cost: $scope.order.security_tag,
+            total_security_tag_cost: $scope.order.total_security_tag_cost,
+            total_fob: $scope.order.total_fob,
+            total_cost: $scope.order.total_cost,
+            order_balance_amount: $scope.order.order_balance_amount,
+            cost_of_making: $scope.order.cost_of_making,
             compositions: $scope.compositions
         });
         var config = {
@@ -582,12 +604,14 @@ angular.module('myApp').controller('OrderController', function($scope, $http) {
                 closable: false,
                 fadeOut: { enabled: true, delay: 2000 }
             }).show();
-            $scope.order_name = null;
+            $scope.order = {};
+            $scope.compositions = null;
+            document.getElementById('composition-div-group').innerHTML = '';
             $http.get('/production/order/fetchOrdersList').then(function (response) {
                 $scope.num_of_items = 10;
                 $scope.orders = response.data;
                 $scope.reverse = false;
-            })
+            });
         }).error(function (result, status) {
             $('#add-order-modal').modal('toggle');
             $('.top-right').notify({
@@ -1137,11 +1161,11 @@ angular.module('myApp').controller('SupplierTypeController', function($scope, $h
 angular.module('myApp').controller('AllRequisitionController', function($scope, $http) {
     $scope.total_approved_amount = 0;
     $scope.approved_amount = 0;
-    $scope.total_approved_amount = function(){
+    $scope.get_total_approved_amount = function(){
         count = $scope.requisitions.length;
         total = 0;
         for(i=0;i<count;i++){
-            total += $scope.requisitions[i]['item_approved_amount'];
+            total += Number($scope.requisitions[i]['item_approved_amount']);
         }
         return total;
     };

@@ -3,6 +3,7 @@
 use \Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\DB;
 use Modules\Production\Entities\Report;
 use Pingpong\Modules\Routing\Controller;
 
@@ -75,8 +76,18 @@ class ReportsController extends Controller {
         $report->save();
     }
 
-    public function generateOrdersReport($report_type){
+    public function generateReport($report_type){
         return view('production::reports.orders');
     }
-	
+
+    public function searcReport(Request $request, $search_type)
+    {
+        if($search_type == 'orders')
+        {
+            $data['orders'] = DB::table('orders');
+            $data['orders'] = $data['orders']->where($request->field, $request->operator, $request->search_value);
+            $data = $data['orders']->select('orders.*')->get();
+            return $data;
+        }
+    }
 }

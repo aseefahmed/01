@@ -30,7 +30,8 @@
                                     <input type="text" class="form-control" placeholder="Search" ng-model="search_filter">
                                 </div>
                                 <div class="col-sm-8 text-right">
-                                    Show : <select style="width: 25%;" ng-model="num_of_items" name="num_of_items" ng-options="num.id as num.value for num in num_of_items_arr ">
+                                    <select  class="inline-search" style="width: 25%;" ng-model="num_of_items" name="num_of_items" ng-options="num.id as num.value for num in num_of_items_arr ">
+                                        <option value="">Show</option>
                                     </select>
                                 </div>
                             </div>

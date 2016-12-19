@@ -53,7 +53,7 @@
                                             <th colspan="4" class="text-right">Total </th>
                                             <th class="text-right">## requisitions[0].requested_amount | currency ## </th>
                                             <th ng-if="requisitions[0].forwarded_to == {{Auth::user()->id}}"  ng-hide="hide_button == 1 || requisitions[0].flag == 2 || requisitions[0].flag == 9" class="text-right">## total_approved_amount | currency ##</th>
-                                            <th ng-if="requisitions[0].created_by == {{Auth::user()->id}}" class="text-right">## total_approved_amount() | currency ##</th>
+                                            <th ng-if="requisitions[0].created_by == {{Auth::user()->id}}" class="text-right">## get_total_approved_amount() | currency ##</th>
                                         </tr>
                                         </thead>
                                     </table>

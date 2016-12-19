@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('lib/jBreadcrumbs/css/BreadCrumb.css') }}" />
     <!-- breadcrumbs -->
     <link rel="stylesheet" href="{{ asset('lib/select2/select2.css') }}" />
+
     <!-- Bootstrap Notification -->
     <link rel="stylesheet" href="{{ asset('lib/bootstrap-notify/css/bootstrap-notify.css') }}" />
     <!-- File Input -->

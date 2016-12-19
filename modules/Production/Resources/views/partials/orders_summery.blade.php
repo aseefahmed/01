@@ -12,7 +12,7 @@
                 <div class="col-sm-12">
                     <div id="accordion2" class="panel-group accordion">
                         <div class="panel panel-default">
-                            <div class="panel-heading">
+                            <div class="panel-heading bg bg-primary">
                                 <a href="#collapseOne2" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle collapsed">
                                     New Requisition
                                 </a>
@@ -89,7 +89,7 @@
                                                 <strong>Number of requisition rejected</strong>
                                             </li>
                                             <li>
-                                                <span class="act act-success">## order[0].approved_yarn_amount + order[0].approved_acc_amount + order[0].approved_btn_amount + order[0].approved_print_amount + order[0].approved_zipper_amount + order[0].approved_security_tag_cost | currency ##</span>
+                                                <span class="act act-success">## approved_amount_of_requisition | currency ##</span>
                                                 <strong>Amount of requisition approved</strong>
                                             </li>
                                             <li>
@@ -103,27 +103,27 @@
                                                     <tbody>
                                                         <tr>
                                                             <th class="bg bg-primary">Yarn</th>
-                                                            <th class="text-right">## order[0].approved_yarn_amount | currency ##</th>
+                                                            <th class="text-right">## order[0].approved_yarn_amount | currency ## (## (order[0].approved_yarn_amount / order[0].total_yarn_cost)*100 | number:2  ##%)</th>
                                                         </tr>
                                                         <tr>
                                                             <th class="bg bg-primary">Accessories</th>
-                                                            <th class="text-right">## order[0].approved_acc_amount | currency ##</th>
+                                                            <th class="text-right">## order[0].approved_yarn_amount | currency ## (## (order[0].approved_acc_amount / order[0].total_acc_cost)*100 | number:2  ##%)</th>
                                                         </tr>
                                                         <tr>
                                                             <th class="bg bg-primary">Button</th>
-                                                            <th class="text-right">## order[0].approved_btn_amount | currency ##</th>
+                                                            <th class="text-right">## order[0].approved_yarn_amount | currency ## (## (order[0].approved_btn_amount / order[0].total_btn_cost)*100 | number:2  ##%)</th>
                                                         </tr>
                                                         <tr>
                                                             <th class="bg bg-primary">Print</th>
-                                                            <th class="text-right">## order[0].approved_print_amount | currency ##</th>
+                                                            <th class="text-right">## order[0].approved_yarn_amount | currency ## (## (order[0].approved_print_amount / order[0].total_print_cost)*100 | number:2  ##%)</th>
                                                         </tr>
                                                         <tr>
                                                             <th class="bg bg-primary">Zipper</th>
-                                                            <th class="text-right">## order[0].approved_zipper_amount | currency ##</th>
+                                                            <th class="text-right">## order[0].approved_yarn_amount | currency ## (## (order[0].approved_zipper_amount / order[0].total_zipper_cost)*100 | number:2  ##%)</th>
                                                         </tr>
                                                         <tr>
                                                             <th class="bg bg-primary">Security Tag</th>
-                                                            <th class="text-right">## order[0].approved_security_tag_cost | currency ##</th>
+                                                            <th class="text-right">## order[0].approved_yarn_amount | currency ## (## (order[0].approved_security_tag_cost / order[0].total_security_tag_cost)*100 | number:2  ##%)</th>
                                                         </tr>
                                                     </tbody>
                                                 </table>
