@@ -40,7 +40,7 @@
     <!-- flags -->
     <link rel="stylesheet" href="{{ asset('img/flags/flags.css') }}" />--}}
     <!-- datatables -->
-    <link rel="stylesheet" href="{{ asset('lib/datatables/extras/TableTools/media/css/TableTools.css') }}" />
+    <!--link rel="stylesheet" href="{{ asset('lib/datatables/extras/TableTools/media/css/TableTools.css') }}" /-->
 
     <!-- font-awesome -->
     {{--<link rel="stylesheet" href="{{ asset('img/font-awesome/css/font-awesome.min.css') }}" />
