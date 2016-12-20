@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -27,12 +28,17 @@ class LoginController extends Controller
         }
     }
 
+    public function get_token()
+    {
+        return Session::token();
+    }
+
     public function processLogin(Request $request){
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-            return redirect('/production/buyers');
+            return Auth::user();
         }
         else{
-            return redirect('/login');
+            return -1;
         }
     }
 
