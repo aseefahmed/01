@@ -64,20 +64,21 @@ class OrdersController extends Controller {
         $activity->save();
     }
 
-    public function updateField($field, $id, $value)
+    public function updateField(Request $request)
     {
-        Order::where('id', $id)->update([
-            $field => $value
-        ]);
+        DB::table('orders')
+            ->where('id', $request->id)
+            ->update([$request->field => $request->value]);
 
         $activity = new Activity();
-        $activity->user_id = Auth::user()->id;
+        $activity->user_id = $request->user_id;
         $activity->reference_table = 'orders';
-        $activity->reference = $id;
-        $activity->description = 'An order information has been updated. '. $field . ' has been set to '. $value . ' for order ID:'. $id;
+        $activity->reference = serialize($request->id);
+        $activity->description = 'An order information has been updated. '. $request->field . ' has been set to '. $request->value . ' for order ID:'. $request->id;
         $activity->ip_address = $_SERVER["REMOTE_ADDR"];
         $activity->save();
     }
+
 
     public function store(Request $request){
         $order_id = time();
