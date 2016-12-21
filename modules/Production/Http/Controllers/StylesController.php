@@ -29,22 +29,20 @@ class StylesController extends Controller {
         return $data['style'];
     }
 
-    public function destroy(Request $request, $id, $action=null){
+    public function deleteStyle(Request $request){
 
-        if($action == 'all')
+        if($request->action == 'all')
         {
             Style::truncate();
         }
-        elseif($action == 'single_delete')
+        elseif($request->action == 'single_delete')
         {
-            Style::find($id)->delete();
+            Style::find($request->id)->delete();
         }
-        else if($action == 'selected')
+        else if($request->action == 'selected')
         {
-            $items = explode(',', $id);
-            Style::destroy($items);
+            Style::destroy($request->id);
         }
-
     }
 
     public function updateField($field, $id, $value)
@@ -58,11 +56,12 @@ class StylesController extends Controller {
         $style_id = Style::max('id')+1;
         $style = new Style();
         $style->style_name = $request->style_name;
-        $style->user_id = Auth::user()->id;
-        if($request->style_image != ""){
-            $file_extension = $request->file('style_image')->guessExtension();
+        $style->user_id = $request->user_id;
+
+        if($request->file != ""){
+            $file_extension = $request->file('file')->guessExtension();
             $img_name = $style_id.".".$file_extension;
-            $request->file('style_image')->move('img/uploads/production/styles', $img_name);
+            $request->file('file')->move('img/uploads/production/styles', $img_name);
         }else{
             $img_name = "no_image.jpg";
         }

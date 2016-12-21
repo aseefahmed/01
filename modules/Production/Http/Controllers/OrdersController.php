@@ -41,31 +41,25 @@ class OrdersController extends Controller {
         return $data['order'];
     }
 
-    public function destroy(Request $request, $id, $action=null){
+    public function deleteOrder(Request $request){
         $activity = new Activity();
 
-        if($action == 'all')
+        if($request->action == 'all')
         {
             Order::truncate();
-            $activity->description = 'All order has been deleted.';
         }
-        elseif($action == 'single_delete')
+        elseif($request->action == 'single_delete')
         {
-            Order::find($id)->delete();
-            $activity->description = 'Order ID:'. $id . ' has been deleted.';
-
+            Order::find($request->id)->delete();
         }
-        else if($action == 'selected')
+        else if($request->action == 'selected')
         {
-            $items = explode(',', $id);
-            Order::destroy($items);
-            $activity->description = 'A number of orders have been deleted.';
+            Order::destroy($request->id);
         }
 
-
-        $activity->user_id = Auth::user()->id;
+        $activity->user_id = $request->user_id;
         $activity->reference_table = 'orders';
-        $activity->reference = $id;
+        $activity->reference = serialize($request->id);
         $activity->ip_address = $_SERVER["REMOTE_ADDR"];
         $activity->save();
     }
@@ -86,9 +80,10 @@ class OrdersController extends Controller {
     }
 
     public function store(Request $request){
-        $order_id = Order::max('id')+1;
+        $order_id = time();
         $order = new Order();
-        $order->user_id = Auth::user()->id;
+        $order->id = $order_id;
+        $order->user_id = $request->user_id;
         $order->buyer_id = $request->buyer_id;
         $order->style_id = $request->style_id;
         $order->order_date = $request->order_date;
@@ -119,9 +114,9 @@ class OrdersController extends Controller {
         $order->save();
 
         $activity = new Activity();
-        $activity->user_id = Auth::user()->id;
+        $activity->user_id = $request->user_id;
         $activity->reference_table = 'orders';
-        $activity->reference = Order::max('id');
+        $activity->reference = serialize(Order::max('id'));
         $activity->description = 'An order has been created.';
         $activity->ip_address = $_SERVER["REMOTE_ADDR"];
         $activity->save();

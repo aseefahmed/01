@@ -29,20 +29,19 @@ class BuyersController extends Controller {
         return $data['buyer'];
     }
 
-    public function destroy(Request $request, $id, $action=null){
+    public function deleteBuyer(Request $request){
 
-        if($action == 'all')
+        if($request->action == 'all')
         {
             Buyer::truncate();
         }
-        elseif($action == 'single_delete')
+        elseif($request->action == 'single_delete')
         {
-            Buyer::find($id)->delete();
+            Buyer::find($request->id)->delete();
         }
-        else if($action == 'selected')
+        else if($request->action == 'selected')
         {
-            $items = explode(',', $id);
-            Buyer::destroy($items);
+            Buyer::destroy($request->id);
         }
     }
 
@@ -62,7 +61,7 @@ class BuyersController extends Controller {
         $buyer->contact_number = $request->contact_number;
         $buyer->email_address = $request->email_address;
         $buyer->website = $request->website;
-        $buyer->user_id = Auth::user()->id;
+        $buyer->user_id = $request->user_id;
         if($request->buyer_image != ""){
             $file_extension = $request->file('buyer_image')->guessExtension();
             $img_name = $buyer_id.".".$file_extension;

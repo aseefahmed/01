@@ -6,13 +6,13 @@ Route::group(['middleware' => 'web', 'prefix' => 'production', 'namespace' => 'M
     Route::get('/buyer/fetchBuyersList', ['uses' => 'BuyersController@fetchBuyersList', 'as' => 'Buyers List']);
     Route::get('/buyers/fetchBuyerDetails/{id}', ['uses' => 'BuyersController@fetchBuyerDetails', 'as' => 'Buyer Details']);
     Route::get('/buyer/update/{field}/{id}/{value}', ['uses' => 'BuyersController@updateField', 'as' => 'Update Information']);
-    Route::delete('/buyer/{buyer}/{action}', ['uses' => 'BuyersController@destroy', 'as' => 'Remove Buyer Details']);
+    Route::post('/buyer/delete', ['uses' => 'BuyersController@deleteBuyer', 'as' => 'Remove Buyer Details']);
 
     Route::resource('styles', 'StylesController');
     Route::get('/style/fetchStylesList', ['uses' => 'StylesController@fetchStylesList', 'as' => 'Styles List']);
     Route::get('/styles/fetchStyleDetails/{id}', ['uses' => 'StylesController@fetchStyleDetails', 'as' => 'Style Details']);
     Route::get('/style/update/{field}/{id}/{value}', ['uses' => 'StylesController@updateField', 'as' => 'Update Information']);
-    Route::delete('/style/{style}/{action}', ['uses' => 'StylesController@destroy', 'as' => 'Remove Style Details']);
+    Route::post('/style/delete', ['uses' => 'StylesController@deleteStyle', 'as' => 'Remove Style Details']);
 
     Route::resource('suppliers', 'SuppliersController');
     Route::get('/supplier/fetchSuppliersList', ['uses' => 'SuppliersController@fetchSuppliersList', 'as' => 'Suppliers List']);
@@ -30,7 +30,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'production', 'namespace' => 'M
     Route::get('/order/fetchOrdersList', ['uses' => 'OrdersController@fetchOrdersList', 'as' => 'Orders List']);
     Route::get('/orders/fetchOrderDetails/{id}', ['uses' => 'OrdersController@fetchOrderDetails', 'as' => 'Order Details']);
     Route::get('/order/update/{field}/{id}/{value}', ['uses' => 'OrdersController@updateField', 'as' => 'Update Information']);
-    Route::delete('/order/{order}/{action}', ['uses' => 'OrdersController@destroy', 'as' => 'Remove Order Details']);
+    Route::post('/order/delete', ['uses' => 'OrdersController@deleteOrder', 'as' => 'Remove Buyer Details']);
     Route::post('/order/addToRequisition', ['uses' => 'OrdersController@addToRequisition', 'as' => 'Remove Order Details']);
 
     Route::get('/reports/{type}', ['uses' => 'ReportsController@generateReport', 'as' => 'Generate Orders Report']);

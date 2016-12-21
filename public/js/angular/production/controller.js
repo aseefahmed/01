@@ -1157,7 +1157,6 @@ angular.module('myApp').controller('SupplierTypeController', function($scope, $h
     };
 })
 
-
 angular.module('myApp').controller('AllRequisitionController', function($scope, $http) {
     $scope.total_approved_amount = 0;
     $scope.approved_amount = 0;
