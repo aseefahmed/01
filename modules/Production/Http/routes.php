@@ -5,7 +5,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'production', 'namespace' => 'M
     Route::resource('buyers', 'BuyersController');
     Route::get('/buyer/fetchBuyersList', ['uses' => 'BuyersController@fetchBuyersList', 'as' => 'Buyers List']);
     Route::get('/buyers/fetchBuyerDetails/{id}', ['uses' => 'BuyersController@fetchBuyerDetails', 'as' => 'Buyer Details']);
-    Route::get('/buyer/update/{field}/{id}/{value}', ['uses' => 'BuyersController@updateField', 'as' => 'Update Information']);
+    Route::get('/buyer/update/{user_id}/{field}/{id}/{value}', ['uses' => 'BuyersController@updateField', 'as' => 'Update Information']);
     Route::post('/buyer/delete', ['uses' => 'BuyersController@deleteBuyer', 'as' => 'Remove Buyer Details']);
 
     Route::resource('styles', 'StylesController');
@@ -28,6 +28,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'production', 'namespace' => 'M
 
     Route::resource('orders', 'OrdersController');
     Route::get('/order/fetchOrdersList', ['uses' => 'OrdersController@fetchOrdersList', 'as' => 'Orders List']);
+    Route::get('/order/fetchOrdersSummery', ['uses' => 'OrdersController@fetchOrdersSummery', 'as' => 'Orders List']);
     Route::get('/orders/fetchOrderDetails/{id}', ['uses' => 'OrdersController@fetchOrderDetails', 'as' => 'Order Details']);
     Route::get('/order/update/{field}/{id}/{value}', ['uses' => 'OrdersController@updateField', 'as' => 'Update Information']);
     Route::post('/order/delete', ['uses' => 'OrdersController@deleteOrder', 'as' => 'Remove Order Details']);

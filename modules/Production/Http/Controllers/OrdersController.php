@@ -19,7 +19,7 @@ class OrdersController extends Controller {
 
     public function fetchOrdersList()
     {
-        $orders = DB::table('orders')->join('buyers', 'orders.buyer_id', '=', 'buyers.id')->join('styles', 'orders.style_id', '=', 'styles.id')->select('orders.*', 'buyers.buyer_name', 'styles.image as style_image', 'styles.style_name')->get();
+        $orders = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->leftJoin('styles', 'orders.style_id', '=', 'styles.id')->select('orders.*', 'buyers.buyer_name', 'styles.image as style_image', 'styles.style_name')->get();
         return $orders;
     }
 
@@ -28,6 +28,14 @@ class OrdersController extends Controller {
         return view('production::orders.show', $data);
     }
 
+    function fetchOrdersSummery()
+    {
+        $date_of_seven_days_ago = date("Y-m-d", strtotime("-1 week"));
+        $date_of_14_days_ago = date("Y-m-d", strtotime("-2 week"));
+        $data['new_orders'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->leftJoin('styles', 'orders.style_id', '=', 'styles.id')->where('orders.created_at', '>', $date_of_seven_days_ago)->select('orders.*', 'buyers.buyer_name', 'styles.image as style_image', 'styles.style_name')->get();
+        $data['inactive_orders'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->leftJoin('styles', 'orders.style_id', '=', 'styles.id')->where('orders.updated_at', '<', $date_of_seven_days_ago)->select('orders.*', 'buyers.buyer_name', 'styles.image as style_image', 'styles.style_name')->get();
+        return $data;
+    }
     public function fetchOrderDetails($id){
         $data['order'] =  Order::where('id', $id)->select('orders.*')->get();
         $data['order']['user'] = $data['order'][0]->user;
