@@ -45,7 +45,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'production', 'namespace' => 'M
     Route::get('/requisitions/{sent}', ['uses' => 'RequisitionsController@viewRequisitionsList', 'as' => 'Sent Requisitions']);
     Route::get('/requisitions/id/{id}', ['uses' => 'RequisitionsController@loadRequisitionDetails', 'as' => 'Requisition Details']);
     Route::get('/requisitions/getDetails/{id}', ['uses' => 'RequisitionsController@getRequisitionDetails', 'as' => 'Requisition Details']);
-    Route::get('/requisitions/{action}/get', ['uses' => 'RequisitionsController@getRequisitionsList', 'as' => 'Sent Requisitions']);
+    Route::get('/requisitions/{action}/get/{user_id}', ['uses' => 'RequisitionsController@getRequisitionsList', 'as' => 'Sent Requisitions']);
     Route::post('/requisition/approve', ['uses' => 'RequisitionsController@approveRequisition', 'as' => 'Sent Requisitions']);
 
 });

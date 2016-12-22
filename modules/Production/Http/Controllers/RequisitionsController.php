@@ -19,6 +19,7 @@ class RequisitionsController extends Controller {
 
     public function getRequisitionItems($user_id)
     {
+
         $data['items'] = RequisitionItem::where('user_id', $user_id)->where('flag', 0)->get();
         return $data;
     }
@@ -77,15 +78,15 @@ class RequisitionsController extends Controller {
         return view('production::requisitions.'.$action);
     }
 
-    public function getRequisitionsList($action)
+    public function getRequisitionsList($action, $user_id)
     {
         if($action == 'sent')
         {
-            $data['requisition'] = Requisition::join('users', 'users.id', '=', 'requisitions.created_by')->where('created_by', Auth::user()->id)->select('requisitions.*', 'users.first_name', 'users.last_name')->get();
+            $data['requisition'] = Requisition::join('users', 'users.id', '=', 'requisitions.created_by')->where('created_by', $user_id)->select('requisitions.*', 'users.first_name', 'users.last_name')->get();
         }
         elseif ($action == 'recieved')
         {
-            $data['requisition'] = Requisition::join('users', 'users.id', '=', 'requisitions.created_by')->where('forwarded_to', Auth::user()->id)->where('flag',1)->select('requisitions.*', 'users.first_name', 'users.last_name')->get();
+            $data['requisition'] = Requisition::join('users', 'users.id', '=', 'requisitions.created_by')->where('forwarded_to', $user_id)->where('flag',1)->select('requisitions.*', 'users.first_name', 'users.last_name')->get();
         }
         return $data;
     }
