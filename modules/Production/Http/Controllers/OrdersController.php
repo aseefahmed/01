@@ -124,13 +124,12 @@ class OrdersController extends Controller {
     }
 
     public function addToRequisition(Request $request){
-
         if($request->yarn_amount != '') {
             DB::table('requisition_items')->insert([
                 'item_name' => 'Composition: ' . $request->yarn_type,
                 'items_val' => $request->yarn_amount,
                 'requisition_type' => 'Order',
-                'user_id' => Auth::user()->id,
+                'user_id' => $request->user_id,
                 'reference' => $request->order_id,
             ]);
         }
@@ -139,7 +138,7 @@ class OrdersController extends Controller {
                 'item_name' => 'Accessories',
                 'items_val' => $request->accessories_amount,
                 'requisition_type' => 'Order',
-                'user_id' => Auth::user()->id,
+                'user_id' => $request->user_id,
                 'reference' => $request->order_id,
             ]);
         }
@@ -149,7 +148,7 @@ class OrdersController extends Controller {
                 'item_name' => 'Button',
                 'items_val' => $request->button_amount,
                 'requisition_type' => 'Order',
-                'user_id' => Auth::user()->id,
+                'user_id' => $request->user_id,
                 'reference' => $request->order_id,
             ]);
         }
@@ -159,7 +158,7 @@ class OrdersController extends Controller {
                 'item_name' => 'Print',
                 'items_val' => $request->print_amount,
                 'requisition_type' => 'Order',
-                'user_id' => Auth::user()->id,
+                'user_id' => $request->user_id,
                 'reference' => $request->order_id,
             ]);
         }
@@ -169,7 +168,7 @@ class OrdersController extends Controller {
                 'item_name' => 'Zipper',
                 'items_val' => $request->zipper_amount,
                 'requisition_type' => 'Order',
-                'user_id' => Auth::user()->id,
+                'user_id' => $request->user_id,
                 'reference' => $request->order_id,
             ]);
         }
@@ -179,7 +178,7 @@ class OrdersController extends Controller {
                 'item_name' => 'Security Tag',
                 'items_val' => $request->security_tag_amount,
                 'requisition_type' => 'Order',
-                'user_id' => Auth::user()->id,
+                'user_id' => $request->user_id,
                 'reference' => $request->order_id,
             ]);
         }

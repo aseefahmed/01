@@ -17,9 +17,9 @@ class RequisitionsController extends Controller {
         return view('production::requisitions.generate');
     }
 
-    public function getRequisitionItems()
+    public function getRequisitionItems($user_id)
     {
-        $data['items'] = RequisitionItem::where('user_id', Auth::user()->id)->where('flag', 0)->get();
+        $data['items'] = RequisitionItem::where('user_id', $user_id)->where('flag', 0)->get();
         return $data;
     }
 
@@ -27,7 +27,7 @@ class RequisitionsController extends Controller {
     {
         $requisition = new Requisition();
         $requisition->requested_amount = $request->total_amount;
-        $requisition->created_by = Auth::user()->id;
+        $requisition->created_by = $request->user_id;
         $requisition->forwarded_to = $request->forwarded_to;
         $requisition->name = $request->requisition_title;
         $requisition->flag = 1;
