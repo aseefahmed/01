@@ -7,6 +7,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'production', 'namespace' => 'M
     Route::get('/buyers/fetchBuyerDetails/{id}', ['uses' => 'BuyersController@fetchBuyerDetails', 'as' => 'Buyer Details']);
     Route::get('/buyer/update/{user_id}/{field}/{id}/{value}', ['uses' => 'BuyersController@updateField', 'as' => 'Update Information']);
     Route::post('/buyer/delete', ['uses' => 'BuyersController@deleteBuyer', 'as' => 'Remove Buyer Details']);
+    Route::post('/buyer/uploadImage', ['uses' => 'BuyersController@uploadImage', 'as' => 'Upload Buyer Image']);
 
     Route::resource('styles', 'StylesController');
     Route::get('/style/fetchStylesList', ['uses' => 'StylesController@fetchStylesList', 'as' => 'Styles List']);
@@ -37,6 +38,8 @@ Route::group(['middleware' => 'web', 'prefix' => 'production', 'namespace' => 'M
 
     Route::get('/reports/{type}', ['uses' => 'ReportsController@generateReport', 'as' => 'Generate Orders Report']);
     Route::post('/reports/{type}/search', ['uses' => 'ReportsController@searcReport', 'as' => 'Search Orders Report']);
+    Route::post('/reports/{type}/save', ['uses' => 'ReportsController@saveReport', 'as' => 'Search Orders Report']);
+    Route::get('/reports/{type}/saved', ['uses' => 'ReportsController@getSavedReport', 'as' => 'Search Orders Report']);
 
     Route::get('/requisitions/generate', ['uses' => 'RequisitionsController@generateRequisition', 'as' => 'Generate Requisitions']);
     Route::get('/requisitions/getRequisitionItems/{user_id}', ['uses' => 'RequisitionsController@getRequisitionItems', 'as' => 'Generate Requisitions']);

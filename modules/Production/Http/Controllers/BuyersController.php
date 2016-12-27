@@ -98,5 +98,10 @@ class BuyersController extends Controller {
         $activity->ip_address = $_SERVER["REMOTE_ADDR"];
         $activity->save();
     }
+
+    public function uploadImage(Request $request)
+    {
+        return $request->all();
+    }
 	
 }

@@ -90,4 +90,21 @@ class ReportsController extends Controller {
             return $data;
         }
     }
+
+    public function saveReport(Request $request)
+    {
+        DB::table('reports')->insert([
+            'report_criteria' => $request->report_criteria,
+            'report_type' =>$request->report_type,
+            'result' => $request->report_result,
+            'created_at' => date('Y-m-d H:i:s',time())
+        ]);
+    }
+
+    public function getSavedReport($report_type)
+    {
+        return Report::all();
+    }
+
+
 }
