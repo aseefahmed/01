@@ -19,7 +19,7 @@ class OrdersController extends Controller {
 
     public function fetchOrdersList()
     {
-        $orders = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->leftJoin('styles', 'orders.style_id', '=', 'styles.id')->select('orders.*', 'buyers.buyer_name', 'styles.image as style_image', 'styles.style_name')->get();
+        $orders = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->whereNull('orders.deleted_at')->select('orders.*', 'buyers.buyer_name')->get();
         return $orders;
     }
 

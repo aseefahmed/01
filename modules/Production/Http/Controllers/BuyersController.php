@@ -3,6 +3,7 @@
 use \Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Input;
 use Modules\Production\Entities\Activity;
 use Modules\Production\Entities\Buyer;
 use Pingpong\Modules\Routing\Controller;
@@ -34,7 +35,7 @@ class BuyersController extends Controller {
 
         if($request->action == 'all')
         {
-            Buyer::truncate();
+            Buyer::destroy($request->id);
         }
         elseif($request->action == 'single_delete')
         {
@@ -80,10 +81,10 @@ class BuyersController extends Controller {
         $buyer->email_address = $request->email_address;
         $buyer->website = $request->website;
         $buyer->user_id = $request->user_id;
-        if($request->buyer_image != ""){
-            $file_extension = $request->file('buyer_image')->guessExtension();
+        if($request->file != ""){
+            $file_extension = $request->file('file')->guessExtension();
             $img_name = $buyer_id.".".$file_extension;
-            $request->file('buyer_image')->move('img/uploads/production/buyers', $img_name);
+            $request->file('file')->move('img/', $img_name);
         }else{
             $img_name = "no_image.jpg";
         }
