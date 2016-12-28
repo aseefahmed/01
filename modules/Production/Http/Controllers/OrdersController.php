@@ -54,7 +54,7 @@ class OrdersController extends Controller {
 
         if($request->action == 'all')
         {
-            Order::truncate();
+            Order::destroy($request->id);
         }
         elseif($request->action == 'single_delete')
         {
