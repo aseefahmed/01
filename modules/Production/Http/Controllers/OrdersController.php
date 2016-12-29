@@ -19,8 +19,10 @@ class OrdersController extends Controller {
 
     public function fetchOrdersList()
     {
-        $orders = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->whereNull('orders.deleted_at')->select('orders.*', 'buyers.buyer_name')->get();
-        return $orders;
+        $data['orders'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->whereNull('orders.deleted_at')->select('orders.*', 'buyers.buyer_name')->get();
+        $data['data_of_14_days_later'] = date("Y-m-d", strtotime("+2 week"));
+        $data['data_of_14_days_ago'] = date("Y-m-d", strtotime("-2 week"));
+        return $data;
     }
 
     public function show($id){
@@ -30,10 +32,11 @@ class OrdersController extends Controller {
 
     function fetchOrdersSummery()
     {
-        $date_of_seven_days_ago = date("Y-m-d", strtotime("-1 week"));
         $date_of_14_days_ago = date("Y-m-d", strtotime("-2 week"));
-        $data['new_orders'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->leftJoin('styles', 'orders.style_id', '=', 'styles.id')->where('orders.created_at', '>', $date_of_seven_days_ago)->select('orders.*', 'buyers.buyer_name', 'styles.image as style_image', 'styles.style_name')->get();
-        $data['inactive_orders'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->leftJoin('styles', 'orders.style_id', '=', 'styles.id')->where('orders.updated_at', '<', $date_of_seven_days_ago)->select('orders.*', 'buyers.buyer_name', 'styles.image as style_image', 'styles.style_name')->get();
+        $date_of_14_days_later = date("Y-m-d", strtotime("+2 week"));
+        $data['new_orders'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->where('orders.created_at', '>', $date_of_14_days_ago)->select('orders.*', 'buyers.buyer_name')->get();
+        $data['delivering_soon'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->where('orders.delivery_date', '<', $date_of_14_days_later)->select('orders.*', 'buyers.buyer_name')->get();
+        $data['inactive_orders'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->where('orders.updated_at', '<', $date_of_14_days_ago)->select('orders.*', 'buyers.buyer_name')->get();
         return $data;
     }
     public function fetchOrderDetails($id){
