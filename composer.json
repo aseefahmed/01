@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "pingpong/modules": "~2.0",
         "frenzy/turbolinks": "dev-master",
-        "laracasts/utilities": "dev-master"
+        "laracasts/utilities": "dev-master",
+        "guzzle/guzzle": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
