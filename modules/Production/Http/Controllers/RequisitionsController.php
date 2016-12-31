@@ -4,6 +4,7 @@ use \Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Modules\Production\Entities\Order;
 use Modules\Production\Entities\Requisition;
 use Modules\Production\Entities\RequisitionItem;
@@ -19,19 +20,35 @@ class RequisitionsController extends Controller {
 
     public function getRequisitionItems($user_id)
     {
-
         $data['items'] = RequisitionItem::where('user_id', $user_id)->where('flag', 0)->get();
+        return $data;
+    }
+
+    public function fetchRequisitionSummery($user_id)
+    {
+        $data['new_requisition'] = DB::table('requisitions')->where('forwarded_to', $user_id)->where('flag', 1)->get();
         return $data;
     }
 
     public function generateRequisitionItems(Request $request)
     {
         $requisition = new Requisition();
+        $requisition->id = time();
         $requisition->requested_amount = $request->total_amount;
         $requisition->created_by = $request->user_id;
         $requisition->forwarded_to = $request->forwarded_to;
         $requisition->name = $request->requisition_title;
+        $requisition->supplier_id = $request->supplier_id;
         $requisition->flag = 1;
+        if($request->file != ""){
+            $file_extension = $request->file('file')->guessExtension();
+            $file_name = $requisition->id .".".$file_extension;
+            $image = Input::file('file');
+            $image->move('uploaded_files/production/requisitions/', $file_name);
+        }else{
+            $file_name = "no_image.jpg";
+        }
+        $requisition->attachment = $file_name;
         $requisition->save();
 
         $requisition_id = Requisition::max('id');
@@ -44,7 +61,8 @@ class RequisitionsController extends Controller {
     public function destroy(Request $request, $id, $action=null){
         if($action == 'all')
         {
-            RequisitionItem::where('user_id', Auth::user()->id)->delete();
+            $items = explode(',', $id);
+            RequisitionItem::destroy($items);
         }
         elseif($action == 'single_delete')
         {
@@ -82,11 +100,11 @@ class RequisitionsController extends Controller {
     {
         if($action == 'sent')
         {
-            $data['requisition'] = Requisition::join('users', 'users.id', '=', 'requisitions.created_by')->where('created_by', $user_id)->select('requisitions.*', 'users.first_name', 'users.last_name')->get();
+            $data['requisition'] = Requisition::join('users', 'users.id', '=', 'requisitions.forwarded_to')->where('created_by', $user_id)->select('requisitions.*', 'users.first_name', 'users.last_name')->get();
         }
         elseif ($action == 'recieved')
         {
-            $data['requisition'] = Requisition::join('users', 'users.id', '=', 'requisitions.created_by')->where('forwarded_to', $user_id)->where('flag',1)->select('requisitions.*', 'users.first_name', 'users.last_name')->get();
+            $data['requisition'] = Requisition::join('users', 'users.id', '=', 'requisitions.created_by')->where('forwarded_to', $user_id)->where('requisitions.flag',1)->select('requisitions.*', 'users.first_name', 'users.last_name')->get();
         }
         return $data;
     }
@@ -99,7 +117,7 @@ class RequisitionsController extends Controller {
 
     public function getRequisitionDetails($id)
     {
-        $data['requisition'] = DB::table('requisitions')->leftJoin('requisition_items','requisitions.id', '=', 'requisition_items.requisition_id')->where('requisitions.id', $id)->select('requisitions.*', 'requisition_items.items_val', 'requisition_items.item_name', 'requisition_items.flag as item_flag', 'requisition_items.id as requisition_item_id', 'requisition_items.reference', 'requisition_items.approved_amount as item_approved_amount')->get();
+        $data['requisition'] = DB::table('requisitions')->leftJoin('requisition_items','requisitions.id', '=', 'requisition_items.requisition_id')->where('requisitions.id', $id)->select('requisitions.*', 'requisition_items.items_val', 'requisition_items.item_name', 'requisition_items.flag as item_flag', 'requisition_items.id as requisition_item_id', 'requisition_items.reference', 'requisition_items.requisition_type', 'requisition_items.approved_amount as item_approved_amount')->get();
         return $data;
     }
 

@@ -37,6 +37,7 @@ class OrdersController extends Controller {
         $data['new_orders'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->where('orders.created_at', '>', $date_of_14_days_ago)->select('orders.*', 'buyers.buyer_name')->get();
         $data['delivering_soon'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->where('orders.delivery_date', '<', $date_of_14_days_later)->select('orders.*', 'buyers.buyer_name')->get();
         $data['inactive_orders'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->where('orders.updated_at', '<', $date_of_14_days_ago)->select('orders.*', 'buyers.buyer_name')->get();
+        $data['shipped_orders'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->where('orders.flag', 8)->select('orders.*', 'buyers.buyer_name')->get();
         return $data;
     }
     public function fetchOrderDetails($id){

@@ -18,8 +18,9 @@ Route::group(['middleware' => 'web', 'prefix' => 'production', 'namespace' => 'M
     Route::resource('suppliers', 'SuppliersController');
     Route::get('/supplier/fetchSuppliersList', ['uses' => 'SuppliersController@fetchSuppliersList', 'as' => 'Suppliers List']);
     Route::get('/suppliers/fetchSupplierDetails/{id}', ['uses' => 'SuppliersController@fetchSupplierDetails', 'as' => 'Supplier Details']);
-    Route::get('/supplier/update/{field}/{id}/{value}', ['uses' => 'SuppliersController@updateField', 'as' => 'Update Information']);
-    Route::delete('/supplier/{supplier}/{action}', ['uses' => 'SuppliersController@destroy', 'as' => 'Remove Supplier Details']);
+    Route::get('/supplier/update/{user_id}/{field}/{id}/{value}', ['uses' => 'SuppliersController@updateField', 'as' => 'Update Information']);
+    Route::post('/supplier/delete', ['uses' => 'SuppliersController@deleteSupplier', 'as' => 'Remove Supplier Details']);
+    Route::post('/supplier/uploadImage', ['uses' => 'SuppliersController@uploadImage', 'as' => 'Upload Supplier Image']);
 
     Route::resource('supplier-types', 'SupplierTypesController');
     Route::get('/supplier_type/fetchSupplierTypesList', ['uses' => 'SupplierTypesController@fetchSupplierTypesList', 'as' => 'SupplierTypes List']);
@@ -42,6 +43,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'production', 'namespace' => 'M
     Route::get('/reports/{type}/saved', ['uses' => 'ReportsController@getSavedReport', 'as' => 'Search Orders Report']);
 
     Route::get('/requisitions/generate', ['uses' => 'RequisitionsController@generateRequisition', 'as' => 'Generate Requisitions']);
+    Route::get('/requisitions/fetchRequisitionSummery/{user_id}', ['uses' => 'RequisitionsController@fetchRequisitionSummery', 'as' => 'Generate Requisitions']);
     Route::get('/requisitions/getRequisitionItems/{user_id}', ['uses' => 'RequisitionsController@getRequisitionItems', 'as' => 'Generate Requisitions']);
     Route::post('/requisitions/generateRequisition', ['uses' => 'RequisitionsController@generateRequisitionItems', 'as' => 'Generate Requisitions']);
     Route::delete('/requisitions/{id}/{action}', ['uses' => 'RequisitionsController@destroy', 'as' => 'Remove Order Details']);

@@ -71,20 +71,22 @@ class BuyersController extends Controller {
     }
 
     public function store(Request $request){
-        $buyer_id = time();
+
+            $buyer_id = time();
         $buyer = new Buyer();
         $buyer->id = $buyer_id;
         $buyer->buyer_name = $request->buyer_name;
-        $buyer->postal_address = $request->postal_address;
-        $buyer->contact_person = $request->contact_person;
-        $buyer->contact_number = $request->contact_number;
-        $buyer->email_address = $request->email_address;
-        $buyer->website = $request->website;
+        if($request->postal_address != ""){$buyer->postal_address = $request->postal_address;}
+        if($request->contact_person != ""){$buyer->contact_person = $request->contact_person;}
+        if($request->contact_number != ""){$buyer->contact_number = $request->contact_number;}
+        if($request->email_address != ""){$buyer->email_address = $request->email_address;}
+        if($request->website != ""){$buyer->website = $request->website;}
         $buyer->user_id = $request->user_id;
         if($request->file != ""){
             $file_extension = $request->file('file')->guessExtension();
             $img_name = $buyer_id.".".$file_extension;
-            $request->file('file')->move('img/', $img_name);
+            $image = Input::file('file');
+            $image->move('uploaded_files/production/buyers/', $img_name);
         }else{
             $img_name = "no_image.jpg";
         }
