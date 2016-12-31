@@ -34,17 +34,16 @@ class OrdersController extends Controller {
     {
         $date_of_14_days_ago = date("Y-m-d", strtotime("-2 week"));
         $date_of_14_days_later = date("Y-m-d", strtotime("+2 week"));
+        $data['daatt'] = $date_of_14_days_later;
         $data['new_orders'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->where('orders.created_at', '>', $date_of_14_days_ago)->select('orders.*', 'buyers.buyer_name')->get();
-        $data['delivering_soon'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->where('orders.delivery_date', '<', $date_of_14_days_later)->select('orders.*', 'buyers.buyer_name')->get();
-        $data['inactive_orders'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->where('orders.updated_at', '<', $date_of_14_days_ago)->select('orders.*', 'buyers.buyer_name')->get();
-        $data['shipped_orders'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->where('orders.flag', 8)->select('orders.*', 'buyers.buyer_name')->get();
+        $data['delivering_soon'] = DB::table('orders')->join('buyers', 'orders.buyer_id', '=', 'buyers.id')->where('orders.delivery_date', '<', $date_of_14_days_later)->select('orders.*', 'buyers.buyer_name')->get();
+        $data['inactive_orders'] = DB::table('orders')->join('buyers', 'orders.buyer_id', '=', 'buyers.id')->where('orders.updated_at', '<', $date_of_14_days_ago)->select('orders.*', 'buyers.buyer_name')->get();
+        $data['shipped_orders'] = DB::table('orders')->join('buyers', 'orders.buyer_id', '=', 'buyers.id')->where('orders.flag', 8)->select('orders.*', 'buyers.buyer_name')->get();
         return $data;
     }
     public function fetchOrderDetails($id){
         $data['order'] =  Order::where('id', $id)->select('orders.*')->get();
-        $data['order']['user'] = $data['order'][0]->user;
         $data['order']['buyer'] = $data['order'][0]->buyer;
-        $data['order']['style'] = $data['order'][0]->style;
         $data['order']['composition'] = unserialize($data['order'][0]->compositions);
         $data['order']['total_requisition_pending'] = RequisitionItem::where('reference', $id)->where('requisition_id','>',0)->where('flag',1)->count();
         $data['order']['total_requisition_approved'] = RequisitionItem::where('reference', $id)->where('requisition_id','>',0)->where('flag',2)->count();

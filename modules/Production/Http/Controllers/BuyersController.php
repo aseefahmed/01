@@ -76,11 +76,11 @@ class BuyersController extends Controller {
         $buyer = new Buyer();
         $buyer->id = $buyer_id;
         $buyer->buyer_name = $request->buyer_name;
-        if($request->postal_address != ""){$buyer->postal_address = $request->postal_address;}
-        if($request->contact_person != ""){$buyer->contact_person = $request->contact_person;}
-        if($request->contact_number != ""){$buyer->contact_number = $request->contact_number;}
-        if($request->email_address != ""){$buyer->email_address = $request->email_address;}
-        if($request->website != ""){$buyer->website = $request->website;}
+        if($request->postal_address != ""){$buyer->postal_address = $request->postal_address;}else{$buyer->postal_address = null;}
+        if($request->contact_person != ""){$buyer->contact_person = $request->contact_person;}else{$buyer->contact_person = null;}
+        if($request->contact_number != ""){$buyer->contact_number = $request->contact_number;}else{$buyer->contact_number = null;}
+        if($request->email_address != ""){$buyer->email_address = $request->email_address;}else{$buyer->email_address = null;}
+        if($request->website != ""){$buyer->website = $request->website;}else{$buyer->website = null;}
         $buyer->user_id = $request->user_id;
         if($request->file != ""){
             $file_extension = $request->file('file')->guessExtension();
