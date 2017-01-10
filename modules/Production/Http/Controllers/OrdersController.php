@@ -19,9 +19,16 @@ class OrdersController extends Controller {
     }
 
 
-    public function fetchOrdersList()
+    public function fetchOrdersList($user_id, $emp_role)
     {
-        $data['orders'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->whereNull('orders.deleted_at')->select('orders.*', 'buyers.buyer_name')->get();
+        if($emp_role == 1)
+        {
+            $data['orders'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->whereNull('orders.deleted_at')->select('orders.*', 'buyers.buyer_name')->get();
+        }
+        else
+        {
+            $data['orders'] = DB::table('orders')->leftJoin('buyers', 'orders.buyer_id', '=', 'buyers.id')->where('orders.user_id', $user_id)->whereNull('orders.deleted_at')->select('orders.*', 'buyers.buyer_name')->get();
+        }
         $data['data_of_14_days_later'] = date("Y-m-d", strtotime("+2 week"));
         $data['data_of_14_days_ago'] = date("Y-m-d", strtotime("-2 week"));
         return $data;

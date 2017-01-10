@@ -29,7 +29,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'production', 'namespace' => 'M
     Route::delete('/supplier_type/{supplier_type}/{action}', ['uses' => 'SupplierTypesController@destroy', 'as' => 'Remove SupplierType Details']);
 
     Route::resource('orders', 'OrdersController');
-    Route::get('/order/fetchOrdersList', ['uses' => 'OrdersController@fetchOrdersList', 'as' => 'Orders List']);
+    Route::get('/order/fetchOrdersList/{user_id}/{emp_role}', ['uses' => 'OrdersController@fetchOrdersList', 'as' => 'Orders List']);
     Route::get('/order/fetchOrdersSummery', ['uses' => 'OrdersController@fetchOrdersSummery', 'as' => 'Orders List']);
     Route::get('/orders/fetchOrderDetails/{id}', ['uses' => 'OrdersController@fetchOrderDetails', 'as' => 'Order Details']);
     Route::get('/order/update/{field}/{id}/{value}', ['uses' => 'OrdersController@updateField', 'as' => 'Update Information']);
