@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\DB;
 use Modules\Production\Entities\Activity;
+use Illuminate\Support\Facades\Input;
 use Modules\Production\Entities\Order;
 use Modules\Production\Entities\RequisitionItem;
 use Modules\Production\Entities\RequisitionType;
@@ -16,6 +17,7 @@ class OrdersController extends Controller {
     {
         return view('production::orders.index');
     }
+
 
     public function fetchOrdersList()
     {
@@ -123,6 +125,15 @@ class OrdersController extends Controller {
         $order->balance_amount = $request->order_balance_amount;
         $order->cost_of_making = $request->cost_of_making;
         $order->compositions = serialize($request->compositions);
+        if($request->file != ""){
+            $file_extension = $request->file('file')->guessExtension();
+            $img_name = $order_id.".".$file_extension;
+            $image = Input::file('file');
+            $image->move('uploaded_files/production/orders/', $img_name);
+        }else{
+            $img_name = "no_image.jpg";
+        }
+        $order->image = $img_name;
         $order->save();
 
         $activity = new Activity();
