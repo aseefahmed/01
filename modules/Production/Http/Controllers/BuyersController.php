@@ -72,7 +72,7 @@ class BuyersController extends Controller {
 
     public function store(Request $request){
 
-            $buyer_id = time();
+        $buyer_id = time();
         $buyer = new Buyer();
         $buyer->id = $buyer_id;
         $buyer->buyer_name = $request->buyer_name;
