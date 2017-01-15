@@ -6,6 +6,7 @@ use \Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 use Pingpong\Modules\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,7 +14,14 @@ class EmployeesController extends Controller {
 
     public function fetchEmployeesList()
     {
-        return User::all();
+        return DB::table('users')->join('employees', 'users.id', '=', 'employees.id')->select('users.*', 'employees.photo')->get();
+    }
+
+    public function changeFlag($flag, $user_id)
+    {
+    	$user = User::find($user_id);
+    	$user->flag = $flag;
+    	$user->save();
     }
 	
 	public function store(Request $request)

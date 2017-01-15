@@ -37,10 +37,17 @@ class LoginController extends Controller
 
     public function processLogin(Request $request){
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-            $user = User::find(Auth::user()->id);
-            $user->logged_in = 1;
-            $user->save();
-            return Auth::user();
+            if(Auth::user()->flag == 0)
+            {
+                 return -2;   
+            }
+            else
+            {
+                $user = User::find(Auth::user()->id);
+                $user->logged_in = 1;
+                $user->save();
+                return Auth::user();
+            }
         }
         else{
             return -1;
