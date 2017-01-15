@@ -1,0 +1,17 @@
+<?php namespace Modules\Hrm\Http\Controllers;
+
+use \Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Input;
+use Modules\Hrm\Entities\Employee;
+use Pingpong\Modules\Routing\Controller;
+
+class EmployeesController extends Controller {
+
+    public function fetchEmployeesList()
+    {
+        return 333;
+    }
+	
+}
