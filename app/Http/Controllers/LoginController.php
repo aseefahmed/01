@@ -8,7 +8,6 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
@@ -69,7 +68,7 @@ class LoginController extends Controller
                     'email' => $request->email_address,
                     'password' => Hash::make($request->pass),
                     'verification_code' => md5(uniqid()),
-                    'flag' => 1
+                    'flag' => 0
                 ]
             );
 
