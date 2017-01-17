@@ -8,22 +8,22 @@ use Illuminate\Support\Facades\Input;
 
 class BuyingController extends Controller {
 	
-	public function storeOrders(Request $request)
-	{
-		$order = new BuyingOrder();
-		$order->style = $request->style;
-		
-		if($request->sketch != ""){
-            $file_extension = $request->file('sketch')->guessExtension();
-            $img_name = time().".".$file_extension;
-            $image = Input::file('sketch');
-            $image->move('uploaded_files/buying/orders/', $img_name);
-        }else{
-            $img_name = "no_image.jpg";
-        }
+    public function storeOrders(Request $request)
+    {
+            $order = new BuyingOrder();
+            $order->style = $request->style;
 
-		DB::table('buying_orders')->insert([
-				'id' => time(),
+            if($request->sketch != ""){
+                $file_extension = $request->file('sketch')->guessExtension();
+                $img_name = time().".".$file_extension;
+                $image = Input::file('sketch');
+                $image->move('uploaded_files/buying/orders/', $img_name);
+            }else{
+                $img_name = "no_image.jpg";
+            }
+
+            DB::table('buying_orders')->insert([
+                'id' => time(),
                 'merchandiser_id' => $request->user_id,
                 'style' => $request->style,
                 'ref' => $request->ref,
@@ -40,9 +40,9 @@ class BuyingController extends Controller {
                 'colors' => implode('<br>', $request->colors),
                 'sketch' => $img_name,
             ]);
-	}
+    }
 
-	public function fetchOrdersList($user_id, $emp_role)
+    public function fetchOrdersList($user_id, $emp_role)
     {
         if($emp_role == 1)
         {
@@ -50,9 +50,24 @@ class BuyingController extends Controller {
         }
         else
         {
-            $data['orders'] = DB::table('buying_orders')->where(buying_orders.merchandiser_id, $user_id)->select('buying_orders.*')->get();
+            $data['orders'] = DB::table('buying_orders')->leftJoin('buyers', 'buying_orders.customer', '=', 'buyers.id')->where('merchandiser_id', $user_id)->select('buying_orders.*', 'buyers.buyer_name')->get();
         }
 
+        return $data;
+    }
+    
+    public function updateField($user_id, $field, $id, $value)
+    {
+        DB::table('buying_orders')->where('id', $id)->update([
+            $field => $value
+        ]);
+
+    }
+
+    public function fetchOrderDetails($id)
+    {
+        $data['orders'] = DB::table('buying_orders')->leftJoin('buyers', 'buying_orders.customer', '=', 'buyers.id')->where('buying_orders.id', $id)->select('buying_orders.*', 'buyers.buyer_name')->get();
+        
         return $data;
     }
 

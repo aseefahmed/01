@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableBuyingOrdersColors2 extends Migration
+class AlterTableBuyingOrders2 extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateTableBuyingOrdersColors2 extends Migration
      */
     public function up()
     {
-        Schema::create('buying_orders_colors', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::table('buying_orders', function (Blueprint $table) {
+            $table->string('po', 3)->change();
+            $table->string('fit_sample_sent', 3)->change();
         });
     }
 
@@ -25,6 +25,8 @@ class CreateTableBuyingOrdersColors2 extends Migration
      */
     public function down()
     {
-        Schema::drop('buying_orders_colors');
+        Schema::table('buying_orders', function (Blueprint $table) {
+            //
+        });
     }
 }
