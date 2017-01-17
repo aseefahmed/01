@@ -5,5 +5,5 @@ Route::group(['middleware' => 'web', 'prefix' => 'buying', 'namespace' => 'Modul
 	Route::get('/', 'BuyingController@index');
 	Route::post('orders/store', ['uses' => 'BuyingController@storeOrders', 'as' => 'Orders']);
 	Route::get('/order/fetchOrdersList/{user_id}/{emp_role}', ['uses' => 'BuyingController@fetchOrdersList', 'as' => 'Orders List']);
-	
+    Route::get('/orders/fetchOrderDetails/{id}', ['uses' => 'OrdersController@fetchOrderDetails', 'as' => 'Order Details']);
 });

@@ -56,6 +56,12 @@ class BuyingController extends Controller {
         return $data;
     }
 
+    public function fetchOrderDetails($id){
+        $data['order'] = DB::table('buying_orders')->where('id', $id)->get();
+        return $data['order'];
+    }
+
+
 
 
 }
