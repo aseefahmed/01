@@ -12,12 +12,22 @@ class BuyingController extends Controller {
     {
             $order = new BuyingOrder();
             $order->style = $request->style;
-
+            $time = time();
             if($request->sketch != ""){
                 $file_extension = $request->file('sketch')->guessExtension();
-                $img_name = time().".".$file_extension;
+                $img_name = $time.".".$file_extension;
                 $image = Input::file('sketch');
                 $image->move('uploaded_files/buying/orders/', $img_name);
+            }else{
+                $img_name = "no_image.jpg";
+            }
+
+            if($request->sample != ""){
+                $time = $time+1;
+                $file_extension = $request->file('sample')->guessExtension();
+                $sample_img_name = $time.".".$file_extension;
+                $image = Input::file('sample');
+                $image->move('uploaded_files/buying/orders/', $sample_img_name);
             }else{
                 $img_name = "no_image.jpg";
             }
@@ -39,6 +49,7 @@ class BuyingController extends Controller {
                 'hang_tag' => $request->hang_tag,
                 'colors' => implode('<br>', $request->colors),
                 'sketch' => $img_name,
+                'photo_sample' => $sample_img_name,
             ]);
     }
 
@@ -52,7 +63,7 @@ class BuyingController extends Controller {
         {
             $data['orders'] = DB::table('buying_orders')->leftJoin('buyers', 'buying_orders.customer', '=', 'buyers.id')->where('merchandiser_id', $user_id)->select('buying_orders.*', 'buyers.buyer_name')->get();
         }
-
+        $data['data_of_14_days_ago'] = date("Y-m-d", strtotime("today"));
         return $data;
     }
     
