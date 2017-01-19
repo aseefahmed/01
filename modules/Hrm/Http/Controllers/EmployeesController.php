@@ -23,6 +23,33 @@ class EmployeesController extends Controller {
     	$user->flag = $flag;
     	$user->save();
     }
+
+    public function updateEmployeeDetails($field, $id, $value, $table_name)
+    {
+        if($table_name)
+        {
+            $table_name = $table_name;
+        }
+        else
+        {
+            $table_name = 'users';
+        }
+        DB::table($table_name)->where('id', $id)->update([
+            $field => $value
+        ]);
+    }
+    public function changePass(Request $request)
+    {
+        DB::table('users')->where('id', $request->user_id)->update([
+            'password' => Hash::make($request->password)
+        ]);
+        
+    }
+    public function fetchEmployeeDetails($id)
+    {
+        $data['users'] = DB::table('users')->leftJoin('employees', 'users.id', '=', 'employees.id')->where('users.id', $id)->select('users.*', 'employees.*')->get();
+        return $data;
+    }
 	
 	public function store(Request $request)
 	{
@@ -37,10 +64,13 @@ class EmployeesController extends Controller {
         $user->flag = 1;   
         $user->save();
 
-        $employee = new Employee();
-        $employee->id = $user_id;
-        $employee->photo = "no_image.jpg";
-        $employee->save();
+        if($request->emp_role != 10)  // If employee is not a visitor, then make entry in employee table
+        {
+            $employee = new Employee();
+            $employee->id = $user_id;
+            $employee->photo = "no_image.jpg";
+            $employee->save();
+        }
 
 	}
 }
