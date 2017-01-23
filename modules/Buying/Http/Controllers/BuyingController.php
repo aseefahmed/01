@@ -42,14 +42,11 @@ class BuyingController extends Controller {
                 'Gauge' => $request->Gauge,
                 'yarn_ref_details' => $request->yarn_ref_details,
                 'qty' => $request->qty,
-                'customer' => $request->customer,
                 'main_label' => $request->main_label,
                 'contract_weight' => $request->contract_weight,
                 'sizing' => $request->sizing,
                 'hang_tag' => $request->hang_tag,
-                'colors' => implode('<br>', $request->colors),
-                'sketch' => $img_name,
-                'photo_sample' => $sample_img_name,
+                'sketch' => $img_name
             ]);
     }
 
