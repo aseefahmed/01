@@ -6,6 +6,6 @@ class BuyingOrder extends Model {
 
     protected $fillable = [];
 
-    protected $table = 'BuyingOrder';
+    protected $table = 'buying_orders_colors';
 
 }
