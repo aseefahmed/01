@@ -23,7 +23,7 @@ class BuyingController extends Controller {
                 $img_name = "no_image.jpg";
             }
 
-
+            $created_at = date_format(date_create(Date('Y-m-d h:i:s')), 'Y-m-d h:i:s');
             DB::table('buying_orders')->insert([
                 'id' => time(),
                 'merchandiser_id' => $request->user_id,
@@ -39,6 +39,7 @@ class BuyingController extends Controller {
                 'sizing' => $request->sizing,
                 'hang_tag' => $request->hang_tag,
                 'sketch' => $img_name,
+                'created_at' => $created_at
             ]);
     }
 
@@ -56,7 +57,7 @@ class BuyingController extends Controller {
     {
         if($emp_role == 1)
         {
-            $data['orders'] = DB::table('buying_orders')->leftJoin('buyers', 'buying_orders.customer', '=', 'buyers.id')->select('buying_orders.*', 'buyers.buyer_name')->get();
+            $data['orders'] = DB::table('buying_orders')->leftJoin('buyers', 'buying_orders.customer', '=', 'buyers.id')->leftJoin('users', 'users.id', '=', 'buying_orders.merchandiser_id')->select('buying_orders.*', 'buyers.buyer_name', 'users.first_name as merchandiser_first_name', 'users.last_name as merchandiser_last_name')->get();
         }
         else
         {
@@ -66,14 +67,41 @@ class BuyingController extends Controller {
         return $data;
     }
     
-    public function updateField($user_id, $field, $id, $value)
+    public function updateField($user_id, $field, $id, $value, $table)
     {
-        DB::table('buying_orders')->where('id', $id)->update([
+        DB::table($table)->where('id', $id)->update([
             $field => $value
         ]);
 
     }
 
+    public function fetchOrdersStats()
+    {
+        $last_day_of_month = date_format(date_create(date('d-m-Y', strtotime('last day of this month'))), 'Y-m-d');
+        $first_day_of_month = date_format(date_create(date('d-m-Y', strtotime('first day of this month'))), 'Y-m-d');
+        $data['no_of_orders_handedover'] = DB::table('buying_orders')->where('handedover_date', '!=', '0000-00-00')->count();
+        $data['no_of_po_recieved'] = DB::table('buying_orders')->where('po', '=', 'Yes')->count();
+        $data['no_of_orders_inspected'] = DB::table('buying_orders')->where('inspection_date', '!=', '0000-00-00')->count();
+        $data['new_orders'] = DB::table('buying_orders')->where('created_at', '>=', $first_day_of_month)->where('created_at', '<=', $last_day_of_month)->count();
+        $data['handedover_this_month'] = DB::table('buying_orders')->where('handedover_date', '>=', $first_day_of_month)->where('handedover_date', '<=', $last_day_of_month)->count();
+        $data['no_of_po_recieved_this_month'] = DB::table('buying_orders')->where('po_recieved_date', '>=', $first_day_of_month)->where('po_recieved_date', '<=', $last_day_of_month)->count();
+        return $data;
+    }
+
+    public function uploadFiles(Request $request)
+    {
+        if($request->file != ""){
+            $file_extension = $request->file('file')->guessExtension();
+            $img_name = time().".".$file_extension;
+            $image = Input::file('file');
+            $image->move('uploaded_files/buying/orders/', $img_name);
+        }else{
+            $img_name = "no_image.jpg";
+        }
+        DB::table($request->table_name)->where('id', $request->id)->update([
+            $request->field => $img_name
+        ]);
+    }
     public function fetchOrderDetails($id)
     {
         $data['orders'] = DB::table('buying_orders')->leftJoin('buyers', 'buying_orders.customer', '=', 'buyers.id')->where('buying_orders.id', $id)->select('buying_orders.*', 'buyers.buyer_name')->get();
