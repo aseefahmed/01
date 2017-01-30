@@ -43,13 +43,13 @@ class BuyingController extends Controller {
             ]);
     }
 
-    public function addColor(Request $request)
+    public function addColor($color, $type, $order_id)
     {
         DB::table('buying_orders_colors')->insert(
             [
-                'color_name' => $request->color_name, 
-                'color_type' => $request->type,
-                'order_id' => $request->order_id
+                'color_name' => $color, 
+                'color_type' => $type,
+                'order_id' => $order_id
             ]
         );
     }

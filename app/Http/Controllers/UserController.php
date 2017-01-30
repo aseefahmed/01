@@ -89,7 +89,7 @@ class UserController extends Controller
     {
         if($condition == null)
         {
-            $data['users'] = User::all();
+            $data['users'] = User::select('users.*')->get();
         }
 
         return $data;

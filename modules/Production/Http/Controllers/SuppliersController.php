@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\Input;
 use Modules\Production\Entities\Activity;
+use Illuminate\Support\Facades\DB;
 use Modules\Production\Entities\Supplier;
 use Pingpong\Modules\Routing\Controller;
 
@@ -26,12 +27,11 @@ class SuppliersController extends Controller {
     }
 
     public function fetchSupplierDetails($id){
-        $data['supplier'] =  Supplier::where('id', $id)->get();
-        $data['supplier']['user_name'] = $data['supplier'][0]->user;
+        $data['supplier'] =  DB::table('suppliers')->leftJoin('users', 'users.id', '=', 'suppliers.merchandiser_id')->where('suppliers.id', $id)->select('suppliers.*', 'users.first_name as merchandiser_first_name', 'users.last_name as merchandiser_last_name')->get();
         return $data['supplier'];
     }
 
-    public function deleteSupplier(Request $request){
+    public function deleteSupplier(Request $requestd){
 
         if($request->action == 'all')
         {
@@ -77,6 +77,7 @@ class SuppliersController extends Controller {
         $supplier->id = $supplier_id;
         $supplier->supplier_name = $request->supplier_name;
         if($request->postal_address != ""){$supplier->postal_address = $request->postal_address;}
+        if($request->merchandiser_id != ""){$supplier->merchandiser_id = $request->merchandiser_id;}
         if($request->contact_person != ""){$supplier->contact_person = $request->contact_person;}
         if($request->contact_number != ""){$supplier->contact_number = $request->contact_number;}
         if($request->email_address != ""){$supplier->email_address = $request->email_address;}

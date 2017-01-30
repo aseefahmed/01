@@ -13,7 +13,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'buying', 'namespace' => 'Modul
     Route::get('/order/fetchOrdersList/{user_id}/{emp_role}', ['uses' => 'BuyingController@fetchOrdersList', 'as' => 'Orders List']);
     Route::get('/order/fetchOrderDetails/{id}', ['uses' => 'BuyingController@fetchOrderDetails', 'as' => 'Order Details']);
     Route::get('/order/update/{user_id}/{field}/{id}/{value}/{table_name}', ['uses' => 'BuyingController@updateField', 'as' => 'Update Information']);
-    Route::post('/order/addColor', ['uses' => 'BuyingController@addColor', 'as' => 'Add Color']);
+    Route::get('/order/addColor/{color}/{type}/{order_id}', ['uses' => 'BuyingController@addColor', 'as' => 'Add Color']);
     Route::get('/orders/fetchOrdersStats', ['uses' => 'BuyingController@fetchOrdersStats', 'as' => 'Orders Stats']);
 
 });
